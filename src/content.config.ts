@@ -2,7 +2,7 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 // Lee los archivos directamente de la carpeta /fichas de la raíz del proyecto.
-// Así Antonio solo tiene que copiar un .md ahí: no hace falta duplicarlo dentro de src/.
+// Así basta con copiar un .md ahí: no hace falta duplicarlo dentro de src/.
 const fichas = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./fichas" }),
   schema: z.object({
