@@ -1,0 +1,29 @@
+---
+import { CATEGORIAS, type CategoriaKey } from "../data/categorias";
+import Pills from "./Pills.astro";
+import { wave } from "../utils/wave";
+
+interface Props {
+  slug: string;
+  titulo: string;
+  categoria: CategoriaKey;
+  nivel: string;
+  video?: string;
+  acceso: "gratis" | "pago";
+  ejemplo?: boolean;
+  seed?: number;
+}
+const { slug, titulo, categoria, nivel, video, acceso, ejemplo, seed = 1 } = Astro.props;
+const cat = CATEGORIAS[categoria];
+---
+<a class="clip" href={`/problema/${slug}`} data-cat={categoria}>
+  <span class="head" style={`background:${cat.color}`}>
+    <span>{cat.nombre}</span>
+    <span>{acceso === "pago" ? "€" : ""}</span>
+  </span>
+  <span class="body">
+    <strong>{titulo}</strong>
+    <span style={`color:${cat.color}`} set:html={wave(seed)} />
+    <span class="foot"><Pills nivel={nivel} video={video} acceso={acceso} ejemplo={ejemplo} /></span>
+  </span>
+</a>

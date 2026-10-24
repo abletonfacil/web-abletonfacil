@@ -1,0 +1,150 @@
+---
+import { CATEGORIAS, type CategoriaKey } from "../data/categorias";
+
+interface FichaBuscable {
+  slug: string;
+  titulo: string;
+  categoria: CategoriaKey;
+  acceso: "gratis" | "pago";
+  otras_formas: string[];
+}
+interface Props {
+  fichas: FichaBuscable[];
+  populares: string[];
+}
+const { fichas, populares } = Astro.props;
+const porSlug = Object.fromEntries(fichas.map((f) => [f.slug, f]));
+
+const indice = fichas.map((f) => ({
+  slug: f.slug,
+  titulo: f.titulo,
+  categoria: f.categoria,
+  categoriaNombre: CATEGORIAS[f.categoria].nombre,
+  color: CATEGORIAS[f.categoria].color,
+  acceso: f.acceso,
+  otrasFormas: f.otras_formas.join(" "),
+}));
+
+const chipLabel = (t: string) => t.replace(/^No sé /, "").replace(/^Mi /, "mi ");
+---
+<div class="search">
+  <label for="q">Buscar problema</label>
+  <div class="box">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+    <input id="q" type="search" autocomplete="off" placeholder="mi bombo y mi bajo se pisan" />
+    <kbd>/</kbd>
+  </div>
+  <div class="results" id="results" aria-live="polite"></div>
+  <div class="nohit oculto" id="nohit">
+    <p><strong>Esa todavía no la tengo.</strong> Apúntala y la convierto en reel.</p>
+    <form class="row" name="pedir-video" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias-pedido">
+      <input type="hidden" name="form-name" value="pedir-video" />
+      <p class="oculto"><label>No rellenes esto si eres humano: <input name="bot-field" /></label></p>
+      <input id="pide-q" name="problema" aria-label="Tu problema" />
+      <button class="btn yellow" type="submit">Pedir este vídeo</button>
+    </form>
+  </div>
+</div>
+<div class="popular" id="popular">
+  <span class="lab">Lo más buscado</span>
+  {populares.map((slug) => porSlug[slug] && (
+    <a class="chip" href={`/problema/${slug}`}>{chipLabel(porSlug[slug].titulo)}</a>
+  ))}
+</div>
+
+<script type="application/json" id="fichas-indice" set:html={JSON.stringify(indice)} />
+
+<script>
+  import Fuse from "fuse.js";
+
+  const datos = JSON.parse(document.getElementById("fichas-indice")?.textContent || "[]");
+  const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const indice = datos.map((f: any) => ({
+    ...f,
+    _t: norm(f.titulo),
+    _a: norm(f.otrasFormas),
+    _c: norm(f.categoriaNombre),
+  }));
+  const fuse = new Fuse(indice, {
+    keys: [
+      { name: "_t", weight: 3 },
+      { name: "_a", weight: 2.5 },
+      { name: "_c", weight: 1 },
+    ],
+    threshold: 0.42,
+    ignoreLocation: true,
+    minMatchCharLength: 3,
+  });
+
+  const PALABRAS_VACIAS = ["no", "se", "como", "mi", "mis", "con", "del", "las", "los", "una", "que", "por", "para"];
+
+  function buscar(q: string) {
+    const limpio = norm(q.trim());
+    if (limpio.length < 2) return [];
+    const palabras = limpio.split(/\s+/).filter((w) => w.length > 2 && !PALABRAS_VACIAS.includes(w));
+    const puntuaciones: Record<string, number> = {};
+    [limpio, ...palabras].forEach((w, i) => {
+      fuse.search(w).forEach((r) => {
+        puntuaciones[r.item.slug] = (puntuaciones[r.item.slug] || 0) + (1 - (r.score ?? 0)) * (i === 0 ? 2 : 1);
+      });
+    });
+    return Object.entries(puntuaciones)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([slug]) => indice.find((f: any) => f.slug === slug));
+  }
+
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c] as string));
+
+  const resultsBox = document.getElementById("results") as HTMLElement;
+  const nohitBox = document.getElementById("nohit") as HTMLElement;
+  const pideInput = document.getElementById("pide-q") as HTMLInputElement;
+
+  function render(q: string) {
+    if (!q.trim()) {
+      resultsBox.innerHTML = "";
+      nohitBox.classList.add("oculto");
+      return;
+    }
+    const hits = buscar(q);
+    if (!hits.length) {
+      resultsBox.innerHTML = "";
+      nohitBox.classList.remove("oculto");
+      if (pideInput) pideInput.value = q;
+      return;
+    }
+    nohitBox.classList.add("oculto");
+    resultsBox.innerHTML = hits
+      .map(
+        (f: any) => `<a class="hit" href="/problema/${f.slug}"><span class="strip" style="background:${f.color}"></span>
+      <span class="t">${esc(f.titulo)}<span class="s">${esc(f.categoriaNombre)}</span></span>
+      <span class="meta">${f.acceso === "pago" ? '<span class="pill pago">De pago</span>' : ""}</span></a>`
+      )
+      .join("");
+  }
+
+  const input = document.getElementById("q") as HTMLInputElement;
+  input.addEventListener("input", (e) => render((e.target as HTMLInputElement).value));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "/" && document.activeElement?.tagName !== "INPUT") {
+      e.preventDefault();
+      input.focus();
+    }
+  });
+
+  const ejemplos = [
+    "mi bombo y mi bajo se pisan",
+    "como cuadro un loop al tempo",
+    "mi master pita en rojo",
+    "tengo un loop y no se seguir",
+    "la bateria suena a robot",
+  ];
+  let ej = 0;
+  setInterval(() => {
+    if (document.activeElement !== input && !input.value) {
+      ej = (ej + 1) % ejemplos.length;
+      input.placeholder = ejemplos[ej];
+    }
+  }, 3200);
+</script>

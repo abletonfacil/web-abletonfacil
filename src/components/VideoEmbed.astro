@@ -1,0 +1,103 @@
+---
+interface Props {
+  video?: string;
+  serie?: string;
+}
+const { video = "", serie } = Astro.props;
+
+const esInstagram = video.includes("instagram.com");
+const esYoutube = video.includes("youtube.com") || video.includes("youtu.be");
+
+function idYoutube(url: string): string {
+  const corto = url.match(/youtu\.be\/([\w-]+)/);
+  if (corto) return corto[1];
+  const largo = url.match(/[?&]v=([\w-]+)/);
+  if (largo) return largo[1];
+  const shorts = url.match(/youtube\.com\/shorts\/([\w-]+)/);
+  if (shorts) return shorts[1];
+  return "";
+}
+const ytId = esYoutube ? idYoutube(video) : "";
+---
+{video && esInstagram && (
+  <div class="video-live" data-ig-embed>
+    <blockquote
+      class="instagram-media"
+      data-instgrm-permalink={video}
+      data-instgrm-version="14"
+      style="background:#262627; border:1px solid #3b3b3c; border-radius:12px; margin:0; max-width:320px; width:100%;"
+    >
+      <a href={video} target="_blank" rel="noopener">
+        {serie ? `${serie} · ` : ""}Ver el reel en Instagram
+      </a>
+    </blockquote>
+  </div>
+)}
+
+{video && esYoutube && ytId && (
+  <div class="video-live" data-yt-embed data-yt-id={ytId}>
+    <div class="video" style={`background-image:url(https://i.ytimg.com/vi/${ytId}/hqdefault.jpg); background-size:cover; background-position:center;`}>
+      <button class="play" type="button" aria-label="Reproducir vídeo" data-yt-play>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#14141A" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
+      </button>
+      <div class="cap">
+        <span>{serie ? `${serie} · ` : ""}En YouTube</span>
+      </div>
+    </div>
+  </div>
+)}
+
+{!video && (
+  <div class="video">
+    <div class="cap"><span>Vídeo en camino</span></div>
+  </div>
+)}
+
+{video && esInstagram && (
+  <script is:inline>
+    (function () {
+      const contenedores = document.querySelectorAll("[data-ig-embed]");
+      if (!contenedores.length) return;
+      let cargado = false;
+      function cargarInstagram() {
+        if (cargado) return;
+        cargado = true;
+        if (window.instgrm) {
+          window.instgrm.Embeds.process();
+          return;
+        }
+        const s = document.createElement("script");
+        s.src = "https://www.instagram.com/embed.js";
+        s.async = true;
+        document.body.appendChild(s);
+      }
+      const obs = new IntersectionObserver((entradas) => {
+        entradas.forEach((e) => {
+          if (e.isIntersecting) {
+            cargarInstagram();
+            obs.disconnect();
+          }
+        });
+      });
+      contenedores.forEach((c) => obs.observe(c));
+    })();
+  </script>
+)}
+
+{video && esYoutube && ytId && (
+  <script is:inline>
+    (function () {
+      document.querySelectorAll("[data-yt-embed]").forEach((cont) => {
+        const boton = cont.querySelector("[data-yt-play]");
+        if (!boton) return;
+        boton.addEventListener("click", () => {
+          const id = cont.getAttribute("data-yt-id");
+          cont.innerHTML =
+            '<iframe width="320" height="427" src="https://www.youtube-nocookie.com/embed/' +
+            id +
+            '?autoplay=1" title="Vídeo de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        });
+      });
+    })();
+  </script>
+)}

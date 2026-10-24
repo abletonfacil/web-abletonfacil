@@ -1,0 +1,483 @@
+<title>El profe de Ableton</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: un buscador como la caja de búsqueda del navegador de Live, debajo los problemas como clips de colores; la ficha se abre en un panel lateral. Tema oscuro único, el gris del arrangement. */
+:root {
+  --bg: #1d1d1e;
+  --panel: #262627;
+  --panel-2: #2f2f30;
+  --line: #3b3b3c;
+  --fg: #ececea;
+  --muted: #a3a39f;
+  --accent: #E8DC3C;
+  --on-accent: #14141A;
+  --bad: #FF3B30;
+  --c-bateria: #FFA529;
+  --c-bajo: #F7F47C;
+  --c-sampling: #F4A3BD;
+  --c-mezcla: #8BC5FF;
+  --c-sonido: #03C3D5;
+  --c-teoria: #B9A4FF;
+  --c-compo: #8FE388;
+  --c-flujo: #FFAD56;
+  --f-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 15px; line-height: 1.55; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* Cabecera */
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; gap: 20px; padding-block: 12px; }
+.logo { font-family: var(--f-display); font-weight: 900; font-size: 19px; letter-spacing: -0.02em; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.logo .dot { width: 12px; height: 12px; background: var(--accent); border-radius: 2px; display: inline-block; }
+.logo b { color: var(--accent); font-weight: 900; }
+nav.links { display: flex; gap: 18px; margin-left: auto; font-size: 14px; }
+nav.links a { text-decoration: none; color: var(--muted); }
+nav.links a:hover { color: var(--fg); }
+@media (max-width: 560px) { nav.links a.opt { display: none; } }
+
+/* Buscador */
+.hero { padding-block: 56px 28px; }
+.hero h1 { font-family: var(--f-display); font-weight: 900; font-size: clamp(34px, 6vw, 60px); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 14px; text-wrap: balance; max-width: 15ch; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p.lede { color: var(--muted); max-width: 52ch; margin: 0 0 26px; font-size: 16px; }
+.search { position: relative; max-width: 720px; }
+.search label { display: block; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.search .box { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0 14px; transition: border-color .15s; }
+.search .box:focus-within { border-color: var(--accent); }
+.search svg { flex: none; color: var(--muted); }
+.search input { flex: 1; min-width: 0; background: transparent; border: 0; outline: 0; color: var(--fg); font: 500 18px/1 var(--f-body); padding: 18px 0; }
+.search input::placeholder { color: #77776f; }
+.search kbd { font-family: var(--f-mono); font-size: 11px; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 2px 6px; }
+@media (max-width: 560px) { .search kbd { display: none; } .search input { font-size: 16px; } }
+
+.results { margin-top: 10px; display: grid; gap: 6px; }
+.results:empty { display: none; }
+.hit { display: grid; grid-template-columns: 6px 1fr auto; gap: 14px; align-items: center; text-align: left; width: 100%; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px 12px 0; cursor: pointer; overflow: hidden; }
+.hit:hover, .hit:focus-visible { border-color: var(--muted); }
+.hit .strip { align-self: stretch; }
+.hit .t { font-weight: 600; min-width: 0; }
+.hit .s { display: block; color: var(--muted); font-size: 13px; font-weight: 400; margin-top: 2px; }
+.hit .meta { display: flex; gap: 6px; align-items: center; }
+.nohit { background: var(--panel); border: 1px dashed var(--line); border-radius: 10px; padding: 18px; }
+.nohit p { margin: 0 0 12px; }
+.nohit .row { display: flex; gap: 8px; flex-wrap: wrap; }
+.nohit input { flex: 1 1 240px; min-width: 0; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; color: var(--fg); padding: 10px 12px; font: inherit; }
+
+.popular { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; max-width: 820px; }
+.popular span.lab { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.chip { background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 13px; cursor: pointer; color: var(--fg); }
+.chip:hover { border-color: var(--accent); }
+
+/* Pastillas */
+.pill { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 7px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.pill.vid { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.pill.pago { background: var(--accent); color: var(--on-accent); border-color: var(--accent); font-weight: 500; }
+
+/* Secciones */
+section.block { padding-block: 40px; border-top: 1px solid var(--line); }
+section.block h2 { font-family: var(--f-display); font-weight: 700; font-size: 26px; letter-spacing: -0.02em; margin: 0 0 6px; }
+section.block p.sub { color: var(--muted); margin: 0 0 22px; max-width: 60ch; }
+
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+.tab { border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 6px 11px; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 7px; }
+.tab i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+.tab[aria-pressed="true"] { border-color: var(--fg); background: var(--panel-2); }
+
+/* Fichas como clips del arrangement */
+.clips { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.clip { text-align: left; border: 0; padding: 0; cursor: pointer; border-radius: 6px; overflow: hidden; background: var(--panel); display: flex; flex-direction: column; min-width: 0; outline-offset: 3px; }
+.clip .head { padding: 5px 10px; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.04em; color: #1b1b1b; display: flex; justify-content: space-between; gap: 8px; }
+.clip .body { padding: 12px 12px 14px; display: flex; flex-direction: column; gap: 10px; flex: 1; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 6px 6px; }
+.clip .body strong { font-family: var(--f-display); font-weight: 700; font-size: 16.5px; line-height: 1.25; letter-spacing: -0.01em; }
+.clip .wave { height: 18px; opacity: .55; }
+.clip .foot { display: flex; gap: 6px; margin-top: auto; }
+.clip:hover .body { border-color: var(--muted); }
+
+/* Tienda */
+.shop { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.prod { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+.prod .kind { font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.prod h3 { margin: 0; font-family: var(--f-display); font-size: 17px; }
+.prod p { margin: 0; color: var(--muted); font-size: 14px; }
+.prod .buy { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 8px; }
+.price { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 8px; padding: 9px 14px; font-weight: 600; font-size: 14px; text-decoration: none; cursor: pointer; border: 1px solid var(--line); background: var(--panel-2); }
+.btn.yellow { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+.ejemplo { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+
+.about { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: start; }
+.about p { margin: 0 0 12px; max-width: 58ch; }
+.about .socials { display: flex; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 720px) { .about { grid-template-columns: 1fr; } }
+
+footer { border-top: 1px solid var(--line); padding-block: 26px 90px; color: var(--muted); font-size: 13px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; }
+
+/* Panel de ficha */
+.scrim { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 20; }
+.sheet { position: fixed; top: 0; right: 0; bottom: 0; width: min(620px, 100%); background: var(--bg); border-left: 1px solid var(--line); z-index: 21; overflow-y: auto; padding-top: env(safe-area-inset-top, 0px); padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px)); padding-right: env(safe-area-inset-right, 0px); }
+.sheet .in { padding: 20px 24px; display: flex; flex-direction: column; gap: 22px; }
+@media (max-width: 560px) { .sheet .in { padding: 16px; } }
+.sheet .bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.crumb { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); letter-spacing: .04em; }
+.close { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; width: 36px; height: 36px; cursor: pointer; font-size: 18px; line-height: 1; }
+.sheet h2 { font-family: var(--f-display); font-weight: 900; font-size: clamp(26px, 4.5vw, 34px); line-height: 1.05; letter-spacing: -0.025em; margin: 0; text-wrap: balance; }
+.short { font-size: 17px; margin: 0; border-left: 3px solid var(--accent); padding-left: 14px; }
+.video { position: relative; aspect-ratio: 9 / 12; max-width: 100%; max-height: 420px; border-radius: 12px; background: repeating-linear-gradient(90deg, #262627 0 59px, #2c2c2d 59px 60px), #262627; border: 1px solid var(--line); display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; overflow: hidden; }
+.video .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 68px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; text-decoration: none; }
+.video .play svg { margin-left: 4px; }
+.video .cap { position: relative; display: flex; justify-content: space-between; align-items: end; gap: 10px; flex-wrap: wrap; }
+.video .cap span { font-size: 13px; color: var(--muted); }
+.locked { background: var(--panel); border: 1px solid var(--accent); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.locked h3 { margin: 0; font-family: var(--f-display); font-size: 19px; }
+.locked p { margin: 0; color: var(--muted); }
+.locked .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.sheet h3.h { font-family: var(--f-mono); font-weight: 500; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 12px; }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: 28px 1fr; gap: 10px; }
+ol.steps li::before { content: counter(s); font-family: var(--f-mono); font-size: 12px; width: 24px; height: 24px; border-radius: 4px; background: var(--panel-2); border: 1px solid var(--line); display: grid; place-items: center; margin-top: 1px; }
+.param { font-family: var(--f-mono); font-size: 12.5px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; white-space: nowrap; }
+.rel { display: grid; gap: 6px; }
+.reco { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
+.reco h4 { margin: 2px 0 2px; font-family: var(--f-display); font-size: 16px; }
+.reco p { margin: 0; color: var(--muted); font-size: 13.5px; }
+@media (max-width: 480px) { .reco { grid-template-columns: 1fr; } }
+.tipjar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 16px; border: 1px dashed var(--line); border-radius: 10px; }
+.tipjar p { margin: 0; }
+
+/* Botón flotante Ko-fi */
+.kofi { position: fixed; z-index: 15; right: calc(18px + env(safe-area-inset-right, 0px)); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 6px 20px rgba(0,0,0,.45); border-radius: 999px; padding: 11px 16px; }
+
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(80px + env(safe-area-inset-bottom, 0px)); background: var(--fg); color: var(--bg); padding: 10px 16px; border-radius: 8px; font-weight: 600; z-index: 30; max-width: calc(100% - 32px); }
+
+.proto { background: var(--accent); color: var(--on-accent); font-size: 13px; text-align: center; padding: 6px 16px; font-weight: 500; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="proto">Prototipo · 4 fichas con su reel real, el resto y los productos son de ejemplo</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><span class="dot"></span>ableton<b>fácil</b></a>
+    <nav class="links">
+      <a href="#problemas">Problemas</a>
+      <a href="#tienda">Tienda</a>
+      <a href="#sobre" class="opt">Sobre mí</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="wrap hero">
+    <h1>¿Qué te pasa con <em>Ableton</em>?</h1>
+    <p class="lede">Escribe el problema como lo dirías en voz alta. Te sale el vídeo, los pasos y lo que suele venir después.</p>
+    <div class="search">
+      <label for="q">Buscar problema</label>
+      <div class="box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="q" type="search" autocomplete="off" placeholder="mi bombo y mi bajo se pisan">
+        <kbd>/</kbd>
+      </div>
+      <div class="results" id="results" aria-live="polite"></div>
+    </div>
+    <div class="popular" id="popular"><span class="lab">Lo más buscado</span></div>
+  </div>
+
+  <section class="block" id="problemas">
+    <div class="wrap">
+      <h2>Problemas frecuentes</h2>
+      <p class="sub">Si no sabes ni qué buscar, empieza por aquí. Cada problema es un reel con su explicación.</p>
+      <div class="tabs" id="tabs"></div>
+      <div class="clips" id="clips"></div>
+    </div>
+  </section>
+
+  <section class="block" id="tienda">
+    <div class="wrap">
+      <h2>Tienda</h2>
+      <p class="sub">Racks, proyectos y MIDI que uso en los vídeos, más las lecciones largas. Se compran en Ko-fi.</p>
+      <div class="shop" id="shop"></div>
+    </div>
+  </section>
+
+  <section class="block" id="sobre">
+    <div class="wrap about">
+      <div>
+        <h2>Sobre mí</h2>
+        <p>Soy Antonio y hago abletonfacil: reels cortos que resuelven una sola cosa de Ableton Live cada vez, con humor y sin rodeos.</p>
+        <p>Esta web junta todos esos vídeos para que encuentres la respuesta cuando la necesitas, en mitad del tema, no tres semanas después.</p>
+      </div>
+      <div>
+        <div class="socials">
+          <a class="btn" href="https://www.instagram.com/abletonfacil/" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn" href="https://www.tiktok.com/@abletonfacil" target="_blank" rel="noopener">TikTok</a>
+          <a class="btn yellow" href="https://ko-fi.com/abletonfacil" target="_blank" rel="noopener">Ko-fi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>abletonfacil · Granada</span>
+    <span>Ableton y Live son marcas registradas de Ableton AG. abletonfacil no está afiliada a Ableton.</span>
+    <span>Aviso legal · Privacidad · Cookies</span>
+  </div>
+</footer>
+
+<a class="btn yellow kofi" href="https://ko-fi.com/abletonfacil" target="_blank" rel="noopener">☕ Invítame a un café</a>
+
+<div id="layer" hidden>
+  <div class="scrim" id="scrim"></div>
+  <aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="ficha-t"></aside>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"></script>
+<script>
+const KOFI = "https://ko-fi.com/abletonfacil";
+const IG = "https://www.instagram.com/abletonfacil/";
+
+const CATS = {
+  bateria:  { n: "Batería y ritmo", c: "var(--c-bateria)" },
+  bajo:     { n: "Bajo y graves", c: "var(--c-bajo)" },
+  sampling: { n: "Sampling y warp", c: "var(--c-sampling)" },
+  mezcla:   { n: "Mezcla", c: "var(--c-mezcla)" },
+  sonido:   { n: "Sonido y efectos", c: "var(--c-sonido)" },
+  teoria:   { n: "Armonía y teoría", c: "var(--c-teoria)" },
+  compo:    { n: "Composición", c: "var(--c-compo)" },
+  flujo:    { n: "Flujo en Ableton", c: "var(--c-flujo)" }
+};
+
+const PRODUCTS = {
+  rackBateria: { kind: "Effect Rack", n: "Rack «Pegada» para batería", d: "Transitorios, saturación y compresión paralela en ocho macros.", p: "6 €" },
+  rackBajo:    { kind: "Effect Rack", n: "Rack de bus de bajo", d: "Graves en mono, saturación para el móvil y sidechain listo.", p: "6 €" },
+  midiAcordes: { kind: "Pack MIDI", n: "Progresiones que funcionan", d: "40 progresiones en 12 tonalidades, con su voicing.", p: "8 €" },
+  proyecto:    { kind: "Proyecto de Live", n: "Tema completo desglosado", d: "Un tema de principio a fin con cada pista comentada.", p: "12 €" }
+};
+
+const P = s => `<span class="param">${s}</span>`;
+
+const FICHAS = [
+  { id: "sample-tempo", video: "https://www.instagram.com/p/De3jGWktP_i/", cat: "sampling", lvl: "Principiante", t: "No sé cómo poner un sample de batería a tempo",
+    alias: "cuadrar loop, warpear bateria, ajustar bpm del sample, loop desfasado, se me va de tiempo, sample fuera de tempo",
+    short: "Activa Warp, pon el marcador en el primer golpe y dile a Live cuántos BPM tiene el loop. Para batería, modo Beats.",
+    steps: [`Haz doble clic en el clip para abrir la vista de clip.`, `Activa ${P("Warp")} y cambia el modo a ${P("Beats")}.`, `Clic derecho sobre el primer golpe del bombo y elige ${P("Warp From Here (Straight)")}.`, `Si sigue desfasado, escribe el tempo real del loop en ${P("Seg. BPM")}.`, `Comprueba con el metrónomo encendido que el golpe 1 cae en el 1.`],
+    rel: ["chop-sample", "groove", "tonalidad-sample"], prod: "rackBateria" },
+  { id: "bombo-bajo", cat: "bajo", lvl: "Intermedio", t: "No sé cómo fusionar bien bombo y bajo",
+    alias: "bombo y bajo se pisan, bajo tapa el bombo, graves sucios, kick y bass, low end embarrado, sidechain bajo",
+    short: "Decide quién manda en los subgraves, hazle hueco al otro con EQ y que el bajo se aparte cuando suena el bombo.",
+    steps: [`Escucha solo bombo y bajo. Decide cuál de los dos lleva el subgrave.`, `En el otro, ${P("EQ Eight")} con un recorte suave en esa zona.`, `Pon un ${P("Compressor")} en el bajo con ${P("Sidechain")} desde el bombo.`, `Ataque rápido y release que respire con el tempo.`, `Afina el bombo a la tonalidad del tema para que no choque con el bajo.`],
+    rel: ["sidechain", "bajo-movil", "mezcla-apagada"], prod: "rackBajo" },
+  { id: "crear-bateria", video: "https://www.instagram.com/p/DezmUXZtazc/", cat: "bateria", lvl: "Principiante", t: "No sé cómo crear una batería desde cero",
+    alias: "hacer beat, programar bateria, drum rack vacio, empezar ritmo, patron de bateria",
+    short: "Drum Rack, bombo en los tiempos fuertes, caja en el 2 y el 4, hi-hats en corcheas. Luego mueve las velocidades.",
+    steps: [`Arrastra un ${P("Drum Rack")} a una pista MIDI y carga bombo, caja y hi-hat.`, `Crea un clip de 1 compás. Bombo en el 1 y el 3.`, `Caja en el 2 y el 4.`, `Hi-hats en corcheas, con velocidades distintas entre fuertes y débiles.`, `Duplica a 4 compases y cambia algo en el último: un golpe extra, un hueco.`],
+    rel: ["groove", "sample-tempo", "loop-tema"], prod: "rackBateria" },
+  { id: "sidechain", cat: "mezcla", lvl: "Principiante", t: "No sé usar el sidechain",
+    alias: "efecto bombeo, ducking, compresor sidechain, que el pad baje con el bombo",
+    short: "Un compresor en la pista que quieres que baje, escuchando al bombo por la entrada de sidechain.",
+    steps: [`Pon un ${P("Compressor")} en la pista que tiene que apartarse.`, `Despliega el panel y activa ${P("Sidechain")}.`, `En ${P("Audio From")} elige la pista del bombo.`, `Baja ${P("Threshold")} hasta ver la reducción en cada golpe.`, `Ajusta ${P("Release")} para que el sonido vuelva antes del siguiente bombo.`],
+    rel: ["bombo-bajo", "reverb-barro", "mezcla-apagada"], prod: "rackBajo" },
+  { id: "mezcla-apagada", cat: "mezcla", lvl: "Intermedio", t: "Mi mezcla suena apagada y sin pegada", premium: true,
+    alias: "mezcla plana, sin punch, suena lejos, mezcla sin vida, no tiene fuerza",
+    short: "Casi siempre es una mezcla de transitorios aplastados, demasiados graves en todo y nada de contraste. Se arregla por partes.",
+    steps: [`Pon una canción de referencia al mismo volumen que la tuya.`, `Filtra los graves de todo lo que no sea bombo o bajo.`, `Devuelve el ataque a la batería antes de comprimir más.`, `Satura un poco el bus para que lo de detrás se oiga.`, `Compara otra vez con la referencia. Una cosa cada vez.`],
+    rel: ["master-rojo", "bombo-bajo", "reverb-barro"], prod: "proyecto" },
+  { id: "acordes-melodia", cat: "teoria", lvl: "Principiante", t: "No sé qué acordes poner a mi melodía",
+    alias: "armonizar melodia, que acordes uso, progresion de acordes, tonalidad de mi melodia",
+    short: "Encuentra la tonalidad, mira qué notas caen en los tiempos fuertes y elige los acordes que las contienen.",
+    steps: [`Activa ${P("Scale")} en el clip y prueba tonalidades hasta que todas las notas encajen.`, `Apunta la nota que suena en el primer tiempo de cada compás.`, `Busca un acorde de la escala que contenga esa nota.`, `Prueba una progresión conocida (I–V–vi–IV) y cambia lo que choque.`],
+    rel: ["tonalidad-sample", "loop-tema", "groove"], prod: "midiAcordes" },
+  { id: "loop-tema", cat: "compo", lvl: "Intermedio", t: "Tengo un loop de 8 compases y no sé convertirlo en tema", premium: true,
+    alias: "loopitis, no se terminar temas, arreglo, estructura de cancion, pasar de session a arrangement",
+    short: "Copia el loop a lo largo del arrangement y quita cosas. El tema sale de restar, no de añadir.",
+    steps: [`Graba o copia el loop en el arrangement hasta los 3 minutos.`, `Marca secciones con locators: intro, subida, parte fuerte, pausa, final.`, `En cada sección, quita instrumentos hasta que suene distinta a la anterior.`, `Automatiza un filtro o el volumen en las transiciones.`],
+    rel: ["automatizar-filtro", "crear-bateria", "acordes-melodia"], prod: "proyecto" },
+  { id: "groove", cat: "bateria", lvl: "Principiante", t: "Mi batería suena robótica",
+    alias: "bateria rigida, sin swing, humanizar, groove pool, quantize demasiado perfecto",
+    short: "Dale swing con el Groove Pool y mueve las velocidades. La máquina perfecta suena a máquina.",
+    steps: [`Abre el ${P("Groove Pool")} y arrastra un groove de swing al clip.`, `Empieza con ${P("Amount")} bajo y súbelo hasta que se mueva.`, `Varía las velocidades de los hi-hats a mano o con ${P("Velocity")}.`, `Deja la caja y el bombo más rectos que los hi-hats.`],
+    rel: ["crear-bateria", "sample-tempo", "chop-sample"], prod: "rackBateria" },
+  { id: "master-rojo", video: "https://www.instagram.com/p/DeoHhGXNydg/", cat: "mezcla", lvl: "Principiante", t: "Mi master se pone en rojo",
+    alias: "clipping, satura el master, se pasa de 0, distorsiona la salida, picos, etapa de ganancia, gain staging, niveles, volumen de las pistas",
+    short: "La clave está en la etapa de ganancia. No es el master, son las pistas: bájalas antes de pensar en un limitador.",
+    steps: [`Selecciona todas las pistas y bájalas a la vez hasta que el master respire.`, `Mete un ${P("Utility")} al principio de las pistas que entran muy fuerte.`, `Deja margen en el master antes del limitador.`, `El limitador va al final, para rematar, no para tapar.`],
+    rel: ["mezcla-apagada", "bombo-bajo", "sidechain"], prod: "proyecto" },
+  { id: "chop-sample", cat: "sampling", lvl: "Principiante", t: "No sé trocear un sample",
+    alias: "chop, cortar sample, slice, simpler slice, trocear loop, tocar trozos con el teclado",
+    short: "Simpler en modo Slice: cada trozo va a una nota y lo tocas como quieras.",
+    steps: [`Arrastra el sample a una pista MIDI vacía. Se abre en ${P("Simpler")}.`, `Cambia el modo a ${P("Slice")}.`, `Elige ${P("Transient")} para cortar por golpes o ${P("Beat")} para cortar por tiempo.`, `Toca los trozos con el teclado y graba tu propio patrón.`],
+    rel: ["sample-tempo", "groove", "tonalidad-sample"], prod: "rackBateria" },
+  { id: "latencia", cat: "flujo", lvl: "Principiante", t: "Oigo retraso al grabar",
+    alias: "latencia, delay al tocar, buffer, el teclado va tarde, retardo al cantar",
+    short: "Baja el tamaño del buffer mientras grabas y súbelo otra vez para mezclar.",
+    steps: [`Abre ${P("Preferencias")} › ${P("Audio")}.`, `Baja ${P("Buffer Size")} hasta que no oigas retraso.`, `Si el ordenador cruje, congela pistas pesadas con ${P("Freeze")}.`, `Cuando acabes de grabar, vuelve a subir el buffer.`],
+    rel: ["midi-audio", "automatizar-filtro", "crear-bateria"], prod: "proyecto" },
+  { id: "bajo-movil", cat: "bajo", lvl: "Intermedio", t: "Mi bajo no se oye en el móvil",
+    alias: "bajo desaparece en movil, altavoz pequeño, subgrave no se oye, armonicos del bajo",
+    short: "Los altavoces pequeños no reproducen subgraves. Dale armónicos al bajo para que se adivine.",
+    steps: [`Duplica la pista de bajo.`, `En la copia, filtra los graves y añade ${P("Saturator")} o ${P("Roar")}.`, `Mezcla la copia por debajo del bajo original.`, `Comprueba en el móvil o con un altavoz pequeño.`],
+    rel: ["bombo-bajo", "mezcla-apagada", "master-rojo"], prod: "rackBajo" },
+  { id: "reverb-barro", cat: "sonido", lvl: "Intermedio", t: "La reverb me embarra la mezcla",
+    alias: "reverb sucia, mucho reverb, mezcla borrosa, reverb en return, pre delay",
+    short: "Reverb en un canal de retorno, sin graves y con pre-delay. Y que baje cuando suena lo importante.",
+    steps: [`Saca la reverb de las pistas y ponla en un ${P("Return")}.`, `Antes de la reverb, ${P("EQ Eight")} quitando graves.`, `Sube ${P("Predelay")} para separar el sonido seco de su cola.`, `Si sigue tapando, sidechain en el retorno desde la voz o la caja.`],
+    rel: ["sidechain", "mezcla-apagada", "automatizar-filtro"], prod: "proyecto" },
+  { id: "tonalidad-sample", cat: "teoria", lvl: "Principiante", t: "No sé en qué tonalidad está mi sample",
+    alias: "tono del sample, que nota es, afinar sample, key del loop",
+    short: "Busca la nota que más se repite y la que suena a casa. El Tuner te dice qué nota es.",
+    steps: [`Pon un ${P("Tuner")} en la pista del sample.`, `Escucha las notas largas y apunta las que más se repiten.`, `Toca esas notas en un teclado y busca la que suena a final.`, `Si no encaja con tu tema, usa ${P("Transpose")} en la vista de clip.`],
+    rel: ["acordes-melodia", "sample-tempo", "chop-sample"], prod: "midiAcordes" },
+  { id: "referencia-tempo", video: "https://www.instagram.com/p/DerRfDQNfOh/", serie: "Ableton Live desde 0 #5", cat: "flujo", lvl: "Principiante", t: "No sé poner una canción de referencia a tempo",
+    alias: "tap tempo, cancion de referencia, sacar el bpm de una cancion, saber el tempo, a que velocidad va",
+    short: "Con Tap Tempo sacas el BPM de la canción a golpe de clic. Luego Live la cuadra con tu proyecto.",
+    steps: [`Arrastra la canción de referencia a una pista de audio.`, `Dale al play y pulsa ${P("TAP")} al ritmo del bombo, cuatro golpes o más.`, `Live pone ese tempo en el proyecto. Redondéalo al número entero más cercano.`, `Comprueba con el metrónomo que la canción y el clic van juntos.`],
+    rel: ["sample-tempo", "mezcla-apagada", "master-rojo"], prod: "proyecto" },
+  { id: "midi-audio", cat: "flujo", lvl: "Principiante", t: "Quiero pasar MIDI a audio para editarlo",
+    alias: "convertir midi en audio, freeze and flatten, bounce, renderizar pista, imprimir pista",
+    short: "Congela la pista y aplánala. Te queda audio con todos los efectos.",
+    steps: [`Clic derecho en la pista MIDI y elige ${P("Freeze Track")}.`, `Cuando acabe, clic derecho otra vez y ${P("Flatten")}.`, `Guarda antes una copia de la pista MIDI por si quieres volver.`],
+    rel: ["latencia", "chop-sample", "loop-tema"], prod: "proyecto" },
+  { id: "automatizar-filtro", cat: "sonido", lvl: "Principiante", t: "No sé automatizar un filtro",
+    alias: "automatizacion, subida de filtro, build up, mover parametros, dibujar automatizacion",
+    short: "Auto Filter en la pista, modo automatización con la A y dibuja la curva del corte.",
+    steps: [`Pon un ${P("Auto Filter")} en la pista o en el grupo.`, `Pulsa ${P("A")} para ver la automatización en el arrangement.`, `Elige ${P("Frequency")} en el desplegable de la pista.`, `Dibuja una curva que suba durante la transición.`],
+    rel: ["loop-tema", "reverb-barro", "sidechain"], prod: "proyecto" }
+];
+const byId = Object.fromEntries(FICHAS.map(f => [f.id, f]));
+const POPULAR = ["bombo-bajo", "sample-tempo", "master-rojo", "referencia-tempo", "loop-tema"];
+
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const index = FICHAS.map(f => ({ id: f.id, t: norm(f.t), a: norm(f.alias), s: norm(f.short), c: norm(CATS[f.cat].n) }));
+const fuse = window.Fuse ? new Fuse(index, { keys: [{ name: "t", weight: 3 }, { name: "a", weight: 2.5 }, { name: "c", weight: 1 }, { name: "s", weight: 0.6 }], threshold: 0.42, ignoreLocation: true, minMatchCharLength: 3 }) : null;
+
+function search(q) {
+  q = norm(q.trim());
+  if (q.length < 2) return [];
+  if (fuse) {
+    const words = q.split(/\s+/).filter(w => w.length > 2 && !["no","se","como","mi","mis","con","del","las","los","una","que","por","para"].includes(w));
+    const scores = {};
+    [q, ...words].forEach((w, i) => fuse.search(w).forEach(r => { scores[r.item.id] = (scores[r.item.id] || 0) + (1 - r.score) * (i === 0 ? 2 : 1); }));
+    return Object.entries(scores).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([id]) => byId[id]);
+  }
+  return FICHAS.filter(f => norm(f.t + " " + f.alias).includes(q)).slice(0, 5);
+}
+
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function pills(f) {
+  return `<span class="pill">${f.lvl}</span>${f.video ? '<span class="pill vid">▶ Reel</span>' : ''}${f.premium ? '<span class="pill pago">De pago</span>' : '<span class="pill">Gratis</span>'}`;
+}
+
+function renderResults(q) {
+  const box = $("#results");
+  if (!q.trim()) { box.innerHTML = ""; return; }
+  const hits = search(q);
+  if (!hits.length) {
+    box.innerHTML = `<div class="nohit"><p><strong>Esa todavía no la tengo.</strong> Apúntala y la convierto en reel.</p>
+      <form class="row" id="pide"><input id="pide-q" value="${esc(q)}" aria-label="Tu problema"><button class="btn yellow" type="submit">Pedir este vídeo</button></form></div>`;
+    $("#pide").addEventListener("submit", e => { e.preventDefault(); toast("Apuntado. En la web real me llega a mí."); });
+    return;
+  }
+  box.innerHTML = hits.map(f => `<button class="hit" data-id="${f.id}"><span class="strip" style="background:${CATS[f.cat].c}"></span>
+    <span class="t">${f.t}<span class="s">${CATS[f.cat].n}</span></span><span class="meta">${f.premium ? '<span class="pill pago">De pago</span>' : ''}</span></button>`).join("");
+}
+
+function wave(seed) {
+  let x = seed * 9301 % 233, d = "";
+  for (let i = 0; i < 60; i++) { x = (x * 9301 + 49297) % 233280; const h = 2 + (x / 233280) * 7 * (i % 8 === 0 ? 1.8 : 1); d += `M${i * 4 + 1} ${9 - h}V${9 + h}`; }
+  return `<svg class="wave" viewBox="0 0 240 18" preserveAspectRatio="none" aria-hidden="true"><path d="${d}" stroke="currentColor" stroke-width="2"/></svg>`;
+}
+
+let curCat = "all";
+function renderTabs() {
+  const all = [["all", "Todo", "var(--fg)"], ...Object.entries(CATS).map(([k, v]) => [k, v.n, v.c])];
+  $("#tabs").innerHTML = all.map(([k, n, c]) => `<button class="tab" data-cat="${k}" aria-pressed="${k === curCat}"><i style="background:${c}"></i>${n}</button>`).join("");
+}
+function renderClips() {
+  const list = FICHAS.filter(f => curCat === "all" || f.cat === curCat);
+  $("#clips").innerHTML = list.map((f, i) => `<button class="clip" data-id="${f.id}">
+    <span class="head" style="background:${CATS[f.cat].c}"><span>${CATS[f.cat].n}</span><span>${f.premium ? "€" : ""}</span></span>
+    <span class="body"><strong>${f.t}</strong><span style="color:${CATS[f.cat].c}">${wave(i + 3)}</span><span class="foot">${pills(f)}</span></span></button>`).join("");
+}
+function renderShop() {
+  const lessons = FICHAS.filter(f => f.premium).map(f => `<div class="prod"><span class="kind">Lección larga</span><h3>${f.t}</h3><p>Vídeo completo, PDF con los pasos y proyecto de ejemplo.</p>
+    <div class="buy"><span class="price">5 €</span><a class="btn yellow" href="${KOFI}" target="_blank" rel="noopener">Comprar en Ko-fi</a></div></div>`);
+  const prods = Object.values(PRODUCTS).map(p => `<div class="prod"><span class="kind">${p.kind}</span><h3>${p.n}</h3><p>${p.d}</p>
+    <div class="buy"><span class="price">${p.p}</span><a class="btn yellow" href="${KOFI}" target="_blank" rel="noopener">Comprar en Ko-fi</a></div></div>`);
+  $("#shop").innerHTML = [...prods, ...lessons].join("") + `<p class="ejemplo" style="grid-column:1/-1;margin:0">Productos y precios de ejemplo</p>`;
+}
+function renderPopular() {
+  $("#popular").insertAdjacentHTML("beforeend", POPULAR.map(id => `<button class="chip" data-id="${id}">${byId[id].t.replace(/^No sé /, "").replace(/^Mi /, "mi ")}</button>`).join(""));
+}
+
+let lastFocus = null;
+function openFicha(id) {
+  const f = byId[id]; if (!f) return;
+  lastFocus = document.activeElement;
+  const cat = CATS[f.cat], prod = PRODUCTS[f.prod];
+  const media = f.premium
+    ? `<div class="locked"><span class="pill pago" style="align-self:flex-start">Lección de pago</span><h3>La lección completa está en Ko-fi</h3>
+        <p>Vídeo largo, PDF con los pasos y el proyecto de Live para que lo abras y lo toques. El resumen de abajo es gratis.</p>
+        <div class="row"><a class="btn yellow" href="${KOFI}" target="_blank" rel="noopener">Desbloquear por 5 €</a><span class="ejemplo">Precio de ejemplo</span></div></div>`
+    : `<div class="video"><a class="play" href="${f.video || IG}" target="_blank" rel="noopener" aria-label="Ver el reel"><svg width="26" height="26" viewBox="0 0 24 24" fill="#14141A" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg></a>
+        <div class="cap"><span>${f.video ? (f.serie ? f.serie + " · " : "") + "En la web real se ve aquí mismo" : "Vídeo pendiente de grabar"}</span><a class="btn" href="${f.video || IG}" target="_blank" rel="noopener">Ver en Instagram</a></div></div>`;
+  $("#sheet").innerHTML = `<div class="in">
+    <div class="bar"><span class="crumb">${cat.n.toUpperCase()} › ${f.lvl.toUpperCase()}</span><button class="close" id="close" aria-label="Cerrar">×</button></div>
+    <div style="display:flex;flex-direction:column;gap:14px"><h2 id="ficha-t">${f.t}</h2><p class="short">${f.short}</p></div>
+    ${media}
+    <div><h3 class="h">Paso a paso</h3><ol class="steps">${f.steps.map(s => `<li><span>${s}</span></li>`).join("")}</ol></div>
+    <div><h3 class="h">Lo que suele venir después</h3><div class="rel">${f.rel.map(r => byId[r]).filter(Boolean).map(r => `<button class="hit" data-id="${r.id}"><span class="strip" style="background:${CATS[r.cat].c}"></span><span class="t">${r.t}<span class="s">${CATS[r.cat].n}</span></span><span class="meta">${r.premium ? '<span class="pill pago">De pago</span>' : ''}</span></button>`).join("")}</div></div>
+    <div><h3 class="h">Te viene bien</h3><div class="reco"><div><span class="ejemplo">${prod.kind} · ejemplo</span><h4>${prod.n}</h4><p>${prod.d}</p></div><a class="btn yellow" href="${KOFI}" target="_blank" rel="noopener">${prod.p} en Ko-fi</a></div></div>
+    <div class="tipjar"><p>¿Te ha sacado del atasco?</p><a class="btn" href="${KOFI}" target="_blank" rel="noopener">☕ Invítame a un café</a></div>
+  </div>`;
+  $("#layer").hidden = false;
+  document.body.style.overflow = "hidden";
+  $("#sheet").scrollTop = 0;
+  $("#close").focus();
+}
+function closeFicha() {
+  $("#layer").hidden = true;
+  document.body.style.overflow = "";
+  if (lastFocus) lastFocus.focus();
+}
+
+let tt;
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => t.hidden = true, 2600); }
+
+document.addEventListener("click", e => {
+  const card = e.target.closest("[data-id]");
+  if (card) { openFicha(card.dataset.id); return; }
+  const tab = e.target.closest("[data-cat]");
+  if (tab) { curCat = tab.dataset.cat; renderTabs(); renderClips(); return; }
+  if (e.target.id === "close" || e.target.id === "scrim") closeFicha();
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && !$("#layer").hidden) closeFicha();
+  if (e.key === "/" && document.activeElement.tagName !== "INPUT") { e.preventDefault(); $("#q").focus(); }
+});
+$("#q").addEventListener("input", e => renderResults(e.target.value));
+
+const examples = ["mi bombo y mi bajo se pisan", "como cuadro un loop al tempo", "mi master pita en rojo", "tengo un loop y no se seguir", "la bateria suena a robot"];
+let ex = 0;
+setInterval(() => { if (document.activeElement !== $("#q") && !$("#q").value) { ex = (ex + 1) % examples.length; $("#q").placeholder = examples[ex]; } }, 3200);
+
+renderPopular(); renderTabs(); renderClips(); renderShop();
+</script>

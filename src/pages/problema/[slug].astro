@@ -1,0 +1,90 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Pills from "../../components/Pills.astro";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import HitRow from "../../components/HitRow.astro";
+import { CATEGORIAS } from "../../data/categorias";
+import productosData from "../../data/productos.json";
+
+export async function getStaticPaths() {
+  const fichas = await getCollection("fichas");
+  return fichas.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry, todas: fichas },
+  }));
+}
+
+const { entry, todas } = Astro.props;
+const { Content } = await render(entry);
+const f = entry.data;
+const cat = CATEGORIAS[f.categoria];
+const producto = f.producto ? (productosData as Record<string, any>)[f.producto] : null;
+const relacionadas = f.relacionadas
+  .map((slug: string) => todas.find((t) => t.data.slug === slug))
+  .filter(Boolean);
+---
+<Base title={`${f.titulo} · abletonfácil`} description={f.titulo}>
+  <main class="sheet-page">
+    <div class="wrap">
+      <div class="sheet-card">
+        <div class="bar">
+          <a class="crumb" href={`/categoria/${f.categoria}`}>{cat.nombre.toUpperCase()} › {f.nivel.toUpperCase()}</a>
+        </div>
+        <h1>{f.titulo}</h1>
+        <p class="foot" style="margin-bottom:18px; display:flex; gap:6px; flex-wrap:wrap">
+          <Pills nivel={f.nivel} video={f.video} acceso={f.acceso} ejemplo={f.ejemplo} />
+        </p>
+
+        {f.acceso === "pago" ? (
+          <div class="locked">
+            <span class="pill pago" style="align-self:flex-start">Lección de pago</span>
+            <h3>La lección completa está en Ko-fi</h3>
+            <p>Vídeo largo, PDF con los pasos y el proyecto de Live para que lo abras y lo toques. El resumen de abajo es gratis.</p>
+            <div class="row">
+              <a class="btn yellow" href="https://ko-fi.com/abletonfacil" target="_blank" rel="noopener">Desbloquear por 5 €</a>
+              <span class="ejemplo">Precio de ejemplo</span>
+            </div>
+          </div>
+        ) : (
+          <VideoEmbed video={f.video} serie={f.serie} />
+        )}
+
+        <div class="contenido">
+          <Content />
+        </div>
+
+        {relacionadas.length > 0 && (
+          <section>
+            <h2 class="h">Lo que suele venir después</h2>
+            <div class="rel">
+              {relacionadas.map(
+                (r: any) =>
+                  r && <HitRow slug={r.data.slug} titulo={r.data.titulo} categoria={r.data.categoria} acceso={r.data.acceso} />
+              )}
+            </div>
+          </section>
+        )}
+
+        {producto && (
+          <section>
+            <h2 class="h">Te viene bien</h2>
+            <div class="reco">
+              <div>
+                <span class="ejemplo">{producto.tipo} · ejemplo</span>
+                <h4>{producto.nombre}</h4>
+                <p>{producto.descripcion}</p>
+              </div>
+              <a class="btn yellow" href={producto.enlace} target="_blank" rel="noopener">{producto.precio} en Ko-fi</a>
+            </div>
+          </section>
+        )}
+
+        <div class="tipjar">
+          <p>¿Te ha sacado del atasco?</p>
+          <a class="btn" href="https://ko-fi.com/abletonfacil" target="_blank" rel="noopener">☕ Invítame a un café</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Base>

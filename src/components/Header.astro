@@ -1,0 +1,13 @@
+---
+const current = Astro.url.pathname;
+---
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/"><span class="dot"></span>ableton<b>fácil</b></a>
+    <nav class="links">
+      <a href="/#problemas">Problemas</a>
+      <a href="/tienda" aria-current={current.startsWith("/tienda") ? "page" : undefined}>Tienda</a>
+      <a href="/sobre-mi" class="opt" aria-current={current.startsWith("/sobre-mi") ? "page" : undefined}>Sobre mí</a>
+    </nav>
+  </div>
+</header>

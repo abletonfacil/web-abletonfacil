@@ -1,0 +1,111 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Buscador from "../components/Buscador.astro";
+import ClipCard from "../components/ClipCard.astro";
+import { CATEGORIAS } from "../data/categorias";
+import productos from "../data/productos.json";
+
+const todas = await getCollection("fichas");
+const fichas = todas.map((f) => f.data).sort((a, b) => a.titulo.localeCompare(b.titulo));
+
+// Lo más buscado: de momento, las que tienen vídeo real primero.
+const populares = todas
+  .filter((f) => f.data.video)
+  .map((f) => f.data.slug)
+  .concat(todas.map((f) => f.data.slug))
+  .filter((v, i, arr) => arr.indexOf(v) === i)
+  .slice(0, 5);
+
+const productosDestacados = Object.entries(productos).slice(0, 4);
+---
+<Base title="abletonfácil · ¿Qué te pasa con Ableton?">
+  <main id="inicio">
+    <div class="wrap hero">
+      <h1>¿Qué te pasa con <em>Ableton</em>?</h1>
+      <p class="lede">Escribe el problema como lo dirías en voz alta. Te sale el vídeo, los pasos y lo que suele venir después.</p>
+      <Buscador fichas={fichas} populares={populares} />
+    </div>
+
+    <section class="block" id="problemas">
+      <div class="wrap">
+        <h2>Problemas frecuentes</h2>
+        <p class="sub">Si no sabes ni qué buscar, empieza por aquí. Cada problema es un reel con su explicación.</p>
+        <div class="tabs" id="tabs">
+          <button class="tab" data-cat="all" aria-pressed="true"><i style="background:var(--fg)"></i>Todo</button>
+          {Object.entries(CATEGORIAS).map(([clave, cat]) => (
+            <button class="tab" data-cat={clave} aria-pressed="false"><i style={`background:${cat.color}`}></i>{cat.nombre}</button>
+          ))}
+        </div>
+        <div class="clips" id="clips">
+          {fichas.map((f, i) => (
+            <ClipCard
+              slug={f.slug}
+              titulo={f.titulo}
+              categoria={f.categoria}
+              nivel={f.nivel}
+              video={f.video}
+              acceso={f.acceso}
+              ejemplo={f.ejemplo}
+              seed={i + 3}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="tienda">
+      <div class="wrap">
+        <h2>Tienda</h2>
+        <p class="sub">Racks, proyectos y MIDI que uso en los vídeos, más las lecciones largas. Se compran en Ko-fi.</p>
+        <div class="shop">
+          {productosDestacados.map(([clave, p]: [string, any]) => (
+            <div class="prod">
+              <span class="kind">{p.tipo}</span>
+              <h3>{p.nombre}</h3>
+              <p>{p.descripcion}</p>
+              <div class="buy">
+                <span class="price">{p.precio}</span>
+                <a class="btn yellow" href={p.enlace} target="_blank" rel="noopener">Comprar en Ko-fi</a>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="ejemplo" style="margin-top:12px">Productos y precios de ejemplo · <a href="/tienda" style="color:var(--muted); text-decoration:underline">Ver tienda completa</a></p>
+      </div>
+    </section>
+
+    <section class="block" id="sobre">
+      <div class="wrap about">
+        <div>
+          <h2>Sobre mí</h2>
+          <p>Soy Antonio y hago abletonfacil: reels cortos que resuelven una sola cosa de Ableton Live cada vez, con humor y sin rodeos.</p>
+          <p>Esta web junta todos esos vídeos para que encuentres la respuesta cuando la necesitas, en mitad del tema, no tres semanas después.</p>
+          <p><a class="chip" href="/sobre-mi">Saber más</a></p>
+        </div>
+        <div>
+          <div class="socials">
+            <a class="btn" href="https://www.instagram.com/abletonfacil/" target="_blank" rel="noopener">Instagram</a>
+            <a class="btn" href="https://www.tiktok.com/@abletonfacil" target="_blank" rel="noopener">TikTok</a>
+            <a class="btn yellow" href="https://ko-fi.com/abletonfacil" target="_blank" rel="noopener">Ko-fi</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<script>
+  const tabs = document.getElementById("tabs");
+  const clips = document.querySelectorAll<HTMLElement>("#clips .clip");
+
+  tabs?.addEventListener("click", (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-cat]");
+    if (!btn) return;
+    tabs.querySelectorAll("[data-cat]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    const cat = btn.dataset.cat;
+    clips.forEach((c) => {
+      c.style.display = cat === "all" || c.dataset.cat === cat ? "" : "none";
+    });
+  });
+</script>

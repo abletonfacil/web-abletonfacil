@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import productos from "../data/productos.json";
+
+const todas = await getCollection("fichas");
+const lecciones = todas.map((f) => f.data).filter((f) => f.acceso === "pago");
+const KOFI = "https://ko-fi.com/abletonfacil";
+---
+<Base title="Tienda · abletonfácil" description="Racks, proyectos, packs MIDI y lecciones largas de abletonfacil, en Ko-fi.">
+  <main>
+    <div class="wrap hero" style="padding-block:40px 20px">
+      <h1>Tienda</h1>
+      <p class="lede">Racks, proyectos y MIDI que uso en los vídeos, más las lecciones largas. Todo se compra en Ko-fi: ellos cobran y te mandan el enlace de descarga, esta web no gestiona pagos.</p>
+    </div>
+    <section class="block" style="border-top:0">
+      <div class="wrap">
+        <h2>Productos</h2>
+        <div class="shop">
+          {Object.entries(productos).map(([clave, p]: [string, any]) => (
+            <div class="prod">
+              <span class="kind">{p.tipo}</span>
+              <h3>{p.nombre}</h3>
+              <p>{p.descripcion}</p>
+              <div class="buy">
+                <span class="price">{p.precio}</span>
+                <a class="btn yellow" href={p.enlace} target="_blank" rel="noopener">Comprar en Ko-fi</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    <section class="block">
+      <div class="wrap">
+        <h2>Lecciones largas</h2>
+        <p class="sub">El resumen gratis está en la ficha. La lección completa (vídeo largo, PDF y proyecto) se desbloquea en Ko-fi.</p>
+        <div class="shop">
+          {lecciones.map((f) => (
+            <div class="prod">
+              <span class="kind">Lección larga</span>
+              <h3>{f.titulo}</h3>
+              <p>Vídeo completo, PDF con los pasos y proyecto de ejemplo.</p>
+              <div class="buy">
+                <span class="price">5 €</span>
+                <a class="btn yellow" href={KOFI} target="_blank" rel="noopener">Comprar en Ko-fi</a>
+              </div>
+              <a class="chip" href={`/problema/${f.slug}`}>Ver el resumen gratis</a>
+            </div>
+          ))}
+        </div>
+        <p class="ejemplo" style="margin-top:12px">Productos y precios de ejemplo</p>
+      </div>
+    </section>
+  </main>
+</Base>

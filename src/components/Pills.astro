@@ -1,0 +1,13 @@
+---
+interface Props {
+  nivel: string;
+  video?: string;
+  acceso: "gratis" | "pago";
+  ejemplo?: boolean;
+}
+const { nivel, video, acceso, ejemplo } = Astro.props;
+---
+<span class="pill">{nivel}</span>
+{video && <span class="pill vid">▶ Reel</span>}
+{acceso === "pago" ? <span class="pill pago">De pago</span> : <span class="pill">Gratis</span>}
+{ejemplo && <span class="pill borrador">Borrador</span>}

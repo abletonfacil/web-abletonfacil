@@ -1,0 +1,17 @@
+---
+import { CATEGORIAS, type CategoriaKey } from "../data/categorias";
+
+interface Props {
+  slug: string;
+  titulo: string;
+  categoria: CategoriaKey;
+  acceso: "gratis" | "pago";
+}
+const { slug, titulo, categoria, acceso } = Astro.props;
+const cat = CATEGORIAS[categoria];
+---
+<a class="hit" href={`/problema/${slug}`}>
+  <span class="strip" style={`background:${cat.color}`}></span>
+  <span class="t">{titulo}<span class="s">{cat.nombre}</span></span>
+  <span class="meta">{acceso === "pago" && <span class="pill pago">De pago</span>}</span>
+</a>

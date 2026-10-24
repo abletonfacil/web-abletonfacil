@@ -1,0 +1,34 @@
+{
+  "rackBateria": {
+    "tipo": "Effect Rack",
+    "nombre": "Rack «Pegada» para batería",
+    "descripcion": "Transitorios, saturación y compresión paralela en ocho macros.",
+    "precio": "6 €",
+    "enlace": "https://ko-fi.com/abletonfacil",
+    "ejemplo": true
+  },
+  "rackBajo": {
+    "tipo": "Effect Rack",
+    "nombre": "Rack de bus de bajo",
+    "descripcion": "Graves en mono, saturación para el móvil y sidechain listo.",
+    "precio": "6 €",
+    "enlace": "https://ko-fi.com/abletonfacil",
+    "ejemplo": true
+  },
+  "midiAcordes": {
+    "tipo": "Pack MIDI",
+    "nombre": "Progresiones que funcionan",
+    "descripcion": "40 progresiones en 12 tonalidades, con su voicing.",
+    "precio": "8 €",
+    "enlace": "https://ko-fi.com/abletonfacil",
+    "ejemplo": true
+  },
+  "proyecto": {
+    "tipo": "Proyecto de Live",
+    "nombre": "Tema completo desglosado",
+    "descripcion": "Un tema de principio a fin con cada pista comentada.",
+    "precio": "12 €",
+    "enlace": "https://ko-fi.com/abletonfacil",
+    "ejemplo": true
+  }
+}

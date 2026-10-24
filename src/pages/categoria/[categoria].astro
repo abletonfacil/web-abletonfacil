@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import ClipCard from "../../components/ClipCard.astro";
+import { CATEGORIAS, type CategoriaKey } from "../../data/categorias";
+
+export async function getStaticPaths() {
+  return Object.keys(CATEGORIAS).map((categoria) => ({ params: { categoria } }));
+}
+
+const { categoria } = Astro.params as { categoria: CategoriaKey };
+const cat = CATEGORIAS[categoria];
+const todas = await getCollection("fichas");
+const fichas = todas
+  .map((f) => f.data)
+  .filter((f) => f.categoria === categoria)
+  .sort((a, b) => a.titulo.localeCompare(b.titulo));
+---
+<Base title={`${cat.nombre} · abletonfácil`} description={`Problemas de ${cat.nombre} en Ableton Live, resueltos.`}>
+  <main>
+    <section class="block" style="border-top:0; padding-bottom:16px">
+      <div class="wrap">
+        <p class="crumb"><a href="/#problemas">← Todos los problemas</a></p>
+        <h1 style="font-family:var(--f-display); font-weight:900; font-size:clamp(28px,5vw,44px); letter-spacing:-0.02em; margin:14px 0 6px">
+          <span style={`color:${cat.color}`}>■</span> {cat.nombre}
+        </h1>
+        <p class="sub" style="color:var(--muted)">{fichas.length} ficha{fichas.length === 1 ? "" : "s"}.</p>
+      </div>
+    </section>
+    <section class="block" style="border-top:0">
+      <div class="wrap">
+        <div class="clips">
+          {fichas.map((f, i) => (
+            <ClipCard
+              slug={f.slug}
+              titulo={f.titulo}
+              categoria={f.categoria}
+              nivel={f.nivel}
+              video={f.video}
+              acceso={f.acceso}
+              ejemplo={f.ejemplo}
+              seed={i + 5}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>
