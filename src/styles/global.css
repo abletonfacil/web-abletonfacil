@@ -195,10 +195,13 @@ footer a:hover { color: var(--fg); }
 .legal h2 { font-family: var(--f-display); font-size: 18px; margin-top: 30px; }
 .legal p, .legal li { color: var(--muted); }
 
-/* El iframe que dibuja el widget de Ko-fi trae un ancho fijo pensado para texto
+/* El iframe del botón flotante de Ko-fi trae un ancho fijo pensado para texto
    en inglés y recorta nuestro texto en español. El script de Ko-fi reescribe el
    atributo style del iframe por su cuenta, así que forzamos el ancho por hoja
-   de estilos (con !important gana a su estilo en línea, que no lleva !important). */
-[id^="kofi-widget-overlay"] iframe { width: 240px !important; min-width: 240px !important; }
+   de estilos (con !important gana a su estilo en línea, que no lleva !important).
+   Ojo: solo el botón (.floatingchat-container), no el panel de donación que se
+   abre al pulsarlo, que vive en otro iframe dentro del mismo contenedor y
+   necesita su propio ancho (100% del hueco que le da Ko-fi) para no recortarse. */
+[id^="kofi-widget-overlay"] iframe.floatingchat-container { width: 240px !important; min-width: 240px !important; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
