@@ -7,7 +7,7 @@ acceso: gratis
 video: "https://www.instagram.com/p/DezmUXZtazc/"
 otras_formas: ["hacer beat", "programar bateria", "drum rack vacio", "empezar ritmo", "patron de bateria"]
 relacionadas: [groove, sample-tempo, loop-tema]
-producto: rackBateria
+producto: virtualDrumsRoom
 ejemplo: false
 ---
 

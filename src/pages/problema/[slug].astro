@@ -78,7 +78,7 @@ const relacionadas = f.relacionadas
             <h2 class="h">Te viene bien</h2>
             <div class="reco">
               <div>
-                <span class="ejemplo">{producto.tipo} · ejemplo</span>
+                <span class="ejemplo">{producto.tipo}{producto.ejemplo && " · ejemplo"}</span>
                 <h4>{producto.nombre}</h4>
                 <p>{producto.descripcion}</p>
               </div>

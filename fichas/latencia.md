@@ -7,7 +7,7 @@ acceso: gratis
 video: ""
 otras_formas: ["latencia", "delay al tocar", "buffer", "el teclado va tarde", "retardo al cantar"]
 relacionadas: [midi-audio, automatizar-filtro, crear-bateria]
-producto: proyecto
+producto: saturdayNight
 ejemplo: true
 ---
 

@@ -7,7 +7,7 @@ acceso: gratis
 video: ""
 otras_formas: ["reverb sucia", "mucho reverb", "mezcla borrosa", "reverb en return", "pre delay"]
 relacionadas: [sidechain, mezcla-apagada, automatizar-filtro]
-producto: proyecto
+producto: barbieGirl
 ejemplo: true
 ---
 

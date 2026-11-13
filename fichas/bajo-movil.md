@@ -7,7 +7,7 @@ acceso: gratis
 video: ""
 otras_formas: ["bajo desaparece en movil", "altavoz pequeño", "subgrave no se oye", "armonicos del bajo"]
 relacionadas: [bombo-bajo, mezcla-apagada, master-rojo]
-producto: rackBajo
+producto: rackBajoSaturacion
 ejemplo: true
 ---
 

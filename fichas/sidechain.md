@@ -7,7 +7,7 @@ acceso: gratis
 video: ""
 otras_formas: ["efecto bombeo", "ducking", "compresor sidechain", "que el pad baje con el bombo"]
 relacionadas: [bombo-bajo, reverb-barro, mezcla-apagada]
-producto: rackBajo
+producto: rackBajoSaturacion
 ejemplo: true
 ---
 

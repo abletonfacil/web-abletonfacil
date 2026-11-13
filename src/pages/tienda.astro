@@ -6,7 +6,6 @@ import { productosVisibles, MOSTRAR_EJEMPLOS, KOFI } from "../data/visibilidad";
 const todas = await getCollection("fichas");
 // Las lecciones de pago de ejemplo ya llegan aquí como «gratis» (ver src/data/visibilidad.ts).
 const lecciones = todas.map((f) => f.data).filter((f) => f.acceso === "pago");
-const vacia = productosVisibles.length === 0 && lecciones.length === 0;
 ---
 <Base title="Tienda · abletonfácil" description="Racks, proyectos, packs MIDI y lecciones largas de abletonfacil, en Ko-fi.">
   <main>
@@ -14,16 +13,6 @@ const vacia = productosVisibles.length === 0 && lecciones.length === 0;
       <h1>Tienda</h1>
       <p class="lede">Racks, proyectos y MIDI que uso en los vídeos, más las lecciones largas. Todo se compra en Ko-fi: ellos cobran y te mandan el enlace de descarga, esta web no gestiona pagos.</p>
     </div>
-    {vacia && (
-      <section class="block" style="border-top:0">
-        <div class="wrap">
-          <div class="tienda-vacia">
-            <p>Muy pronto. Mientras tanto, lo tienes todo en Ko-fi</p>
-            <a class="btn yellow" href={KOFI} target="_blank" rel="noopener">Ir a Ko-fi</a>
-          </div>
-        </div>
-      </section>
-    )}
     {productosVisibles.length > 0 && (
       <section class="block" style="border-top:0">
         <div class="wrap">

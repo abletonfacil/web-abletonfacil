@@ -7,7 +7,7 @@ acceso: gratis
 video: ""
 otras_formas: ["tono del sample", "que nota es", "afinar sample", "key del loop"]
 relacionadas: [acordes-melodia, sample-tempo, chop-sample]
-producto: midiAcordes
+producto: mastil
 ejemplo: true
 ---
 

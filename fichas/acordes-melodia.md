@@ -7,7 +7,7 @@ acceso: gratis
 video: ""
 otras_formas: ["armonizar melodia", "que acordes uso", "progresion de acordes", "tonalidad de mi melodia"]
 relacionadas: [tonalidad-sample, loop-tema, groove]
-producto: midiAcordes
+producto: mastil
 ejemplo: true
 ---
 

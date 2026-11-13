@@ -7,7 +7,7 @@ acceso: gratis
 video: ""
 otras_formas: ["bombo y bajo se pisan", "bajo tapa el bombo", "graves sucios", "kick y bass", "low end embarrado", "sidechain bajo"]
 relacionadas: [sidechain, bajo-movil, mezcla-apagada]
-producto: rackBajo
+producto: rackBajoSaturacion
 ejemplo: true
 ---
 

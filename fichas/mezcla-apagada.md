@@ -7,7 +7,7 @@ acceso: pago
 video: ""
 otras_formas: ["mezcla plana", "sin punch", "suena lejos", "mezcla sin vida", "no tiene fuerza"]
 relacionadas: [master-rojo, bombo-bajo, reverb-barro]
-producto: proyecto
+producto: barbieGirl
 ejemplo: true
 ---
 
