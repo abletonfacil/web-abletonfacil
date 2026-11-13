@@ -101,6 +101,13 @@ nav.links a:hover, nav.links a[aria-current="page"] { color: var(--fg); }
 .pill.vid { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
 .pill.pago { background: var(--accent); color: var(--on-accent); border-color: var(--accent); font-weight: 500; }
 .pill.borrador { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 45%, transparent); }
+/* «Borrador» bien visible: en la tarjeta de la portada y arriba en la ficha */
+.pill.borrador.fuerte { align-self: flex-start; font-size: 12px; font-weight: 700; padding: 4px 9px; border-width: 1.5px; border-color: var(--bad); background: color-mix(in srgb, var(--bad) 16%, transparent); }
+.aviso-borrador { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 12px; margin-bottom: 18px; border: 1.5px solid var(--bad); border-radius: 8px; background: color-mix(in srgb, var(--bad) 10%, transparent); font-size: 14px; color: var(--fg); }
+
+/* Tienda sin productos */
+.tienda-vacia { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; padding: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+.tienda-vacia p { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: 17px; }
 
 /* Secciones */
 section.block { padding-block: 40px; border-top: 1px solid var(--line); }
@@ -203,5 +210,19 @@ footer a:hover { color: var(--fg); }
    abre al pulsarlo, que vive en otro iframe dentro del mismo contenedor y
    necesita su propio ancho (100% del hueco que le da Ko-fi) para no recortarse. */
 [id^="kofi-widget-overlay"] iframe.floatingchat-container { width: 240px !important; min-width: 240px !important; }
+/* En el móvil Ko-fi usa otro botón (.floatingchat-container-mobi) con el mismo
+   problema: lo ensanchamos igual para que «Invítame a un café» salga entero. */
+[id^="kofi-widget-overlay"] iframe.floatingchat-container-mobi { width: 240px !important; min-width: 240px !important; }
+[id^="kofi-widget-overlay"] .floatingchat-container-wrap-mobi { width: 240px !important; }
+
+/* En el móvil, Netlify pone abajo a la derecha su botón «Powered by Netlify»
+   (en el plan gratuito no se puede quitar) y choca con el de Ko-fi. Subimos el
+   botón de Ko-fi y su panel de donación para que no se pisen. */
+@media (max-width: 640px) {
+  .floatingchat-container-wrap,
+  .floatingchat-container-wrap-mobi { bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important; }
+  .floating-chat-kofi-popup-iframe,
+  .floating-chat-kofi-popup-iframe-mobi { bottom: calc(155px + env(safe-area-inset-bottom, 0px)) !important; }
+}
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

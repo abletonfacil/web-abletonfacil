@@ -22,8 +22,9 @@ const cat = CATEGORIAS[categoria];
     <span>{acceso === "pago" ? "€" : ""}</span>
   </span>
   <span class="body">
+    {ejemplo && <span class="pill borrador fuerte">Borrador</span>}
     <strong>{titulo}</strong>
     <span style={`color:${cat.color}`} set:html={wave(seed)} />
-    <span class="foot"><Pills nivel={nivel} video={video} acceso={acceso} ejemplo={ejemplo} /></span>
+    <span class="foot"><Pills nivel={nivel} video={video} acceso={acceso} /></span>
   </span>
 </a>

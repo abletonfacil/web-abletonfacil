@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { accesoVisible } from "./data/visibilidad";
 
 // Lee los archivos directamente de la carpeta /fichas de la raíz del proyecto.
 // Así basta con copiar un .md ahí: no hace falta duplicarlo dentro de src/.
@@ -26,7 +27,10 @@ const fichas = defineCollection({
     relacionadas: z.array(z.string()).default([]),
     producto: z.string().optional(),
     ejemplo: z.boolean().default(false),
-  }),
+  })
+  // Las lecciones de pago de ejemplo se enseñan como fichas gratis normales
+  // (ver src/data/visibilidad.ts). El archivo .md no se toca.
+  .transform((d) => ({ ...d, acceso: accesoVisible(d) })),
 });
 
 export const collections = { fichas };

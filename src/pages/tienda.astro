@@ -1,11 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
-import productos from "../data/productos.json";
+import { productosVisibles, MOSTRAR_EJEMPLOS, KOFI } from "../data/visibilidad";
 
 const todas = await getCollection("fichas");
+// Las lecciones de pago de ejemplo ya llegan aquí como «gratis» (ver src/data/visibilidad.ts).
 const lecciones = todas.map((f) => f.data).filter((f) => f.acceso === "pago");
-const KOFI = "https://ko-fi.com/abletonfacil";
+const vacia = productosVisibles.length === 0 && lecciones.length === 0;
 ---
 <Base title="Tienda · abletonfácil" description="Racks, proyectos, packs MIDI y lecciones largas de abletonfacil, en Ko-fi.">
   <main>
@@ -13,44 +14,58 @@ const KOFI = "https://ko-fi.com/abletonfacil";
       <h1>Tienda</h1>
       <p class="lede">Racks, proyectos y MIDI que uso en los vídeos, más las lecciones largas. Todo se compra en Ko-fi: ellos cobran y te mandan el enlace de descarga, esta web no gestiona pagos.</p>
     </div>
-    <section class="block" style="border-top:0">
-      <div class="wrap">
-        <h2>Productos</h2>
-        <div class="shop">
-          {Object.entries(productos).map(([clave, p]: [string, any]) => (
-            <div class="prod">
-              <span class="kind">{p.tipo}</span>
-              <h3>{p.nombre}</h3>
-              <p>{p.descripcion}</p>
-              <div class="buy">
-                <span class="price">{p.precio}</span>
-                <a class="btn yellow" href={p.enlace} target="_blank" rel="noopener">Comprar en Ko-fi</a>
-              </div>
-            </div>
-          ))}
+    {vacia && (
+      <section class="block" style="border-top:0">
+        <div class="wrap">
+          <div class="tienda-vacia">
+            <p>Muy pronto. Mientras tanto, lo tienes todo en Ko-fi</p>
+            <a class="btn yellow" href={KOFI} target="_blank" rel="noopener">Ir a Ko-fi</a>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="block">
-      <div class="wrap">
-        <h2>Lecciones largas</h2>
-        <p class="sub">El resumen gratis está en la ficha. La lección completa (vídeo largo, PDF y proyecto) se desbloquea en Ko-fi.</p>
-        <div class="shop">
-          {lecciones.map((f) => (
-            <div class="prod">
-              <span class="kind">Lección larga</span>
-              <h3>{f.titulo}</h3>
-              <p>Vídeo completo, PDF con los pasos y proyecto de ejemplo.</p>
-              <div class="buy">
-                <span class="price">5 €</span>
-                <a class="btn yellow" href={KOFI} target="_blank" rel="noopener">Comprar en Ko-fi</a>
+      </section>
+    )}
+    {productosVisibles.length > 0 && (
+      <section class="block" style="border-top:0">
+        <div class="wrap">
+          <h2>Productos</h2>
+          <div class="shop">
+            {productosVisibles.map(([clave, p]) => (
+              <div class="prod">
+                <span class="kind">{p.tipo}</span>
+                <h3>{p.nombre}</h3>
+                <p>{p.descripcion}</p>
+                <div class="buy">
+                  <span class="price">{p.precio}</span>
+                  <a class="btn yellow" href={p.enlace} target="_blank" rel="noopener">Comprar en Ko-fi</a>
+                </div>
               </div>
-              <a class="chip" href={`/problema/${f.slug}`}>Ver el resumen gratis</a>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        <p class="ejemplo" style="margin-top:12px">Productos y precios de ejemplo</p>
-      </div>
-    </section>
+      </section>
+    )}
+    {lecciones.length > 0 && (
+      <section class="block">
+        <div class="wrap">
+          <h2>Lecciones largas</h2>
+          <p class="sub">El resumen gratis está en la ficha. La lección completa (vídeo largo, PDF y proyecto) se desbloquea en Ko-fi.</p>
+          <div class="shop">
+            {lecciones.map((f) => (
+              <div class="prod">
+                <span class="kind">Lección larga</span>
+                <h3>{f.titulo}</h3>
+                <p>Vídeo completo, PDF con los pasos y proyecto de ejemplo.</p>
+                <div class="buy">
+                  <span class="price">5 €</span>
+                  <a class="btn yellow" href={KOFI} target="_blank" rel="noopener">Comprar en Ko-fi</a>
+                </div>
+                <a class="chip" href={`/problema/${f.slug}`}>Ver el resumen gratis</a>
+              </div>
+            ))}
+          </div>
+          {MOSTRAR_EJEMPLOS && <p class="ejemplo" style="margin-top:12px">Productos y precios de ejemplo</p>}
+        </div>
+      </section>
+    )}
   </main>
 </Base>

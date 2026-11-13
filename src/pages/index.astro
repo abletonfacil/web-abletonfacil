@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 import Buscador from "../components/Buscador.astro";
 import ClipCard from "../components/ClipCard.astro";
 import { CATEGORIAS } from "../data/categorias";
-import productos from "../data/productos.json";
+import { productosVisibles, MOSTRAR_EJEMPLOS, KOFI } from "../data/visibilidad";
 
 const todas = await getCollection("fichas");
 const fichas = todas.map((f) => f.data).sort((a, b) => a.titulo.localeCompare(b.titulo));
@@ -17,7 +17,7 @@ const populares = todas
   .filter((v, i, arr) => arr.indexOf(v) === i)
   .slice(0, 5);
 
-const productosDestacados = Object.entries(productos).slice(0, 4);
+const productosDestacados = productosVisibles.slice(0, 4);
 ---
 <Base title="abletonfácil · ¿Qué te pasa con Ableton?">
   <main id="inicio">
@@ -58,20 +58,29 @@ const productosDestacados = Object.entries(productos).slice(0, 4);
       <div class="wrap">
         <h2>Tienda</h2>
         <p class="sub">Racks, proyectos y MIDI que uso en los vídeos, más las lecciones largas. Se compran en Ko-fi.</p>
-        <div class="shop">
-          {productosDestacados.map(([clave, p]: [string, any]) => (
-            <div class="prod">
-              <span class="kind">{p.tipo}</span>
-              <h3>{p.nombre}</h3>
-              <p>{p.descripcion}</p>
-              <div class="buy">
-                <span class="price">{p.precio}</span>
-                <a class="btn yellow" href={p.enlace} target="_blank" rel="noopener">Comprar en Ko-fi</a>
-              </div>
+        {productosDestacados.length > 0 ? (
+          <>
+            <div class="shop">
+              {productosDestacados.map(([clave, p]) => (
+                <div class="prod">
+                  <span class="kind">{p.tipo}</span>
+                  <h3>{p.nombre}</h3>
+                  <p>{p.descripcion}</p>
+                  <div class="buy">
+                    <span class="price">{p.precio}</span>
+                    <a class="btn yellow" href={p.enlace} target="_blank" rel="noopener">Comprar en Ko-fi</a>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <p class="ejemplo" style="margin-top:12px">Productos y precios de ejemplo · <a href="/tienda" style="color:var(--muted); text-decoration:underline">Ver tienda completa</a></p>
+            <p class="ejemplo" style="margin-top:12px">{MOSTRAR_EJEMPLOS && "Productos y precios de ejemplo · "}<a href="/tienda" style="color:var(--muted); text-decoration:underline">Ver tienda completa</a></p>
+          </>
+        ) : (
+          <div class="tienda-vacia">
+            <p>Muy pronto. Mientras tanto, lo tienes todo en Ko-fi</p>
+            <a class="btn yellow" href={KOFI} target="_blank" rel="noopener">Ir a Ko-fi</a>
+          </div>
+        )}
       </div>
     </section>
 
@@ -79,7 +88,7 @@ const productosDestacados = Object.entries(productos).slice(0, 4);
       <div class="wrap about">
         <div>
           <h2>Sobre mí</h2>
-          <p>Soy Alberto Live y hago abletonfacil: reels cortos que resuelven una sola cosa de Ableton Live cada vez, con humor y sin rodeos.</p>
+          <p>Soy @abletonfacil y hago reels cortos que resuelven una sola cosa de Ableton Live cada vez, con humor y sin rodeos.</p>
           <p>Esta web junta todos esos vídeos para que encuentres la respuesta cuando la necesitas, en mitad del tema, no tres semanas después.</p>
           <p><a class="chip" href="/sobre-mi">Saber más</a></p>
         </div>
