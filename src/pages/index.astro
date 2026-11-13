@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 import Buscador from "../components/Buscador.astro";
 import ClipCard from "../components/ClipCard.astro";
 import { CATEGORIAS } from "../data/categorias";
-import { productosVisibles, MOSTRAR_EJEMPLOS } from "../data/visibilidad";
+import { productosVisibles, MOSTRAR_EJEMPLOS, estiloImagen } from "../data/visibilidad";
 
 const todas = await getCollection("fichas");
 const fichas = todas.map((f) => f.data).sort((a, b) => a.titulo.localeCompare(b.titulo));
@@ -61,6 +61,7 @@ const productosDestacados = productosVisibles.slice(0, 4);
         <div class="shop">
           {productosDestacados.map(([clave, p]) => (
             <div class="prod">
+              {p.imagen && <img class="prod-img" src={p.imagen} alt={p.nombre} style={estiloImagen(p)} width="320" height="180" loading="lazy" />}
               <span class="kind">{p.tipo}</span>
               <h3>{p.nombre}</h3>
               <p>{p.descripcion}</p>

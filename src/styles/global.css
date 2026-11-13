@@ -134,6 +134,12 @@ section.block p.sub { color: var(--muted); margin: 0 0 22px; max-width: 60ch; }
 .prod p { margin: 0; color: var(--muted); font-size: 14px; }
 .prod .buy { margin-top: auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; padding-top: 8px; }
 .prod .buy .btn { white-space: nowrap; }
+/* Foto del producto, en un marco 16:9. Por defecto se ve entera (contain);
+   con «imagenEncuadre» en productos.json se recorta para llenar el marco. */
+.prod-img { display: block; width: calc(100% + 32px); max-width: none; margin: -16px -16px 4px; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 10px 10px 0 0; border-bottom: 1px solid var(--line); background: var(--panel-2); }
+.reco.con-img { grid-template-columns: 140px 1fr auto; }
+.reco-img { display: block; width: 140px; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 6px; background: var(--panel-2); }
+@media (max-width: 480px) { .reco.con-img { grid-template-columns: 1fr; } .reco-img { width: 100%; } }
 .price { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 8px; padding: 9px 14px; font-weight: 600; font-size: 14px; text-decoration: none; cursor: pointer; border: 1px solid var(--line); background: var(--panel-2); }
 .btn.yellow { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }

@@ -5,6 +5,7 @@
     "descripcion": "Tocas un acorde en el teclado y lo ves en un mástil de guitarra. Lee el MIDI de tu pista y lo dibuja traste a traste. Solo para Windows.",
     "precio": "desde 4,99 €",
     "enlace": "https://ko-fi.com/s/8d9dbcc89b",
+    "imagen": "/productos/mastil.png",
     "ejemplo": false
   },
   "barbieGirl": {
@@ -13,6 +14,8 @@
     "descripcion": "Proyecto de Ableton Live de Barbie Girl con los instrumentos nativos de Live, sus samples y toda la estructura hecha.",
     "precio": "desde 4,99 €",
     "enlace": "https://ko-fi.com/s/966b957851",
+    "imagen": "/productos/barbie-girl.png",
+    "imagenEncuadre": "center",
     "ejemplo": false
   },
   "saturdayNight": {
@@ -21,6 +24,8 @@
     "descripcion": "La canción hecha desde 0 en Ableton Live, con sonidos idénticos o muy parecidos al original. Necesita Live 11.3.4 o superior y algunos plugins externos (Arturia, EZkeys).",
     "precio": "desde 4,99 €",
     "enlace": "https://ko-fi.com/s/45a50f1d99",
+    "imagen": "/productos/saturday-night.png",
+    "imagenEncuadre": "center",
     "ejemplo": false
   },
   "vintageBreak": {
@@ -29,6 +34,7 @@
     "descripcion": "Dale carácter antiguo a tus baterías.",
     "precio": "desde 2 €",
     "enlace": "https://ko-fi.com/s/5cb1ba4675",
+    "imagen": "/productos/vintage-break.png",
     "ejemplo": false
   },
   "djPerformance": {
@@ -37,6 +43,7 @@
     "descripcion": "Repeticiones a distintos tiempos y efecto de hundido para transiciones. Para automatizar o grabar en directo.",
     "precio": "desde 2 €",
     "enlace": "https://ko-fi.com/s/9bca916f1a",
+    "imagen": "/productos/dj-performance.png",
     "ejemplo": false
   },
   "virtualDrumsRoom": {
@@ -45,6 +52,7 @@
     "descripcion": "Emula un micrófono de room de batería con efectos nativos de Live. No es una reverb: da extensión, profundidad y estéreo.",
     "precio": "desde 2 €",
     "enlace": "https://ko-fi.com/s/a8e2c33243",
+    "imagen": "/productos/virtual-drums-room.png",
     "ejemplo": false
   },
   "rackBajoSaturacion": {
@@ -53,6 +61,8 @@
     "descripcion": "Rack para saturación multibanda en paralelo. Sin cancelaciones de fase.",
     "precio": "desde 2 €",
     "enlace": "https://ko-fi.com/s/7771bfd03a",
+    "imagen": "/productos/rack-bajo-saturacion.png",
+    "imagenEncuadre": "50% 60%",
     "ejemplo": false
   },
   "rackBateria": {

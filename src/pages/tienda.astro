@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
-import { productosVisibles, MOSTRAR_EJEMPLOS, KOFI } from "../data/visibilidad";
+import { productosVisibles, MOSTRAR_EJEMPLOS, KOFI, estiloImagen } from "../data/visibilidad";
 
 const todas = await getCollection("fichas");
 // Las lecciones de pago de ejemplo ya llegan aquí como «gratis» (ver src/data/visibilidad.ts).
@@ -20,6 +20,7 @@ const lecciones = todas.map((f) => f.data).filter((f) => f.acceso === "pago");
           <div class="shop">
             {productosVisibles.map(([clave, p]) => (
               <div class="prod">
+                {p.imagen && <img class="prod-img" src={p.imagen} alt={p.nombre} style={estiloImagen(p)} width="320" height="180" loading="lazy" />}
                 <span class="kind">{p.tipo}</span>
                 <h3>{p.nombre}</h3>
                 <p>{p.descripcion}</p>
