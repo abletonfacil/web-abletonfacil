@@ -7,7 +7,7 @@ acceso: gratis
 video: ""
 otras_formas: ["convertir midi en audio", "freeze and flatten", "bounce", "renderizar pista", "imprimir pista"]
 relacionadas: [latencia, chop-sample, loop-tema]
-producto: proyecto
+producto: saturdayNight
 ejemplo: true
 ---
 

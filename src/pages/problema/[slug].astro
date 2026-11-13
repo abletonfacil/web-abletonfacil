@@ -5,7 +5,7 @@ import Pills from "../../components/Pills.astro";
 import VideoEmbed from "../../components/VideoEmbed.astro";
 import HitRow from "../../components/HitRow.astro";
 import { CATEGORIAS } from "../../data/categorias";
-import { productoVisible } from "../../data/visibilidad";
+import { productoVisible, estiloImagen } from "../../data/visibilidad";
 
 export async function getStaticPaths() {
   const fichas = await getCollection("fichas");
@@ -76,9 +76,10 @@ const relacionadas = f.relacionadas
         {producto && (
           <section>
             <h2 class="h">Te viene bien</h2>
-            <div class="reco">
+            <div class:list={["reco", { "con-img": producto.imagen }]}>
+              {producto.imagen && <img class="reco-img" src={producto.imagen} alt={producto.nombre} style={estiloImagen(producto)} width="320" height="180" loading="lazy" />}
               <div>
-                <span class="ejemplo">{producto.tipo} · ejemplo</span>
+                <span class="ejemplo">{producto.tipo}{producto.ejemplo && " · ejemplo"}</span>
                 <h4>{producto.nombre}</h4>
                 <p>{producto.descripcion}</p>
               </div>

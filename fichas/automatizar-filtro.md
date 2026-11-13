@@ -7,7 +7,7 @@ acceso: gratis
 video: ""
 otras_formas: ["automatizacion", "subida de filtro", "build up", "mover parametros", "dibujar automatizacion"]
 relacionadas: [loop-tema, reverb-barro, sidechain]
-producto: proyecto
+producto: saturdayNight
 ejemplo: true
 ---
 

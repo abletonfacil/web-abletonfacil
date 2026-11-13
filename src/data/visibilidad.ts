@@ -18,8 +18,21 @@ type Producto = {
   descripcion: string;
   precio: string;
   enlace: string;
+  /** Ruta de la foto dentro de public/, p. ej. "/productos/mastil.png". Opcional. */
+  imagen?: string;
+  /**
+   * Opcional. Sin este campo la imagen se ve entera dentro de un marco 16:9.
+   * Con él, la imagen llena el marco y se recorta; el valor dice qué parte se queda:
+   * "center" (el centro), "50% 60%" (centrado y un poco por debajo de la mitad)...
+   */
+  imagenEncuadre?: string;
   ejemplo?: boolean;
 };
+
+/** Estilo de la foto según su encuadre (ver imagenEncuadre). */
+export function estiloImagen(p: { imagenEncuadre?: string }): string | undefined {
+  return p.imagenEncuadre ? `object-fit:cover;object-position:${p.imagenEncuadre}` : undefined;
+}
 
 const todos = productos as Record<string, Producto>;
 

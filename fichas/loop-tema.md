@@ -7,7 +7,7 @@ acceso: pago
 video: ""
 otras_formas: ["loopitis", "no se terminar temas", "arreglo", "estructura de cancion", "pasar de session a arrangement"]
 relacionadas: [automatizar-filtro, crear-bateria, acordes-melodia]
-producto: proyecto
+producto: barbieGirl
 ejemplo: true
 ---
 

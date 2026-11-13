@@ -7,7 +7,7 @@ acceso: gratis
 video: "https://www.instagram.com/p/De3jGWktP_i/"
 otras_formas: ["cuadrar loop", "warpear bateria", "ajustar bpm del sample", "loop desfasado", "se me va de tiempo", "sample fuera de tempo"]
 relacionadas: [chop-sample, groove, tonalidad-sample]
-producto: rackBateria
+producto: virtualDrumsRoom
 ejemplo: false
 ---
 

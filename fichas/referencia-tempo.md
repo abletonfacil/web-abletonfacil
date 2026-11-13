@@ -8,7 +8,7 @@ video: "https://www.instagram.com/p/DerRfDQNfOh/"
 serie: "Ableton Live desde 0 #5"
 otras_formas: ["tap tempo", "cancion de referencia", "sacar el bpm de una cancion", "saber el tempo", "a que velocidad va"]
 relacionadas: [sample-tempo, mezcla-apagada, master-rojo]
-producto: proyecto
+producto: barbieGirl
 ejemplo: false
 ---
 

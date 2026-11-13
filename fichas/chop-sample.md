@@ -7,7 +7,7 @@ acceso: gratis
 video: ""
 otras_formas: ["chop", "cortar sample", "slice", "simpler slice", "trocear loop", "tocar trozos con el teclado"]
 relacionadas: [sample-tempo, groove, tonalidad-sample]
-producto: rackBateria
+producto: vintageBreak
 ejemplo: true
 ---
 

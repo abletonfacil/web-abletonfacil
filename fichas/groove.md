@@ -7,7 +7,7 @@ acceso: gratis
 video: ""
 otras_formas: ["bateria rigida", "sin swing", "humanizar", "groove pool", "quantize demasiado perfecto"]
 relacionadas: [crear-bateria, sample-tempo, chop-sample]
-producto: rackBateria
+producto: vintageBreak
 ejemplo: true
 ---
 
