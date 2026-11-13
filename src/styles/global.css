@@ -210,6 +210,10 @@ footer a:hover { color: var(--fg); }
    abre al pulsarlo, que vive en otro iframe dentro del mismo contenedor y
    necesita su propio ancho (100% del hueco que le da Ko-fi) para no recortarse. */
 [id^="kofi-widget-overlay"] iframe.floatingchat-container { width: 240px !important; min-width: 240px !important; }
+/* En el móvil Ko-fi usa otro botón (.floatingchat-container-mobi) con el mismo
+   problema: lo ensanchamos igual para que «Invítame a un café» salga entero. */
+[id^="kofi-widget-overlay"] iframe.floatingchat-container-mobi { width: 240px !important; min-width: 240px !important; }
+[id^="kofi-widget-overlay"] .floatingchat-container-wrap-mobi { width: 240px !important; }
 
 /* En el móvil, Netlify pone abajo a la derecha su botón «Powered by Netlify»
    (en el plan gratuito no se puede quitar) y choca con el de Ko-fi. Subimos el
