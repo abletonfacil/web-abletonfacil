@@ -23,7 +23,10 @@ export default async (req) => {
   if (!tipos.includes(evento.type)) return json({ ok: true });
 
   const s = evento.data.object;
-  if (s.payment_status !== "paid") return json({ ok: true, pendiente: true });
+  // «no_payment_required» = pedido de 0 € con un cupón del 100 %: también da acceso.
+  if (!["paid", "no_payment_required"].includes(s.payment_status)) {
+    return json({ ok: true, pendiente: true });
+  }
 
   const correo = (s.customer_details?.email || "").trim().toLowerCase();
   const compra = s.metadata?.compra;
