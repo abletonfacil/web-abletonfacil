@@ -21,5 +21,7 @@ create policy "ver mis compras" on public.compras
   for select to authenticated
   using (lower(correo) = lower(auth.jwt() ->> 'email'));
 
+grant select on public.compras to authenticated;
+
 -- Para dar acceso a mano (un regalo, un alumno antiguo…):
 -- insert into public.compras (correo, compra) values ('alumno@correo.com', 'groove-y-swing');
