@@ -24,6 +24,9 @@ export default async (req) => {
         price_data: {
           currency: "eur",
           unit_amount: Math.round(a.precio * 100),
+          // El precio de la web es el final, con el IVA ya dentro: Stripe no
+          // suma nada encima, separa el IVA de esos euros.
+          tax_behavior: "inclusive",
           product_data: {
             name: a.tipo === "pack" ? a.titulo : `Curso: ${a.titulo}`,
             description: a.subtitulo,
