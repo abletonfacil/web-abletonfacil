@@ -81,6 +81,7 @@ Todo en el repo `abletonfacil/web-abletonfacil`, rama `cursos-de-pago`.
    - Crea `stripe.checkout.sessions.create` con:
      - `mode: "payment"`, un `line_item` con `price_data` en EUR (precio del JSON × 100).
      - `product_data.tax_code: "txcd_20060158"`: curso online pregrabado, en streaming, sin descarga. Es obligatorio para Managed Payments.
+     - `tax_behavior: "inclusive"`: el precio del JSON es el precio final con IVA. Sin esto Stripe sumaba el IVA encima (59 € → 71,39 € en la prueba del 18/11).
      - `allow_promotion_codes: true` (cupones creados en el panel de Stripe).
      - `managed_payments: { enabled: true }`, salvo que `STRIPE_MANAGED_PAYMENTS=no`.
      - `metadata.compra = slug`.
