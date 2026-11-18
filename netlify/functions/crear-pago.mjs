@@ -27,12 +27,18 @@ export default async (req) => {
           product_data: {
             name: a.tipo === "pack" ? a.titulo : `Curso: ${a.titulo}`,
             description: a.subtitulo,
+            // Categoría fiscal: curso online grabado, en streaming, sin descarga.
+            // Managed Payments la necesita para calcular el IVA de cada país.
+            tax_code: "txcd_20060158",
           },
         },
       },
     ],
     allow_promotion_codes: true, // casilla para cupones de descuento
-    customer_creation: "always",
+    // Managed Payments: Stripe es el vendedor oficial y se encarga del IVA,
+    // el fraude y las reclamaciones (+3,5 % por venta). Para volver a llevar
+    // tú el IVA, pon STRIPE_MANAGED_PAYMENTS=no en Netlify.
+    ...(process.env.STRIPE_MANAGED_PAYMENTS === "no" ? {} : { managed_payments: { enabled: true } }),
     metadata: { compra: slug },
     success_url: `${web}/compra-ok?s={CHECKOUT_SESSION_ID}`,
     cancel_url: `${web}/cursos/${a.tipo === "pack" ? "" : slug}`,
