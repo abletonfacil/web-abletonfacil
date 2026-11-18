@@ -1,0 +1,81 @@
+---
+import Base from "../../layouts/Base.astro";
+import Temario from "../../components/Temario.astro";
+import Reproductor from "../../components/Reproductor.astro";
+import { listaCursos, listaPacks, euros } from "../../data/cursos";
+
+export function getStaticPaths() {
+  return listaCursos.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+const { c } = Astro.props;
+const gratis = c.lecciones.map((l, i) => ({ ...l, i })).filter((l) => l.gratis);
+const primera = gratis[0];
+const packsConEste = listaPacks.filter((p) => p.cursos.includes(c.slug));
+---
+<Base title={`${c.titulo} · Cursos · abletonfácil`} description={c.subtitulo}>
+  <main class="curso" style={`--c:${c.color}`}>
+    <div class="wrap curso-cab">
+      <a class="crumb" href="/cursos">CURSOS ›</a>
+      <h1>{c.titulo}</h1>
+      <p class="lede">{c.subtitulo}</p>
+      <div class="cc-pills">
+        <span class="pill">{c.nivel}</span>
+        {c.lecciones.length > 0 && <span class="pill">{c.lecciones.length} lecciones</span>}
+        {gratis.length > 0 && <span class="pill vid">{gratis.length === 1 ? "1 lección gratis" : `${gratis.length} lecciones gratis`}</span>}
+      </div>
+    </div>
+
+    {c.proximamente ? (
+      <section class="block">
+        <div class="wrap">
+          <div class="locked">
+            <span class="pill vid" style="align-self:flex-start">Próximamente</span>
+            <h3>Este curso está en el horno</h3>
+            <p>Estoy terminando las lecciones. Sígueme en Instagram para enterarte el primero de cuándo sale.</p>
+            <div class="row"><a class="btn" href="https://www.instagram.com/abletonfacil/" target="_blank" rel="noopener">@abletonfacil en Instagram</a></div>
+          </div>
+        </div>
+      </section>
+    ) : (
+      <div class="wrap curso-cuerpo">
+        <div class="curso-izq">
+          <Reproductor
+            titulo={primera ? `${primera.i + 1}. ${primera.titulo}` : ""}
+            mensaje={primera ? "Dale al play en una lección gratis" : "Vídeo de muestra en camino"}
+          />
+          <h2 class="h">Temario</h2>
+          <Temario lecciones={c.lecciones} />
+        </div>
+
+        <aside class="curso-der">
+          <div class="caja-compra" id="comprar">
+            <span class="price grande">{euros(c.precio)}</span>
+            <button class="btn yellow ancho" type="button" data-comprar={c.slug}>Comprar el curso</button>
+            <span class="metodos">Tarjeta, PayPal, Apple Pay, Google Pay o a plazos. ¿Tienes un cupón? Lo pones al pagar.</span>
+            <ul class="incluye">
+              <li>{c.lecciones.length} lecciones en vídeo</li>
+              <li>Acceso para siempre, a tu ritmo</li>
+              <li>Entras con tu correo, sin contraseñas</li>
+            </ul>
+            {c.provisional && <span class="ejemplo">Precio y temario provisionales</span>}
+          </div>
+          {packsConEste.map((p) => (
+            <a class="caja-pack" href={`/cursos#${p.slug}`}>
+              <span class="kind">Pack</span>
+              <strong>{p.titulo}: {euros(p.precio)}</strong>
+              <span>Este curso y {p.cursos.length - 1} más</span>
+            </a>
+          ))}
+          <p class="ya-comprado-mini">¿Ya lo tienes? <a href={`/mis-cursos?curso=${c.slug}`}>Entra en Mis cursos</a></p>
+        </aside>
+      </div>
+    )}
+  </main>
+</Base>
+
+<script>
+  import { activarCompra, activarTemario } from "../../scripts/cursos";
+  activarCompra();
+  const curso = location.pathname.split("/").filter(Boolean)[1];
+  activarTemario(curso, (gratis) => gratis);
+</script>

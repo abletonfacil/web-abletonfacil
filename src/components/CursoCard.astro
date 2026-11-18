@@ -1,0 +1,30 @@
+---
+import { euros } from "../data/cursos";
+interface Props {
+  slug: string; titulo: string; subtitulo: string; nivel: string; precio: number;
+  color: string; portada: string; proximamente: boolean; provisional: boolean; nLecciones: number;
+  href?: string;
+}
+const p = Astro.props;
+const href = p.href ?? `/cursos/${p.slug}`;
+---
+<a class="curso-card" href={href} style={`--c:${p.color}`}>
+  <div class="cc-portada">
+    {p.portada ? <img src={p.portada} alt="" loading="lazy" /> : <span class="cc-nombre">{p.titulo}</span>}
+  </div>
+  <div class="cc-body">
+    <div class="cc-pills">
+      <span class="pill">{p.nivel}</span>
+      {p.nLecciones > 0 && <span class="pill">{p.nLecciones} lecciones</span>}
+      {p.proximamente && <span class="pill vid">Próximamente</span>}
+    </div>
+    <h3>{p.titulo}</h3>
+    <p>{p.subtitulo}</p>
+    {!p.proximamente && (
+      <div class="cc-pie">
+        <span class="price">{euros(p.precio)}</span>
+        <span class="btn">Ver el curso</span>
+      </div>
+    )}
+  </div>
+</a>

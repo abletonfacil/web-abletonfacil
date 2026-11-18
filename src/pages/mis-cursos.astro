@@ -1,0 +1,127 @@
+---
+import Base from "../layouts/Base.astro";
+import Reproductor from "../components/Reproductor.astro";
+const conectado = Boolean(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env.PUBLIC_SUPABASE_ANON_KEY);
+---
+<Base title="Mis cursos · abletonfácil" description="Entra con tu correo y sigue con tus cursos.">
+  <main class="wrap mis" style="padding-block:40px 80px">
+    <h1 class="mis-h1">Mis cursos</h1>
+
+    {!conectado && (
+      <div class="aviso-borrador">Zona de alumnos en pruebas: aún no está conectada a las cuentas.</div>
+    )}
+
+    <!-- 1. Entrar con el correo -->
+    <section data-paso="entrar" class="oculto">
+      <p class="lede">Escribe el correo con el que compraste. Te mando un enlace para entrar, sin contraseñas.</p>
+      <form class="entrar" data-form-entrar>
+        <input type="email" name="correo" required placeholder="tu@correo.com" autocomplete="email" />
+        <button class="btn yellow" type="submit">Enviarme el enlace</button>
+      </form>
+      <p class="mis-nota" data-enviado hidden>Listo. Mira tu correo (y la carpeta de spam) y pulsa el enlace. Puedes cerrar esta pestaña.</p>
+    </section>
+
+    <!-- 2. Lista de cursos del alumno -->
+    <section data-paso="lista" class="oculto">
+      <p class="lede">Hola, <span data-correo></span>. <button class="enlace" type="button" data-salir>Salir</button></p>
+      <div class="cursos-grid" data-lista></div>
+      <p class="mis-nota" data-vacio hidden>Con este correo no hay ningún curso. ¿Lo compraste con otro? <a href="/cursos">Ver los cursos</a></p>
+    </section>
+
+    <!-- 3. Un curso abierto -->
+    <section data-paso="curso" class="oculto">
+      <a class="crumb" href="/mis-cursos">MIS CURSOS ›</a>
+      <h2 class="mis-h2" data-curso-titulo></h2>
+      <div class="curso-cuerpo solo">
+        <div class="curso-izq">
+          <Reproductor />
+          <h2 class="h">Lecciones</h2>
+          <ol class="temario" data-temario></ol>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<script>
+  import { supabase, aviso, activarTemario, verLeccion } from "../scripts/cursos";
+  import cursos from "../data/cursos.json";
+  import packs from "../data/packs.json";
+
+  type C = (typeof cursos)[keyof typeof cursos];
+  const $ = <T extends HTMLElement = HTMLElement>(s: string) => document.querySelector<T>(s)!;
+  const mostrar = (paso: string) =>
+    document.querySelectorAll<HTMLElement>("[data-paso]").forEach((el) => el.classList.toggle("oculto", el.dataset.paso !== paso));
+  const esc = (t: string) => t.replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]!);
+
+  async function iniciar() {
+    if (!supabase) {
+      mostrar("entrar");
+      $("[data-form-entrar]").addEventListener("submit", (e) => {
+        e.preventDefault();
+        aviso("La zona de alumnos aún no está conectada");
+      });
+      return;
+    }
+
+    $("[data-form-entrar]").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const correo = String(new FormData(e.target as HTMLFormElement).get("correo") || "").trim();
+      const { error } = await supabase!.auth.signInWithOtp({
+        email: correo,
+        options: { emailRedirectTo: location.href, shouldCreateUser: true },
+      });
+      if (error) return aviso("No he podido enviar el enlace. Prueba otra vez en un minuto");
+      $("[data-enviado]").hidden = false;
+    });
+    $("[data-salir]").addEventListener("click", async () => {
+      await supabase!.auth.signOut();
+      location.href = "/mis-cursos";
+    });
+
+    const { data } = await supabase.auth.getSession();
+    const sesion = data.session;
+    if (!sesion) return mostrar("entrar");
+
+    // Qué cursos tiene: los comprados sueltos y los que vienen en sus packs.
+    const { data: compras } = await supabase.from("compras").select("compra");
+    const tiene = new Set<string>();
+    for (const { compra } of compras || []) {
+      if (compra in cursos) tiene.add(compra);
+      const p = (packs as Record<string, { cursos: string[] }>)[compra];
+      p?.cursos.forEach((c) => tiene.add(c));
+    }
+
+    const pedido = new URLSearchParams(location.search).get("curso");
+    if (pedido && tiene.has(pedido)) return abrirCurso(pedido);
+
+    $("[data-correo]").textContent = sesion.user.email || "";
+    const lista = $("[data-lista]");
+    lista.innerHTML = [...tiene]
+      .map((s) => {
+        const c = (cursos as Record<string, C>)[s];
+        return `<a class="curso-card" href="/mis-cursos?curso=${s}" style="--c:${c.color}">
+          <div class="cc-portada">${c.portada ? `<img src="${c.portada}" alt="">` : `<span class="cc-nombre">${esc(c.titulo)}</span>`}</div>
+          <div class="cc-body"><h3>${esc(c.titulo)}</h3><p>${c.lecciones.length} lecciones</p>
+          <div class="cc-pie"><span></span><span class="btn yellow">Entrar</span></div></div></a>`;
+      })
+      .join("");
+    $("[data-vacio]").hidden = tiene.size > 0;
+    mostrar("lista");
+  }
+
+  function abrirCurso(slug: string) {
+    const c = (cursos as Record<string, C>)[slug];
+    $("[data-curso-titulo]").textContent = c.titulo;
+    $("[data-temario]").innerHTML = c.lecciones
+      .map((l, i) => `<li><button type="button" class="lec" data-leccion="${i}" data-gratis="${l.gratis}" data-titulo="${i + 1}. ${esc(l.titulo)}">
+        <span class="num">${String(i + 1).padStart(2, "0")}</span><span class="tit">${esc(l.titulo)}</span>
+        <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span></button></li>`)
+      .join("");
+    activarTemario(slug, () => true);
+    mostrar("curso");
+    if (c.lecciones.length) verLeccion(slug, 0, `1. ${c.lecciones[0].titulo}`);
+  }
+
+  iniciar();
+</script>

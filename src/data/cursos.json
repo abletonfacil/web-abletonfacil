@@ -1,0 +1,364 @@
+{
+  "produccion-electronica": {
+    "titulo": "Producción Electrónica",
+    "subtitulo": "Un tema de drum and bass de principio a fin en Ableton Live: batería, shuffle, breaks, bajo, estructura, transiciones y drops.",
+    "nivel": "Intermedio",
+    "precio": 69,
+    "color": "#03C3D5",
+    "portada": "",
+    "proximamente": false,
+    "provisional": true,
+    "lecciones": [
+      {
+        "titulo": "Introducción",
+        "video": "",
+        "gratis": true
+      },
+      {
+        "titulo": "Primeros pasos",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Creando el bombo",
+        "video": "",
+        "gratis": true
+      },
+      {
+        "titulo": "La caja",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Hi-hats",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Creando el shuffle",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Shuffle y ajuste del break al tempo",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Separación de elementos",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Expresión del hi-hat",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Expresión del shuffle",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Breaks",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Trabajando los breaks",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "El bajo",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Notas de bajo",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Primer sonido de bajo",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Terminología y sonidos de bajo",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Estructura de la intro",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Intro A",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Intro B",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Build up",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Transiciones y snare roll",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Más transiciones",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Efecto filtro",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Últimos retoques: caja con reverb",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Drop",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Drop extend",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Post drop, verse y build up 2",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Snare del build up y afinación",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Drop 2",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Outro",
+        "video": "",
+        "gratis": false
+      }
+    ]
+  },
+  "groove-y-swing": {
+    "titulo": "Groove & Swing",
+    "subtitulo": "Baterías con groove desde cero: compás, MIDI, rejilla, velocidad, polirritmos, swing, Groove Pool y ADSR, hasta grooves de techno y tech house.",
+    "nivel": "Principiante",
+    "precio": 59,
+    "color": "#FFA529",
+    "portada": "",
+    "proximamente": false,
+    "provisional": false,
+    "lecciones": [
+      {
+        "titulo": "Qué es un compás",
+        "video": "",
+        "gratis": true
+      },
+      {
+        "titulo": "Qué es el MIDI",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Crear un clip MIDI y atajos",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "La rejilla",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Tiempos fuertes y débiles",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "El Drum Rack",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Tu primer groove",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Mezcla tu primer groove",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "La velocidad",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Patrones de velocidad",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Polirritmos",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Ejemplos de polirritmos",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "El loop de shaker",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Entender el swing",
+        "video": "",
+        "gratis": true
+      },
+      {
+        "titulo": "Groove de tech house",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "El Groove Pool",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Los ajustes del Groove Pool",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "La envolvente ADSR",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Dar forma a las baterías con ADSR",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Groove de techno: Acero",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Loops de audio y groove",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Loops de instrumentos y groove",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Groove para Atardecer",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Groove para Tecno Oscuro (1)",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Groove para Tecno Oscuro (2)",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Groove para Tecno Oscuro (3)",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Groove para Duna (1)",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Groove para Duna (2)",
+        "video": "",
+        "gratis": false
+      }
+    ]
+  },
+  "estilos-y-tecnicas": {
+    "titulo": "Estilos y Técnicas",
+    "subtitulo": "Grooves de estilos concretos y técnicas de los grandes: reguetón, boom bap, los ritmos borrachos de J Dilla, notas fantasma y trocear un break.",
+    "nivel": "Intermedio",
+    "precio": 29,
+    "color": "#F4A3BD",
+    "portada": "",
+    "proximamente": false,
+    "provisional": false,
+    "lecciones": [
+      {
+        "titulo": "Estilos: reguetón",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Estilos: boom bap",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Técnicas: J Dilla y los ritmos borrachos",
+        "video": "",
+        "gratis": true
+      },
+      {
+        "titulo": "Técnicas: notas fantasma",
+        "video": "",
+        "gratis": false
+      },
+      {
+        "titulo": "Técnicas: trocear un break",
+        "video": "",
+        "gratis": false
+      }
+    ]
+  },
+  "psicoacustica": {
+    "titulo": "Psicoacústica",
+    "subtitulo": "Cómo oímos de verdad y qué significa eso para mezclar mejor.",
+    "nivel": "Intermedio",
+    "precio": 59,
+    "color": "#B9A4FF",
+    "portada": "",
+    "proximamente": true,
+    "provisional": true,
+    "lecciones": []
+  }
+}

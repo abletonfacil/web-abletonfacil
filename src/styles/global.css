@@ -230,3 +230,75 @@ footer a:hover { color: var(--fg); }
 }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ===== Cursos de pago ===== */
+.cursos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.curso-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; }
+.curso-card:hover { border-color: var(--muted); }
+.cc-portada { aspect-ratio: 16 / 9; background: linear-gradient(135deg, color-mix(in srgb, var(--c) 85%, #000) 0%, color-mix(in srgb, var(--c) 35%, var(--panel-2)) 100%); display: grid; place-items: center; border-bottom: 1px solid var(--line); }
+.cc-portada img { width: 100%; height: 100%; object-fit: cover; }
+.cc-nombre { font-family: var(--f-display); font-weight: 900; font-size: 26px; letter-spacing: -0.02em; text-transform: uppercase; color: #14141a; text-align: center; padding: 0 18px; line-height: 1.05; }
+.cc-body { padding: 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.cc-body h3 { margin: 0; font-family: var(--f-display); font-size: 19px; }
+.cc-body p { margin: 0; color: var(--muted); font-size: 14px; }
+.cc-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.cc-pie { margin-top: auto; padding-top: 8px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+
+.curso-cab { padding-block: 32px 10px; }
+.curso-cab h1 { font-family: var(--f-display); font-weight: 900; font-size: clamp(32px, 6vw, 54px); line-height: 1.02; letter-spacing: -0.03em; margin: 10px 0 12px; }
+.curso-cab h1::after { content: ""; display: block; width: 56px; height: 5px; border-radius: 2px; background: var(--c); margin-top: 14px; }
+.curso-cab .lede { color: var(--muted); max-width: 60ch; margin: 0 0 14px; font-size: 16px; }
+.curso-cuerpo { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 28px; align-items: start; padding-block: 24px 70px; }
+.curso-cuerpo.solo { grid-template-columns: minmax(0, 1fr); max-width: 820px; }
+.curso-izq h2.h { font-family: var(--f-mono); font-weight: 500; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 26px 0 10px; }
+.curso-der { position: sticky; top: 76px; display: grid; gap: 12px; }
+@media (max-width: 820px) { .curso-cuerpo { grid-template-columns: 1fr; } .curso-der { position: static; order: -1; } }
+
+.reproductor { display: grid; gap: 8px; }
+.rep-pantalla { aspect-ratio: 16 / 9; background: repeating-linear-gradient(90deg, #262627 0 59px, #2c2c2d 59px 60px), #262627; border: 1px solid var(--line); border-radius: 12px; display: grid; place-items: center; overflow: hidden; }
+.rep-pantalla iframe { width: 100%; height: 100%; border: 0; }
+.rep-msg { color: var(--muted); font-size: 14px; padding: 0 16px; text-align: center; }
+.rep-titulo { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: 17px; min-height: 1.4em; }
+
+.temario { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.lec { width: 100%; display: grid; grid-template-columns: 30px 1fr auto auto; gap: 10px; align-items: center; text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; cursor: pointer; }
+.lec:hover { border-color: var(--muted); }
+.lec[aria-current] { border-color: var(--accent); }
+.lec .num { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.lec .tit { font-weight: 500; min-width: 0; }
+.lec .ico { color: var(--accent); display: grid; }
+.lec.bloqueada .tit { color: var(--muted); }
+.lec.bloqueada .ico { color: var(--muted); }
+
+.caja-compra { background: var(--panel); border: 1px solid var(--accent); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.price.grande { font-size: 30px; font-weight: 500; color: var(--fg); }
+.btn.ancho { justify-content: center; width: 100%; padding-block: 12px; font-size: 15px; }
+.btn[disabled] { opacity: .6; cursor: wait; }
+.metodos { color: var(--muted); font-size: 13px; }
+.incluye { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 14px; }
+.incluye li::before { content: "✓"; color: var(--accent); margin-right: 8px; font-weight: 700; }
+.caja-pack { display: grid; gap: 2px; padding: 14px 16px; border: 1px dashed var(--line); border-radius: 10px; text-decoration: none; }
+.caja-pack:hover { border-color: var(--accent); }
+.caja-pack .kind, .pack .kind { font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.caja-pack span:last-child { color: var(--muted); font-size: 13px; }
+.ya-comprado-mini { margin: 0; color: var(--muted); font-size: 14px; }
+
+.pack { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 28px; align-items: start; }
+@media (max-width: 820px) { .pack { grid-template-columns: 1fr; } }
+.pack-lista { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.pack-lista li { display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.pack-lista a { font-weight: 600; text-decoration: none; }
+.tachado { color: var(--muted); text-decoration: line-through; }
+.ahorro { color: var(--accent); font-size: 13px; font-weight: 600; }
+.ya-comprado { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.ya-comprado p { margin: 0; }
+
+.mis-h1 { font-family: var(--f-display); font-weight: 900; font-size: clamp(30px, 5vw, 46px); letter-spacing: -0.03em; margin: 0 0 16px; }
+.mis-h2 { font-family: var(--f-display); font-weight: 900; font-size: clamp(24px, 4vw, 34px); letter-spacing: -0.02em; margin: 8px 0 0; }
+.mis .lede { color: var(--muted); max-width: 56ch; }
+.entrar { display: flex; gap: 8px; flex-wrap: wrap; max-width: 520px; }
+.entrar input { flex: 1 1 240px; min-width: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; color: var(--fg); padding: 11px 12px; font: inherit; }
+.entrar input:focus { border-color: var(--accent); outline: 0; }
+.mis-nota { color: var(--muted); }
+.enlace { background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; cursor: pointer; }
+.pasos-ok { display: grid; gap: 8px; padding-left: 20px; margin: 0 0 22px; }

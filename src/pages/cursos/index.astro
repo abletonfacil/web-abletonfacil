@@ -1,0 +1,57 @@
+---
+import Base from "../../layouts/Base.astro";
+import CursoCard from "../../components/CursoCard.astro";
+import { listaCursos, listaPacks, cursos, euros, precioSuelto } from "../../data/cursos";
+---
+<Base title="Cursos · abletonfácil" description="Cursos de Ableton Live de abletonfacil: producción electrónica, groove y swing, estilos y técnicas. Con lecciones de muestra gratis.">
+  <main>
+    <div class="wrap hero" style="padding-block:40px 20px">
+      <h1>Cursos</h1>
+      <p class="lede">Cursos completos, paso a paso, con el mismo estilo que los reels. Cada uno tiene lecciones de muestra gratis: dale al play antes de decidir.</p>
+    </div>
+
+    <section class="block" style="border-top:0">
+      <div class="wrap">
+        <div class="cursos-grid">
+          {listaCursos.map((c) => <CursoCard {...c} nLecciones={c.lecciones.length} />)}
+        </div>
+      </div>
+    </section>
+
+    {listaPacks.map((p) => (
+      <section class="block" id={p.slug}>
+        <div class="wrap">
+          <div class="pack">
+            <div>
+              <span class="kind">Pack</span>
+              <h2>{p.titulo}</h2>
+              <p class="sub">{p.subtitulo}</p>
+              <ul class="pack-lista">
+                {p.cursos.map((s) => <li><a href={`/cursos/${s}`}>{cursos[s]?.titulo}</a> <span class="price tachado">{euros(cursos[s]?.precio ?? 0)}</span></li>)}
+              </ul>
+            </div>
+            <div class="caja-compra">
+              <span class="price grande">{euros(p.precio)}</span>
+              <span class="ahorro">En vez de {euros(precioSuelto(p))} por separado</span>
+              <button class="btn yellow ancho" type="button" data-comprar={p.slug}>Comprar el pack</button>
+              <span class="metodos">Tarjeta, PayPal, Apple Pay, Google Pay o a plazos</span>
+              {p.provisional && <span class="ejemplo">Precio provisional</span>}
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="block">
+      <div class="wrap ya-comprado">
+        <p>¿Ya tienes un curso?</p>
+        <a class="btn" href="/mis-cursos">Entrar en Mis cursos</a>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<script>
+  import { activarCompra } from "../../scripts/cursos";
+  activarCompra();
+</script>
