@@ -36,7 +36,7 @@ import { listaCursos, listaPacks, cursos, euros, precioSuelto } from "../../data
               <span class="price grande">{euros(p.precio)}</span>
               <span class="ahorro">En vez de {euros(precioSuelto(p))} por separado</span>
               <button class="btn yellow ancho" type="button" data-comprar={p.slug}>Comprar el pack</button>
-              <span class="metodos">Tarjeta, PayPal, Apple Pay, Google Pay o a plazos</span>
+              <span class="metodos">Tarjeta, Apple Pay, Google Pay o a plazos</span>
               {p.provisional && <span class="ejemplo">Precio provisional</span>}
             </div>
           </div>
