@@ -12,7 +12,7 @@ const gratis = c.lecciones.map((l, i) => ({ ...l, i })).filter((l) => l.gratis);
 const primera = gratis[0];
 const packsConEste = listaPacks.filter((p) => p.cursos.includes(c.slug));
 ---
-<Base title={`${c.titulo} · Cursos · abletonfácil`} description={c.subtitulo}>
+<Base title={`${c.titulo} · Cursos · abletonfácil`} description={c.subtitulo} sinKofi>
   <main class="curso" style={`--c:${c.color}`}>
     <div class="wrap curso-cab">
       <a class="crumb" href="/cursos">CURSOS ›</a>
@@ -82,8 +82,11 @@ const packsConEste = listaPacks.filter((p) => p.cursos.includes(c.slug));
 </Base>
 
 <script>
-  import { activarCompra, activarTemario } from "../../scripts/cursos";
+  import { activarCompra, activarTemario, verLeccion } from "../../scripts/cursos";
   activarCompra();
   const curso = location.pathname.split("/").filter(Boolean)[1];
   activarTemario(curso, (gratis) => gratis);
+  // Al entrar, la primera lección gratis ya está cargada (sin reproducirse): nada de caja vacía.
+  const primera = document.querySelector<HTMLElement>('[data-leccion][data-gratis="true"]');
+  if (primera) verLeccion(curso, Number(primera.dataset.leccion), primera.dataset.titulo || "", false);
 </script>
