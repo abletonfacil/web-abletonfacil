@@ -5,6 +5,7 @@ import Buscador from "../components/Buscador.astro";
 import ClipCard from "../components/ClipCard.astro";
 import { CATEGORIAS } from "../data/categorias";
 import { productosVisibles, MOSTRAR_EJEMPLOS, estiloImagen } from "../data/visibilidad";
+import * as G from "../utils/garabatos";
 
 const todas = await getCollection("fichas");
 const fichas = todas.map((f) => f.data).sort((a, b) => a.titulo.localeCompare(b.titulo));
@@ -22,15 +23,26 @@ const productosDestacados = productosVisibles.slice(0, 4);
 <Base title="abletonfácil · ¿Qué te pasa con Ableton?">
   <main id="inicio">
     <div class="wrap hero">
-      <h1>¿Qué te pasa con <em>Ableton</em>?</h1>
+      <div class="fondo-hero" aria-hidden="true"><div class="luz"></div><div class="tipo-gigante">Live</div></div>
+      <h1>¿Qué te pasa con <em>Ableton<Fragment set:html={G.subrayado(300)} /></em>?</h1>
       <p class="lede">Escribe el problema como lo dirías en voz alta. Te sale el vídeo, los pasos y lo que suele venir después.</p>
       <Buscador fichas={fichas} populares={populares} />
+      <div class="nota nota-buscar" aria-hidden="true"><Fragment set:html={G.flecha(90, 60)} /><span class="mano">escríbelo como se lo<br />dirías a un colega</span></div>
+    </div>
+
+    <!-- Cacharros en los márgenes (solo en pantallas anchas) -->
+    <div class="margenes" aria-hidden="true">
+      <figure class="cacharro izq" style="top:440px; --r:-5deg"><Fragment set:html={G.ns10()} /><figcaption class="mano">Suenan regular.<br />Por eso medio mundo<br />mezcla con ellos.</figcaption></figure>
+      <figure class="cacharro der" style="top:560px; --r:4deg"><Fragment set:html={G.minimoog()} /><figcaption class="mano">Tres osciladores<br />y ni un menú.</figcaption></figure>
     </div>
 
     <section class="block" id="problemas">
       <div class="wrap">
-        <h2>Problemas frecuentes</h2>
-        <p class="sub">Si no sabes ni qué buscar, empieza por aquí. Cada problema es un reel con su explicación.</p>
+        <div class="cab-seccion">
+          <h2><Fragment set:html={G.circulo(250, 60)} />Problemas frecuentes <span class="autor">los de siempre</span></h2>
+          <p class="sub">Si no sabes ni qué buscar, empieza por aquí. Cada problema es un reel con su explicación.</p>
+          <figure class="gar-sec" style="--r:5deg" aria-hidden="true"><Fragment set:html={G.mpc()} /><figcaption class="mano">16 pads y una pantallita.<br />Y salieron discos enteros.</figcaption></figure>
+        </div>
         <div class="tabs" id="tabs">
           <button class="tab" data-cat="all" aria-pressed="true"><i style="background:var(--fg)"></i>Todo</button>
           {Object.entries(CATEGORIAS).map(([clave, cat]) => (
@@ -48,6 +60,7 @@ const productosDestacados = productosVisibles.slice(0, 4);
               acceso={f.acceso}
               ejemplo={f.ejemplo}
               seed={i + 3}
+              grande={Boolean(f.video)}
             />
           ))}
         </div>
@@ -56,7 +69,10 @@ const productosDestacados = productosVisibles.slice(0, 4);
 
     <section class="block" id="tienda">
       <div class="wrap">
-        <h2>Tienda</h2>
+        <div class="cab-seccion">
+          <h2>Tienda <span class="autor">lo que uso yo</span></h2>
+          <figure class="gar-sec" style="--r:-4deg; top:-30px" aria-hidden="true"><Fragment set:html={G.tocadiscos()} /><figcaption class="mano">Antes de los samples,<br />esto.</figcaption></figure>
+        </div>
         <p class="sub">Racks, proyectos y MIDI que uso en los vídeos, más las lecciones largas. Se compran en Ko-fi.</p>
         <div class="shop">
           {productosDestacados.map(([clave, p]) => (
@@ -85,6 +101,7 @@ const productosDestacados = productosVisibles.slice(0, 4);
           <p><a class="chip" href="/sobre-mi">Saber más</a></p>
         </div>
         <div>
+          <figure class="gar-inline" aria-hidden="true"><Fragment set:html={G.cascos()} /><figcaption class="mano">Siempre al mismo volumen.<br />El oído engaña.</figcaption></figure>
           <div class="socials">
             <a class="btn" href="https://www.instagram.com/abletonfacil/" target="_blank" rel="noopener">Instagram</a>
             <a class="btn" href="https://www.tiktok.com/@abletonfacil" target="_blank" rel="noopener">TikTok</a>
