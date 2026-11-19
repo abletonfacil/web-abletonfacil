@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Caveat:wght@500;700&family=Instrument+Serif:ital@0;1&display=swap");
 
 :root {
   --bg: #1d1d1e;
@@ -21,6 +21,9 @@
   --f-display: "Inter Tight", "Inter", system-ui, sans-serif;
   --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --f-mano: "Caveat", cursive;
+  --f-autor: "Instrument Serif", Georgia, serif;
+  --boli: #9cc3ff;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -330,3 +333,119 @@ footer a:hover { color: var(--fg); }
 .mis-nota { color: var(--muted); }
 .enlace { background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; cursor: pointer; }
 .pasos-ok { display: grid; gap: 8px; padding-left: 20px; margin: 0 0 22px; }
+
+
+/* ================================================================
+   ESTILO CUADERNO (19 nov): el libro llevado a la web.
+   Papel, sombras de objeto, notas a mano y garabatos en los márgenes.
+   ================================================================ */
+html, body { overflow-x: clip; }
+body {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .055 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 220px 220px, 64px 64px;
+}
+.gar { overflow: visible; }
+.mano { font-family: var(--f-mano); color: var(--boli); font-size: 23px; line-height: 1.05; font-weight: 500; }
+.autor { font-family: var(--f-autor); font-style: italic; font-weight: 400; color: var(--accent); letter-spacing: 0; }
+
+/* Portada: titular con fondo «Live» gigante */
+.hero { position: relative; padding-top: 70px; }
+.hero > :not(.fondo-hero) { position: relative; z-index: 1; }
+.fondo-hero { position: absolute; inset: -40px -18vw 0 -18vw; z-index: 0; pointer-events: none; overflow: hidden; }
+.fondo-hero .luz { position: absolute; left: 14%; top: 4%; width: 52%; height: 80%; background: radial-gradient(closest-side, rgba(232,220,60,.12), transparent 70%); filter: blur(10px); }
+.tipo-gigante { position: absolute; right: 13%; top: 6%; font-family: var(--f-display); font-weight: 900; font-size: 360px; line-height: .8; letter-spacing: -0.06em; color: transparent; -webkit-text-stroke: 2px rgba(236,236,234,.12); transform: rotate(-4deg); }
+.tipo-gigante::after { content: "Live"; position: absolute; left: 10px; top: 10px; -webkit-text-stroke: 2px rgba(232,220,60,.18); }
+.hero h1 em { position: relative; display: inline-block; }
+.hero h1 em .subr { position: absolute; left: -6px; bottom: -14px; width: 108%; height: 24px; color: var(--accent); }
+.hero p.lede { margin-left: 24px; }
+.hero .popular { margin-left: 18px; }
+.hero > .postit { position: absolute; z-index: 2; right: 16px; top: 64px; width: 250px; }
+.postit { display: block; text-decoration: none; color: inherit; transform: rotate(2.2deg); background: #2f2f30; border-radius: 4px; padding: 26px 18px 16px; box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 18px 30px -12px rgba(0,0,0,.7), 0 4px 8px rgba(0,0,0,.35); transition: transform .2s; }
+.postit:hover { transform: rotate(0) translateY(-3px); }
+.postit::before { content: ""; position: absolute; top: -12px; left: 50%; width: 96px; height: 26px; transform: translateX(-50%) rotate(-3deg); background: rgba(232,220,60,.55); box-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.postit .lab { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em; color: var(--accent); text-transform: uppercase; }
+.postit p { margin: 8px 0 10px; font-size: 14.5px; }
+.postit .mano { color: var(--accent); font-size: 21px; }
+.hero > .nota { position: absolute; z-index: 2; pointer-events: none; }
+.nota-buscar { left: 640px; top: 268px; transform: rotate(-4deg); display: flex; gap: 6px; align-items: flex-start; }
+.nota-buscar .gar { width: 90px; height: 60px; transform: scaleX(-1) rotate(10deg); margin-top: 12px; color: var(--boli); }
+.nota-popular { right: 20px; bottom: -34px; margin: 0; font-size: 21px; color: #8a8a84; transform: rotate(-3deg); max-width: 220px; }
+
+/* Cacharros en los márgenes */
+.margenes { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+main#inicio { position: relative; }
+.cacharro { position: absolute; margin: 0; color: #8a8a84; opacity: .8; transform: rotate(var(--r, 0deg)); text-align: center; width: 160px; }
+.cacharro.izq { left: max(6px, calc(50% - 540px - 190px)); }
+.cacharro.der { right: max(6px, calc(50% - 540px - 190px)); }
+.cacharro .gar { max-width: 100%; height: auto; }
+.cacharro figcaption { color: #8a8a84; font-size: 19px; margin-top: 4px; }
+@media (max-width: 1360px) { .margenes { display: none; } }
+
+/* Cabeceras de sección: un pelín torcidas, con la voz del autor */
+.cab-seccion { position: relative; }
+section.block h2 { position: relative; display: inline-block; transform: rotate(-1.2deg); transform-origin: left center; }
+section.block h2 .circ { position: absolute; left: -18px; top: -12px; width: 290px; height: 60px; color: var(--accent); opacity: .85; }
+section.block h2 .autor { font-size: 28px; margin-left: 14px; }
+section.block p.sub { margin-left: 24px; }
+
+/* Tarjetas como objetos: sombra real y alguna un pelín girada */
+.clips { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-flow: dense; gap: 18px 16px; }
+.clip { position: relative; overflow: visible; box-shadow: 0 1px 0 rgba(255,255,255,.05) inset, 0 14px 22px -14px rgba(0,0,0,.85), 0 3px 6px rgba(0,0,0,.35); transition: transform .2s, box-shadow .2s; }
+.clip .head { border-radius: 6px 6px 0 0; }
+.clip .body { border-color: #333334; }
+.clip:nth-child(7n+3) { transform: rotate(-.5deg); }
+.clip:nth-child(7n+6) { transform: rotate(.4deg); }
+.clip:hover { transform: translateY(-4px) rotate(0deg); box-shadow: 0 24px 30px -16px rgba(0,0,0,.9), 0 6px 10px rgba(0,0,0,.35); }
+.clip:nth-child(9n+2)::before { content: ""; position: absolute; top: -9px; right: 18px; width: 58px; height: 20px; transform: rotate(6deg); background: rgba(236,236,234,.16); z-index: 1; }
+.clip svg.wave { width: 100%; display: block; }
+/* Las fichas con reel, en grande */
+.clip.grande { grid-column: span 2; grid-row: span 2; }
+.clip.grande .head { font-size: 12.5px; padding: 8px 14px; }
+.clip.grande .body { padding: 18px 20px 20px; gap: 14px; }
+.clip.grande .body strong { font-size: 28px; line-height: 1.08; letter-spacing: -0.02em; max-width: 16ch; }
+.clip.grande .wave { height: 64px; opacity: .8; }
+.clip .mano-dest { font-family: var(--f-mano); font-size: 23px; color: var(--boli); transform: rotate(-2deg); display: inline-block; align-self: flex-start; }
+.clip .ver { margin-top: auto; display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px; color: var(--fg); }
+.clip .ver i { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; color: #141414; font-style: normal; font-size: 13px; box-shadow: 0 6px 16px -6px rgba(232,220,60,.6); }
+.clip.grande .foot { margin-top: 0; }
+
+/* Tienda: productos como objetos */
+.prod { box-shadow: 0 14px 22px -14px rgba(0,0,0,.85), 0 3px 6px rgba(0,0,0,.35); }
+.shop .prod:nth-child(3) { transform: rotate(-.4deg); }
+
+/* El resto de páginas: los paneles también son objetos */
+.visor-lista, .rep-pantalla, .caja-compra, .curso-card { box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 18px 30px -18px rgba(0,0,0,.85), 0 3px 8px rgba(0,0,0,.3); }
+
+@media (max-width: 1100px) {
+  .hero > .postit { position: relative; right: auto; top: auto; width: auto; max-width: 420px; margin: 34px 6px 6px; transform: rotate(-1deg); }
+  .hero > .nota { display: none; }
+}
+@media (max-width: 900px) {
+  .clips { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tipo-gigante { font-size: 220px; right: -10%; top: 2%; }
+}
+@media (max-width: 600px) {
+  .clips { grid-template-columns: 1fr; }
+  .clip.grande { grid-column: span 1; grid-row: span 1; }
+  .clip.grande .body strong { font-size: 23px; }
+  .hero p.lede, .hero .popular, section.block p.sub { margin-left: 0; }
+  section.block h2 .circ { display: none; }
+  section.block h2 .autor { display: block; margin: 2px 0 0; }
+}
+@media (prefers-reduced-motion: reduce) { .clip, .postit { transition: none; } }
+
+/* Dibujos a boli en cada página (prop «garabatos» de Base.astro) */
+.capa-gar { position: relative; height: 0; z-index: 0; pointer-events: none; }
+.gar-pag { position: absolute; right: 16px; width: 190px; margin: 0; color: #8a8a84; opacity: .8; text-align: center; transform: rotate(var(--r, -4deg)); }
+.gar-pag .gar, .gar-inline .gar { max-width: 100%; height: auto; }
+.gar-pag figcaption, .gar-inline figcaption { color: #8a8a84; font-size: 19px; margin-top: 4px; }
+.gar-inline { margin: 0 0 18px; width: 170px; color: #8a8a84; opacity: .8; text-align: center; transform: rotate(5deg); }
+@media (max-width: 900px) { .capa-gar { display: none; } }
+@media (max-width: 720px) { .gar-inline { display: none; } }
+.gar-sec { position: absolute; right: 10px; top: -86px; width: 130px; margin: 0; color: #8a8a84; opacity: .8; text-align: center; transform: rotate(var(--r, 0deg)); pointer-events: none; }
+.gar-sec .gar { max-width: 100%; height: auto; }
+.gar-sec figcaption { color: #8a8a84; font-size: 18px; margin-top: 2px; white-space: nowrap; }
+@media (max-width: 760px) { .gar-sec { display: none; } }
+@media (max-width: 1200px) { .tipo-gigante { right: 4%; top: 8%; font-size: 300px; } .hero p.lede { position: relative; } }
