@@ -13,8 +13,9 @@ export const flecha = (w = 90, h = 60) =>
 export const subrayado = (w = 300) =>
   svg(w, 24, `<path d="M4 14 C ${w * 0.25} 4, ${w * 0.5} 20, ${w * 0.75} 10 S ${w - 30} 8, ${w - 4} 12"/><path d="M${w * 0.15} 20 C ${w * 0.4} 14, ${w * 0.7} 22, ${w * 0.9} 16" stroke-width="1.4" opacity=".7"/>`, "subr");
 
+// Círculo a mano que rodea un texto entero (se estira al tamaño del texto)
 export const circulo = (w = 240, h = 60) =>
-  svg(w, h, `<path d="M${w * 0.55} 6 C ${w * 0.95} 4, ${w - 4} ${h * 0.6}, ${w * 0.6} ${h - 6} S 6 ${h * 0.8}, 8 ${h * 0.45} S ${w * 0.35} 3, ${w * 0.7} 9"/>`, "circ");
+  svg(w, h, `<path d="M${w * 0.5} 4 C ${w * 0.9} 2, ${w - 2} ${h * 0.3}, ${w - 4} ${h * 0.55} C ${w - 6} ${h * 0.85}, ${w * 0.75} ${h - 3}, ${w * 0.45} ${h - 4} C ${w * 0.15} ${h - 5}, 4 ${h * 0.75}, 4 ${h * 0.5} C 4 ${h * 0.2}, ${w * 0.2} 5, ${w * 0.55} 6 C ${w * 0.7} 7, ${w * 0.8} 9, ${w * 0.86} 13" vector-effect="non-scaling-stroke"/>`, "circ").replace("<svg ", '<svg preserveAspectRatio="none" ');
 
 export const perilla = () => {
   let marcas = "";
