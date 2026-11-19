@@ -17,12 +17,12 @@
       {
         "titulo": "Primeros pasos",
         "video": "d037add5-2736-4f72-b50f-1b69cb15f463",
-        "gratis": false
+        "gratis": true
       },
       {
         "titulo": "Creando el bombo",
         "video": "daf5ebe6-b9d3-4b7f-bdf1-854c0b91f8c2",
-        "gratis": true
+        "gratis": false
       },
       {
         "titulo": "La caja",
@@ -40,7 +40,7 @@
         "gratis": true
       },
       {
-        "titulo": "Shuffle y ajuste del break al tempo",
+        "titulo": "Expresión Shuffle y ajuste del Break al tempo",
         "video": "acfdb4f2-f1bf-4acc-b737-e68f51d40aeb",
         "gratis": false
       },
