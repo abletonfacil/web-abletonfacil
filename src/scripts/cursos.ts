@@ -53,6 +53,10 @@ export async function verLeccion(curso: string, n: number, titulo: string) {
   document.querySelectorAll("[data-leccion]").forEach((el) =>
     el.toggleAttribute("aria-current", Number((el as HTMLElement).dataset.leccion) === n)
   );
+  // En el móvil la lista va debajo del vídeo: al elegir una lección, sube al vídeo.
+  if (window.matchMedia("(max-width: 900px)").matches) {
+    pantalla.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   const cabeceras: Record<string, string> = {};
   const sesion = supabase ? (await supabase.auth.getSession()).data.session : null;
@@ -69,7 +73,7 @@ export async function verLeccion(curso: string, n: number, titulo: string) {
   } catch {
     pantalla.innerHTML = `<span class="rep-msg">Vídeo en camino</span>`;
   }
-  caja.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  pantalla.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 /** Clic en una lección del temario. */
