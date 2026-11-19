@@ -311,6 +311,7 @@ footer a:hover { color: var(--fg); }
 .caja-pack { display: grid; gap: 2px; padding: 14px 16px; border: 1px dashed var(--line); border-radius: 10px; text-decoration: none; }
 .caja-pack:hover { border-color: var(--accent); }
 .caja-pack .kind, .pack .kind { font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.pack .kind { display: block; margin-bottom: 6px; }
 .caja-pack span:last-child { color: var(--muted); font-size: 13px; }
 .ya-comprado-mini { margin: 0; color: var(--muted); font-size: 14px; }
 
