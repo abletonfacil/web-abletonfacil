@@ -1,9 +1,9 @@
 {
   "pack-completo": {
     "titulo": "Pack completo",
-    "subtitulo": "Todos los cursos de abletonfacil, y los que salgan dentro del pack, a precio de pack.",
+    "subtitulo": "Los tres cursos juntos, a precio de pack.",
     "precio": 99,
     "cursos": ["produccion-electronica", "groove-y-swing", "estilos-y-tecnicas"],
-    "provisional": true
+    "provisional": false
   }
 }
