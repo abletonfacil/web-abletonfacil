@@ -66,7 +66,9 @@ export async function verLeccion(curso: string, n: number, titulo: string, mover
     const r = await fetch(`/api/video?curso=${curso}&leccion=${n}`, { headers: cabeceras });
     const d = await r.json().catch(() => ({}));
     if (d.url) {
-      pantalla.innerHTML = `<iframe src="${d.url}" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+      // Al entrar en la página la lección se carga quieta; al elegirla, arranca sola.
+      const src = `${d.url}${d.url.includes("?") ? "&" : "?"}autoplay=${moverPagina ? "true" : "false"}`;
+      pantalla.innerHTML = `<iframe src="${src}" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
       return;
     }
     pantalla.innerHTML = `<span class="rep-msg">${d.error || "Vídeo en camino"}</span>`;
