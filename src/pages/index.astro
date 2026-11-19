@@ -27,6 +27,7 @@ const productosDestacados = productosVisibles.slice(0, 4);
       <h1>¿Qué te pasa con <em>Ableton<Fragment set:html={G.subrayado(300)} /></em>?</h1>
       <p class="lede">Escribe el problema como lo dirías en voz alta. Te sale el vídeo, los pasos y lo que suele venir después.</p>
       <Buscador fichas={fichas} populares={populares} />
+      <figure class="gar-hero" style="--r:5deg" aria-hidden="true"><Fragment set:html={G.mpc()} /></figure>
       <div class="nota nota-buscar" aria-hidden="true"><Fragment set:html={G.flecha(90, 60)} /><span class="mano">escríbelo como se lo<br />dirías a un colega</span></div>
     </div>
 
@@ -40,7 +41,6 @@ const productosDestacados = productosVisibles.slice(0, 4);
       <div class="wrap">
         <div class="cab-seccion">
           <h2><span class="rodea">Problemas frecuentes<Fragment set:html={G.circulo(250, 60)} /></span></h2>
-          <figure class="gar-sec" style="--r:5deg" aria-hidden="true"><Fragment set:html={G.mpc()} /><figcaption class="mano">16 pads.<br />Discos enteros.</figcaption></figure>
         </div>
         <div class="tabs" id="tabs">
           <button class="tab" data-cat="all" aria-pressed="true"><i style="background:var(--fg)"></i>Todo</button>
