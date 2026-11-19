@@ -44,7 +44,7 @@ export function activarCompra() {
 }
 
 /** Pone en el reproductor la lección n del curso. */
-export async function verLeccion(curso: string, n: number, titulo: string) {
+export async function verLeccion(curso: string, n: number, titulo: string, moverPagina = true) {
   const caja = document.querySelector<HTMLElement>("[data-reproductor]");
   if (!caja) return;
   caja.querySelector(".rep-titulo")!.textContent = titulo;
@@ -54,7 +54,7 @@ export async function verLeccion(curso: string, n: number, titulo: string) {
     el.toggleAttribute("aria-current", Number((el as HTMLElement).dataset.leccion) === n)
   );
   // En el móvil la lista va debajo del vídeo: al elegir una lección, sube al vídeo.
-  if (window.matchMedia("(max-width: 900px)").matches) {
+  if (moverPagina && window.matchMedia("(max-width: 900px)").matches) {
     pantalla.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -73,7 +73,7 @@ export async function verLeccion(curso: string, n: number, titulo: string) {
   } catch {
     pantalla.innerHTML = `<span class="rep-msg">Vídeo en camino</span>`;
   }
-  pantalla.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  if (moverPagina) pantalla.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 /** Clic en una lección del temario. */
