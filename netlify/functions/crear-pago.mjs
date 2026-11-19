@@ -39,9 +39,11 @@ export default async (req) => {
     ],
     allow_promotion_codes: true, // casilla para cupones de descuento
     // Managed Payments: Stripe es el vendedor oficial y se encarga del IVA,
-    // el fraude y las reclamaciones (+3,5 % por venta). Para volver a llevar
-    // tú el IVA, pon STRIPE_MANAGED_PAYMENTS=no en Netlify.
-    ...(process.env.STRIPE_MANAGED_PAYMENTS === "no" ? {} : { managed_payments: { enabled: true } }),
+    // el fraude y las reclamaciones (+3,5 % por venta), pero no admite PayPal
+    // ni pago a plazos en España. Con STRIPE_MANAGED_PAYMENTS=no lo apagamos
+    // a propósito (desde 2026 Stripe lo activa solo en algunas cuentas si no
+    // se le dice que no) y salen los métodos del panel: PayPal, Klarna, SeQura…
+    managed_payments: { enabled: process.env.STRIPE_MANAGED_PAYMENTS !== "no" },
     metadata: { compra: slug },
     success_url: `${web}/compra-ok?s={CHECKOUT_SESSION_ID}`,
     cancel_url: `${web}/cursos/${a.tipo === "pack" ? "" : slug}`,
