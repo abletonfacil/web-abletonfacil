@@ -336,12 +336,12 @@
       {
         "titulo": "Técnicas: J Dilla y los ritmos borrachos",
         "video": "934d8c93-b035-47f2-ad7a-ca0a7e319c94",
-        "gratis": true
+        "gratis": false
       },
       {
         "titulo": "Técnicas: notas fantasma",
         "video": "4ddcd11c-0a1b-41c9-817a-6618f9927dcd",
-        "gratis": false
+        "gratis": true
       },
       {
         "titulo": "Técnicas: trocear un break",
