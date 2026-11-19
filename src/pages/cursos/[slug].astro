@@ -38,36 +38,44 @@ const packsConEste = listaPacks.filter((p) => p.cursos.includes(c.slug));
       </section>
     ) : (
       <div class="wrap curso-cuerpo">
-        <div class="curso-izq">
+        <div class="visor">
           <Reproductor
             titulo={primera ? `${primera.i + 1}. ${primera.titulo}` : ""}
             mensaje={primera ? "Dale al play en una lección gratis" : "Vídeo de muestra en camino"}
           />
-          <h2 class="h">Temario</h2>
-          <Temario lecciones={c.lecciones} />
+          <div class="visor-lista">
+            <div class="visor-scroll">
+              <p class="visor-cab">Temario <span>{c.lecciones.length} lecciones</span></p>
+              <Temario lecciones={c.lecciones} />
+            </div>
+          </div>
         </div>
 
-        <aside class="curso-der">
-          <div class="caja-compra" id="comprar">
-            <span class="price grande">{euros(c.precio)}</span>
-            <button class="btn yellow ancho" type="button" data-comprar={c.slug}>Comprar el curso</button>
-            <span class="metodos">Tarjeta, PayPal, Apple Pay, Google Pay o a plazos. ¿Tienes un cupón? Lo pones al pagar.</span>
+        <div class="compra-fila">
+          <div class="caja-compra ancha" id="comprar">
+            <div class="cc-precio">
+              <span class="price grande">{euros(c.precio)}</span>
+              <button class="btn yellow ancho" type="button" data-comprar={c.slug}>Comprar el curso</button>
+              <span class="metodos">Tarjeta, PayPal, Apple Pay, Google Pay o a plazos. ¿Tienes un cupón? Lo pones al pagar.</span>
+            </div>
             <ul class="incluye">
               <li>{c.lecciones.length} lecciones en vídeo</li>
               <li>Acceso para siempre, a tu ritmo</li>
               <li>Entras con tu correo, sin contraseñas</li>
+              {c.provisional && <li class="ejemplo">Precio y temario provisionales</li>}
             </ul>
-            {c.provisional && <span class="ejemplo">Precio y temario provisionales</span>}
           </div>
-          {packsConEste.map((p) => (
-            <a class="caja-pack" href={`/cursos#${p.slug}`}>
-              <span class="kind">Pack</span>
-              <strong>{p.titulo}: {euros(p.precio)}</strong>
-              <span>Este curso y {p.cursos.length - 1} más</span>
-            </a>
-          ))}
-          <p class="ya-comprado-mini">¿Ya lo tienes? <a href={`/mis-cursos?curso=${c.slug}`}>Entra en Mis cursos</a></p>
-        </aside>
+          <aside class="compra-extra">
+            {packsConEste.map((p) => (
+              <a class="caja-pack" href={`/cursos#${p.slug}`}>
+                <span class="kind">Pack</span>
+                <strong>{p.titulo}: {euros(p.precio)}</strong>
+                <span>Este curso y {p.cursos.length - 1} más</span>
+              </a>
+            ))}
+            <p class="ya-comprado-mini">¿Ya lo tienes? <a href={`/mis-cursos?curso=${c.slug}`}>Entra en Mis cursos</a></p>
+          </aside>
+        </div>
       </div>
     )}
   </main>
