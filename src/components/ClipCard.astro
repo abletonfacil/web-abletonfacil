@@ -12,13 +12,11 @@ interface Props {
   acceso: "gratis" | "pago";
   ejemplo?: boolean;
   seed?: number;
-  /** true = tarjeta grande (las fichas con reel) */
-  grande?: boolean;
 }
-const { slug, titulo, categoria, nivel, video, acceso, ejemplo, seed = 1, grande = false } = Astro.props;
+const { slug, titulo, categoria, nivel, video, acceso, ejemplo, seed = 1 } = Astro.props;
 const cat = CATEGORIAS[categoria];
 ---
-<a class:list={["clip", { grande }]} href={`/problema/${slug}`} data-cat={categoria}>
+<a class="clip" href={`/problema/${slug}`} data-cat={categoria}>
   <span class="head" style={`background:${cat.color}`}>
     <span>{cat.nombre}</span>
     <span>{acceso === "pago" ? "€" : ""}</span>
@@ -26,9 +24,7 @@ const cat = CATEGORIAS[categoria];
   <span class="body">
     {ejemplo && <span class="pill borrador fuerte">Borrador</span>}
     <strong>{titulo}</strong>
-    {grande && <span class="mano-dest">✱ con su reel</span>}
     <span style={`color:${cat.color}`} set:html={wave(seed)} />
     <span class="foot"><Pills nivel={nivel} video={video} acceso={acceso} /></span>
-    {grande && <span class="ver"><i aria-hidden="true">▶</i>Ver el reel y los pasos</span>}
   </span>
 </a>
