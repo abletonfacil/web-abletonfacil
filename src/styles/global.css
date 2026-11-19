@@ -384,10 +384,11 @@ main#inicio { position: relative; }
 @media (max-width: 1360px) { .margenes { display: none; } }
 
 /* Cabeceras de sección: un pelín torcidas, con la voz del autor */
-.cab-seccion { position: relative; }
+.cab-seccion { position: relative; margin-bottom: 22px; }
 section.block h2 { position: relative; display: inline-block; transform: rotate(-1.2deg); transform-origin: left center; }
-section.block h2 .circ { position: absolute; left: -18px; top: -12px; width: 290px; height: 60px; color: var(--accent); opacity: .85; }
-section.block h2 .autor { font-size: 28px; margin-left: 14px; }
+section.block h2 .rodea { position: relative; display: inline-block; }
+section.block h2 .rodea .circ { position: absolute; left: -12px; top: -12px; width: calc(100% + 26px); height: calc(100% + 24px); color: var(--accent); opacity: .85; }
+section.block h2 .autor { font-size: 28px; margin-left: 24px; }
 section.block p.sub { margin-left: 24px; }
 
 /* Tarjetas como objetos: sombra real y alguna un pelín girada */
@@ -420,7 +421,6 @@ section.block p.sub { margin-left: 24px; }
 
 @media (max-width: 1100px) {
   .hero > .postit { position: relative; right: auto; top: auto; width: auto; max-width: 420px; margin: 34px 6px 6px; transform: rotate(-1deg); }
-  .hero > .nota { display: none; }
 }
 @media (max-width: 900px) {
   .clips { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -444,8 +444,13 @@ section.block p.sub { margin-left: 24px; }
 .gar-inline { margin: 0 0 18px; width: 170px; color: #8a8a84; opacity: .8; text-align: center; transform: rotate(5deg); }
 @media (max-width: 900px) { .capa-gar { display: none; } }
 @media (max-width: 720px) { .gar-inline { display: none; } }
-.gar-sec { position: absolute; right: 10px; top: -86px; width: 130px; margin: 0; color: #8a8a84; opacity: .8; text-align: center; transform: rotate(var(--r, 0deg)); pointer-events: none; }
+.gar-sec { position: absolute; right: 10px; top: -118px; width: 112px; margin: 0; color: #8a8a84; opacity: .8; text-align: center; transform: rotate(var(--r, 0deg)); pointer-events: none; }
 .gar-sec .gar { max-width: 100%; height: auto; }
 .gar-sec figcaption { color: #8a8a84; font-size: 18px; margin-top: 2px; white-space: nowrap; }
 @media (max-width: 760px) { .gar-sec { display: none; } }
 @media (max-width: 1200px) { .tipo-gigante { right: 4%; top: 8%; font-size: 300px; } .hero p.lede { position: relative; } }
+@media (max-width: 900px) {
+  .hero > .nota-buscar { position: relative; left: auto; right: auto; top: auto; margin: 14px 0 0 auto; width: max-content; transform: rotate(-3deg); }
+  .hero > .nota-buscar .gar { display: none; }
+}
+@media (min-width: 901px) and (max-width: 960px) { .hero > .nota-buscar { left: auto; right: 0; } }
