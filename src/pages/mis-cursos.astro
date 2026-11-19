@@ -32,11 +32,15 @@ const conectado = Boolean(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env
     <section data-paso="curso" class="oculto">
       <a class="crumb" href="/mis-cursos">MIS CURSOS ›</a>
       <h2 class="mis-h2" data-curso-titulo></h2>
-      <div class="curso-cuerpo solo">
-        <div class="curso-izq">
+      <div class="curso-cuerpo">
+        <div class="visor">
           <Reproductor />
-          <h2 class="h">Lecciones</h2>
-          <ol class="temario" data-temario></ol>
+          <div class="visor-lista">
+            <div class="visor-scroll">
+              <p class="visor-cab">Lecciones <span data-num-lecciones></span></p>
+              <ol class="temario" data-temario></ol>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -118,6 +122,7 @@ const conectado = Boolean(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env
         <span class="num">${String(i + 1).padStart(2, "0")}</span><span class="tit">${esc(l.titulo)}</span>
         <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span></button></li>`)
       .join("");
+    $("[data-num-lecciones]").textContent = `${c.lecciones.length} lecciones`;
     activarTemario(slug, () => true);
     mostrar("curso");
     if (c.lecciones.length) verLeccion(slug, 0, `1. ${c.lecciones[0].titulo}`);
