@@ -8,7 +8,7 @@ video: "https://www.instagram.com/p/De_RoYHtNuC/"
 otras_formas: ["bombo y bajo se pisan", "bajo tapa el bombo", "graves sucios", "kick y bass", "low end embarrado", "sidechain bajo"]
 relacionadas: [sidechain, bajo-movil, mezcla-apagada]
 producto: rackBajoSaturacion
-ejemplo: true
+ejemplo: false
 ---
 
 Decide quién manda en los subgraves, hazle hueco al otro con EQ y que el bajo se aparte cuando suena el bombo.
