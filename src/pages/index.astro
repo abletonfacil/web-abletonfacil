@@ -4,10 +4,10 @@ import Base from "../layouts/Base.astro";
 import Buscador from "../components/Buscador.astro";
 import ClipCard from "../components/ClipCard.astro";
 import { CATEGORIAS } from "../data/categorias";
-import { productosVisibles, MOSTRAR_EJEMPLOS, estiloImagen } from "../data/visibilidad";
+import { productosVisibles, fichaVisible, MOSTRAR_EJEMPLOS, estiloImagen } from "../data/visibilidad";
 import * as G from "../utils/garabatos";
 
-const todas = await getCollection("fichas");
+const todas = await getCollection("fichas", fichaVisible);
 const fichas = todas.map((f) => f.data).sort((a, b) => a.titulo.localeCompare(b.titulo));
 
 // Lo más buscado: de momento, las que tienen vídeo real primero.
@@ -44,7 +44,7 @@ const productosDestacados = productosVisibles.slice(0, 4);
         </div>
         <div class="tabs" id="tabs">
           <button class="tab" data-cat="all" aria-pressed="true"><i style="background:var(--fg)"></i>Todo</button>
-          {Object.entries(CATEGORIAS).map(([clave, cat]) => (
+          {Object.entries(CATEGORIAS).filter(([clave]) => fichas.some((f) => f.categoria === clave)).map(([clave, cat]) => (
             <button class="tab" data-cat={clave} aria-pressed="false"><i style={`background:${cat.color}`}></i>{cat.nombre}</button>
           ))}
         </div>
