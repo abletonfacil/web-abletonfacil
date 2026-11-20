@@ -5,10 +5,10 @@ import Pills from "../../components/Pills.astro";
 import VideoEmbed from "../../components/VideoEmbed.astro";
 import HitRow from "../../components/HitRow.astro";
 import { CATEGORIAS } from "../../data/categorias";
-import { productoVisible, estiloImagen } from "../../data/visibilidad";
+import { productoVisible, estiloImagen, fichaVisible } from "../../data/visibilidad";
 
 export async function getStaticPaths() {
-  const fichas = await getCollection("fichas");
+  const fichas = await getCollection("fichas", fichaVisible);
   return fichas.map((entry) => ({
     params: { slug: entry.data.slug },
     props: { entry, todas: fichas },
