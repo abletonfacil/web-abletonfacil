@@ -34,7 +34,7 @@ export function comprasQueDanAcceso(curso) {
 }
 
 /** Enlace firmado y temporal al reproductor de Bunny Stream. */
-export function enlaceBunny(videoId, horas = 6) {
+export function enlaceBunny(videoId, horas = 2) {
   const biblioteca = process.env.BUNNY_LIBRARY_ID;
   const clave = process.env.BUNNY_TOKEN_KEY;
   if (!biblioteca) throw new Error("Falta configurar Bunny");
