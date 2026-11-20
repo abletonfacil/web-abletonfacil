@@ -1,14 +1,14 @@
 ---
-const current = Astro.url.pathname;
+import { CURSOS_ACTIVOS } from "../data/visibilidad"; const current = Astro.url.pathname;
 ---
 <header class="top">
   <div class="wrap">
     <a class="logo" href="/"><span class="dot"></span>ableton<b>fácil</b></a>
     <nav class="links">
       <a href="/#problemas" class="opt">Problemas</a>
-      <a href="/cursos" aria-current={current.startsWith("/cursos") ? "page" : undefined}>Cursos</a>
+      {CURSOS_ACTIVOS && <a href="/cursos" aria-current={current.startsWith("/cursos") ? "page" : undefined}>Cursos</a>}
       <a href="/tienda" aria-current={current.startsWith("/tienda") ? "page" : undefined}>Tienda</a>
-      <a href="/mis-cursos" aria-current={current.startsWith("/mis-cursos") ? "page" : undefined}>Mis cursos</a>
+      {CURSOS_ACTIVOS && <a href="/mis-cursos" aria-current={current.startsWith("/mis-cursos") ? "page" : undefined}>Mis cursos</a>}
       <a href="/sobre-mi" class="opt" aria-current={current.startsWith("/sobre-mi") ? "page" : undefined}>Sobre mí</a>
     </nav>
   </div>
