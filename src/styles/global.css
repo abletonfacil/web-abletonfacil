@@ -487,3 +487,13 @@ main:not(#inicio) section.block p.sub { margin-left: 0; }
 /* Los garabatos van por detrás de las tarjetas y del reproductor */
 .cacharro { z-index: 0; pointer-events: none; }
 .curso-card, .visor, .caja-compra { position: relative; z-index: 1; }
+/* Ficha dentro de un panel con margen interior, y pasos con más aire junto al número */
+.sheet-card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 40px 48px; }
+.contenido ol li { padding-left: 56px; min-height: 28px; }
+.contenido ol li::before { width: 30px; height: 30px; font-size: 13px; }
+@media (max-width: 640px) { .sheet-card { padding: 24px 20px; } .contenido ol li { padding-left: 48px; } }
+/* Ficha dentro de un panel con margen interior, y pasos con más aire junto al número */
+.sheet-card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 40px 48px; }
+.contenido ol li { padding-left: 56px; min-height: 28px; }
+.contenido ol li::before { width: 30px; height: 30px; font-size: 13px; }
+@media (max-width: 640px) { .sheet-card { padding: 24px 20px; } .contenido ol li { padding-left: 48px; } }
