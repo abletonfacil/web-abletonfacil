@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
-import ClipCard from "../../components/ClipCard.astro";
+import ClipCard from "../../components/ClipCard.astro"; import { fichaVisible } from "../../data/visibilidad";
 import { CATEGORIAS, type CategoriaKey } from "../../data/categorias";
 
 export async function getStaticPaths() {
@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 
 const { categoria } = Astro.params as { categoria: CategoriaKey };
 const cat = CATEGORIAS[categoria];
-const todas = await getCollection("fichas");
+const todas = await getCollection("fichas", fichaVisible);
 const fichas = todas
   .map((f) => f.data)
   .filter((f) => f.categoria === categoria)
