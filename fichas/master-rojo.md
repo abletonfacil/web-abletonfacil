@@ -4,7 +4,7 @@ slug: master-rojo
 categoria: mezcla
 nivel: Principiante
 acceso: gratis
-video: "https://www.instagram.com/p/DeoHhGXNydg/"
+video: ""
 otras_formas: ["clipping", "satura el master", "se pasa de 0", "distorsiona la salida", "picos", "etapa de ganancia", "gain staging", "niveles", "volumen de las pistas"]
 relacionadas: [mezcla-apagada, bombo-bajo, sidechain]
 producto: saturdayNight
