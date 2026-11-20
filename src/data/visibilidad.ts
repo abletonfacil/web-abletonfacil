@@ -63,4 +63,4 @@ export const SOLO_FICHAS_CON_REEL = true;
 export const fichaVisible = ({ data }: { data: { video?: string } }) => !SOLO_FICHAS_CON_REEL || !!data.video;
 // Cursos de pago: ocultos hasta tener el alta, la clave real de Stripe y las condiciones de compra.
 // Con CURSOS_ACTIVOS = false no salen en el menú y sus páginas llevan a la portada.
-export const CURSOS_ACTIVOS = false;
+export const CURSOS_ACTIVOS = true;
