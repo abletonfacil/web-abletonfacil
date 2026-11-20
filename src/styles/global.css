@@ -464,3 +464,23 @@ section.block p.sub { margin-left: 24px; }
 .video { width: 100%; max-height: none; }
 .video-live { width: 100%; max-width: 400px; }
 .video-live .instagram-media { max-width: 400px !important; margin: 0 auto !important; }
+/* Aire y orden en las fichas y en las cabeceras de páginas interiores (la portada no se toca) */
+.sheet-page { padding-block: 48px 96px; }
+.sheet-card { margin-inline: auto; max-width: 700px; }
+.sheet-card .bar { margin-bottom: 22px; }
+.sheet-card h1 { margin-bottom: 18px; line-height: 1.12; }
+.sheet-card .foot { margin-bottom: 30px !important; }
+.sheet-card .video, .sheet-card .video-live { margin-bottom: 38px; }
+.sheet-card section { margin-bottom: 44px; }
+.contenido { margin-bottom: 44px; line-height: 1.65; }
+.contenido > p:first-child { margin-bottom: 34px; line-height: 1.55; }
+.contenido h2, .sheet-card h2.h { margin-bottom: 16px; }
+.contenido ol { gap: 18px; }
+.contenido ol li { padding-left: 44px; }
+.rel { gap: 12px; }
+.sheet-card .hit { padding: 16px 16px 16px 0; }
+.reco { padding: 20px; gap: 16px; }
+.tipjar { padding: 18px 20px; }
+main:not(#inicio) .hero h1 { margin-bottom: 20px; }
+main:not(#inicio) .hero p.lede { margin-left: 0; margin-bottom: 36px; line-height: 1.6; }
+main:not(#inicio) section.block p.sub { margin-left: 0; }
