@@ -3,12 +3,17 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import KofiWidget from "../components/KofiWidget.astro";
+import { DIBUJOS, type Dibujo } from "../utils/garabatos";
 
 interface Props {
   title: string;
   description?: string;
+  /** Dibujos a boli en el hueco de la derecha de la página (top en px desde el principio del contenido) */
+  garabatos?: { d: Dibujo; nota?: string; top: number; r?: number }[];
+  /** Sin el botón flotante de Ko-fi (páginas de cursos: no tapa nada ni compite con «Comprar») */
+  sinKofi?: boolean;
 }
-const { title, description = "Resuelve problemas de Ableton Live: escribe lo que te pasa y encuentra el reel, los pasos y lo que suele venir después." } = Astro.props;
+const { title, garabatos = [], sinKofi = false, description = "Resuelve problemas de Ableton Live: escribe lo que te pasa y encuentra el reel, los pasos y lo que suele venir después." } = Astro.props;
 ---
 <!doctype html>
 <html lang="es">
@@ -22,9 +27,23 @@ const { title, description = "Resuelve problemas de Ableton Live: escribe lo que
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
+    <!-- Filtro «a boli» para los garabatos (src/utils/garabatos.ts) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+      <filter id="boli" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter>
+    </defs></svg>
     <Header />
+    {garabatos.length > 0 && (
+      <div class="wrap capa-gar" aria-hidden="true">
+        {garabatos.map((g) => (
+          <figure class="gar-pag" style={`top:${g.top}px; --r:${g.r ?? -4}deg`}>
+            <Fragment set:html={DIBUJOS[g.d]()} />
+            {g.nota && <figcaption class="mano" set:html={g.nota} />}
+          </figure>
+        ))}
+      </div>
+    )}
     <slot />
     <Footer />
-    <KofiWidget />
+    {!sinKofi && <KofiWidget />}
   </body>
 </html>

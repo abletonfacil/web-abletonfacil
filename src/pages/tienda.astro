@@ -1,13 +1,15 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
-import { productosVisibles, MOSTRAR_EJEMPLOS, KOFI, estiloImagen } from "../data/visibilidad";
+import { productosVisibles, fichaVisible, MOSTRAR_EJEMPLOS, KOFI, estiloImagen } from "../data/visibilidad";
 
-const todas = await getCollection("fichas");
+const todas = await getCollection("fichas", fichaVisible);
 // Las lecciones de pago de ejemplo ya llegan aquí como «gratis» (ver src/data/visibilidad.ts).
 const lecciones = todas.map((f) => f.data).filter((f) => f.acceso === "pago");
 ---
-<Base title="Tienda · abletonfácil" description="Racks, proyectos, packs MIDI y lecciones largas de abletonfacil, en Ko-fi.">
+<Base title="Tienda · abletonfácil" description="Racks, proyectos, packs MIDI y lecciones largas de abletonfacil, en Ko-fi."
+  garabatos={[{ d: "casete", nota: "Lo-fi sin preset.", top: 30, r: -5 }]}
+>
   <main>
     <div class="wrap hero" style="padding-block:40px 20px">
       <h1>Tienda</h1>

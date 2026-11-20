@@ -1,0 +1,8 @@
+---
+interface Props { titulo?: string; mensaje?: string }
+const { titulo = "", mensaje = "Elige una lección" } = Astro.props;
+---
+<div class="reproductor" data-reproductor>
+  <div class="rep-pantalla"><span class="rep-msg">{mensaje}</span></div>
+  <p class="rep-titulo">{titulo}</p>
+</div>

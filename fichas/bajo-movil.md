@@ -4,11 +4,11 @@ slug: bajo-movil
 categoria: bajo
 nivel: Intermedio
 acceso: gratis
-video: ""
+video: "https://www.instagram.com/p/De6NwO7NGBW/"
 otras_formas: ["bajo desaparece en movil", "altavoz pequeño", "subgrave no se oye", "armonicos del bajo"]
 relacionadas: [bombo-bajo, mezcla-apagada, master-rojo]
 producto: rackBajoSaturacion
-ejemplo: true
+ejemplo: false
 ---
 
 Los altavoces pequeños no reproducen subgraves. Dale armónicos al bajo para que se adivine.

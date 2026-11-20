@@ -56,3 +56,11 @@ export function accesoVisible(f: { slug: string; acceso: "gratis" | "pago" }): "
   }
   return f.acceso;
 }
+// Web publicada: solo se enseñan las fichas que ya tienen su reel.
+// Las demás siguen en /fichas como pendientes, pero no se ven.
+// Para verlas todas (por ejemplo en local), cambia SOLO_FICHAS_CON_REEL a false.
+export const SOLO_FICHAS_CON_REEL = true;
+export const fichaVisible = ({ data }: { data: { video?: string } }) => !SOLO_FICHAS_CON_REEL || !!data.video;
+// Cursos de pago: ocultos hasta tener el alta, la clave real de Stripe y las condiciones de compra.
+// Con CURSOS_ACTIVOS = false no salen en el menú y sus páginas llevan a la portada.
+export const CURSOS_ACTIVOS = true;

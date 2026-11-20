@@ -1,0 +1,8 @@
+# Configuración de Netlify para los cursos de pago.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  # Empaqueta cada función con lo que importa (datos de cursos, Stripe, Supabase).
+  node_bundler = "esbuild"
