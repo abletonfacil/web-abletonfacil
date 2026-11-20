@@ -46,7 +46,7 @@ export default async (req) => {
     );
   if (error) return json({ error: error.message }, 500);
 
-  return json({ ok: true });
+  return json({ ok: true, enlace: await mandarEnlace(correo) });
 };
 
 /**
@@ -77,3 +77,5 @@ async function quitarAcceso(stripe, evento) {
 }
 
 export const config = { path: "/api/aviso-stripe" };
+// Pide a Supabase que mande al comprador su enlace de acceso nada más pagar. Si falla, la compra ya está apuntada y puede pedirlo en «Mis cursos».
+async function mandarEnlace(correo) { try { const base = (process.env.URL_WEB || "").replace(/\/$/, ""); const destino = encodeURIComponent(base + "/mis-cursos/"); const r = await fetch(`${process.env.PUBLIC_SUPABASE_URL}/auth/v1/otp?redirect_to=${destino}`, { method: "POST", headers: { apikey: process.env.PUBLIC_SUPABASE_ANON_KEY, "Content-Type": "application/json" }, body: JSON.stringify({ email: correo, create_user: true }) }); return r.ok ? "enviado" : `error ${r.status}`; } catch { return "error"; } }
