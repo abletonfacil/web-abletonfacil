@@ -459,3 +459,8 @@ section.block p.sub { margin-left: 24px; }
 .hero > .gar-hero { position: absolute; z-index: 1; right: 56px; top: 62px; width: 124px; margin: 0; color: #8a8a84; opacity: .8; text-align: center; transform: rotate(var(--r, 0deg)); pointer-events: none; }
 .gar-hero .gar { max-width: 100%; height: auto; }
 @media (max-width: 1000px) { .hero > .gar-hero { display: none; } }
+/* Vídeo de las fichas: centrado y con sitio para el reel de Instagram */
+.video, .video-live { margin-left: auto; margin-right: auto; }
+.video { width: 100%; max-height: none; }
+.video-live { width: 100%; max-width: 400px; }
+.video-live .instagram-media { max-width: 400px !important; margin: 0 auto !important; }
