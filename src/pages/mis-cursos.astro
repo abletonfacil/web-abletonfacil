@@ -20,7 +20,7 @@ const conectado = Boolean(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env
         <input type="email" name="correo" required placeholder="tu@correo.com" autocomplete="email" />
         <button class="btn yellow" type="submit">Enviarme el enlace</button>
       </form>
-      <p class="mis-nota" data-enviado hidden>Listo. Mira tu correo (y la carpeta de spam) y pulsa el enlace. Puedes cerrar esta pestaña.</p>
+      <p class="mis-nota" data-enviado hidden>Si ese correo tiene compras, te hemos mandado un enlace. Mira tu correo (y la carpeta de spam) y púlsalo. Puedes cerrar esta pestaña.</p>
     </section>
 
     <!-- 2. Lista de cursos del alumno -->
@@ -75,9 +75,9 @@ const conectado = Boolean(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env
       const correo = String(new FormData(e.target as HTMLFormElement).get("correo") || "").trim();
       const { error } = await supabase!.auth.signInWithOtp({
         email: correo,
-        options: { emailRedirectTo: location.href, shouldCreateUser: true },
+        options: { emailRedirectTo: location.href, shouldCreateUser: false },
       });
-      if (error) return aviso("No he podido enviar el enlace. Prueba otra vez en un minuto");
+      if (error && !/signup|not allowed/i.test(error.message)) return aviso("No he podido enviar el enlace. Prueba otra vez en un minuto");
       $("[data-enviado]").hidden = false;
     });
     $("[data-salir]").addEventListener("click", async () => {
