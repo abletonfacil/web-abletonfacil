@@ -2,10 +2,10 @@
 import Base from "../../layouts/Base.astro";
 import Temario from "../../components/Temario.astro";
 import Reproductor from "../../components/Reproductor.astro";
-import { listaCursos, listaPacks, euros } from "../../data/cursos";
+import { listaCursos, listaPacks, euros } from "../../data/cursos"; import { CURSOS_ACTIVOS } from "../../data/visibilidad";
 
 export function getStaticPaths() {
-  return listaCursos.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+  return CURSOS_ACTIVOS ? listaCursos.map((c) => ({ params: { slug: c.slug }, props: { c } })) : [];
 }
 const { c } = Astro.props;
 const gratis = c.lecciones.map((l, i) => ({ ...l, i })).filter((l) => l.gratis);
