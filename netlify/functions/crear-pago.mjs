@@ -37,7 +37,7 @@ export default async (req) => {
         },
       },
     ],
-    allow_promotion_codes: true, // casilla para cupones de descuento
+    allow_promotion_codes: true, consent_collection: { terms_of_service: "required" }, custom_text: { terms_of_service_acceptance: { message: "Entiendo que el acceso es inmediato y renuncio al derecho de desistimiento. Acepto las [condiciones de compra](https://abletonfacil.com/condiciones-de-compra)." } }, // cupones y aceptación de condiciones
     // Managed Payments: Stripe es el vendedor oficial y se encarga del IVA,
     // el fraude y las reclamaciones (+3,5 % por venta), pero no admite PayPal
     // ni pago a plazos en España. Con STRIPE_MANAGED_PAYMENTS=no lo apagamos
