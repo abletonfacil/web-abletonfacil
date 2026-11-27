@@ -308,6 +308,9 @@ footer a:hover { color: var(--fg); }
 .modulo-cab.plegado + li[hidden] { display: none; }
 .temario li[hidden] { display: none; }
 .modulo-cab.plegado { margin-bottom: 0; }
+.modulo-cab.proximamente .modulo-btn { cursor: default; grid-template-columns: 1fr auto; border-style: dashed; background: linear-gradient(90deg, color-mix(in srgb, var(--c, var(--accent)) 7%, transparent), transparent 85%); }
+.modulo-cab.proximamente .modulo-tit { color: var(--muted); }
+.modulo-pronto { font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #14141A; background: var(--accent); border-radius: 999px; padding: 3px 8px; white-space: nowrap; align-self: center; }
 .lec { width: 100%; display: grid; grid-template-columns: 30px 1fr auto auto; gap: 10px; align-items: center; text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; cursor: pointer; }
 .lec:hover { border-color: var(--muted); }
 .lec[aria-current] { border-color: var(--accent); }
