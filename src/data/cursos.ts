@@ -62,6 +62,8 @@ export function cabeceraModulo(lecciones: Leccion[], i: number): string {
   for (let j = i; j < lecciones.length && lecciones[j].modulo === m; j++) n++;
   const { num, titulo } = partirModulo(m);
   const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
-  return `<li class="modulo-cab"><span class="modulo-num">${esc(num || "Módulo")}</span>` +
-    `<span class="modulo-tit">${esc(titulo)}</span><span class="modulo-n">${n} ${n === 1 ? "lección" : "lecciones"}</span></li>`;
+  return `<li class="modulo-cab"><button type="button" class="modulo-btn" aria-expanded="true">` +
+    `<span class="modulo-num">${esc(num || "Módulo")}</span>` +
+    `<span class="modulo-tit">${esc(titulo)}</span><span class="modulo-n">${n} ${n === 1 ? "lección" : "lecciones"}</span>` +
+    `<span class="modulo-flecha" aria-hidden="true"></span></button></li>`;
 }
