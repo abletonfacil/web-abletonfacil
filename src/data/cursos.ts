@@ -8,10 +8,12 @@
 //   titulo  → lo que se ve en el temario
 //   video   → el ID del vídeo en Bunny Stream (vacío = «vídeo en camino»)
 //   gratis  → true = cualquiera puede verla sin comprar (lección de muestra)
+//   modulo  → opcional. Nombre del módulo: el temario pinta un título cada vez que cambia.
+//             La numeración de las lecciones sigue siendo seguida en todo el curso.
 import cursosJson from "./cursos.json";
 import packsJson from "./packs.json";
 
-export type Leccion = { titulo: string; video: string; gratis: boolean };
+export type Leccion = { titulo: string; video: string; gratis: boolean; modulo?: string };
 export type Curso = {
   titulo: string;
   subtitulo: string;
@@ -44,4 +46,22 @@ export function euros(n: number): string {
 /** Precio de todos los cursos de un pack comprados por separado. */
 export function precioSuelto(p: Pack): number {
   return p.cursos.reduce((s, c) => s + (cursos[c]?.precio ?? 0), 0);
+}
+
+/** «Módulo 0 · Desde cero» → { num: "Módulo 0", titulo: "Desde cero" }. Sin número: solo título. */
+export function partirModulo(m: string): { num: string; titulo: string } {
+  const r = m.match(/^(M[oó]dulo\s+\S+)\s*·\s*(.+)$/i);
+  return r ? { num: r[1], titulo: r[2] } : { num: "", titulo: m };
+}
+
+/** HTML de la cabecera de un módulo (lo usan el temario y «Mis cursos»). */
+export function cabeceraModulo(lecciones: Leccion[], i: number): string {
+  const m = lecciones[i].modulo;
+  if (!m || m === lecciones[i - 1]?.modulo) return "";
+  let n = 0;
+  for (let j = i; j < lecciones.length && lecciones[j].modulo === m; j++) n++;
+  const { num, titulo } = partirModulo(m);
+  const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  return `<li class="modulo-cab"><span class="modulo-num">${esc(num || "Módulo")}</span>` +
+    `<span class="modulo-tit">${esc(titulo)}</span><span class="modulo-n">${n} ${n === 1 ? "lección" : "lecciones"}</span></li>`;
 }

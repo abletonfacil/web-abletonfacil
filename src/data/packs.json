@@ -1,9 +1,9 @@
 {
   "pack-completo": {
     "titulo": "Pack completo",
-    "subtitulo": "Los tres cursos juntos, a precio de pack.",
+    "subtitulo": "Los cuatro cursos juntos, a precio de pack.",
     "precio": 99,
-    "cursos": ["produccion-electronica", "groove-y-swing", "estilos-y-tecnicas"],
+    "cursos": ["produccion-electronica", "groove-y-swing", "estilos-y-tecnicas", "psicoacustica"],
     "provisional": false
   }
 }

@@ -163,7 +163,7 @@
   },
   "groove-y-swing": {
     "titulo": "Groove & Swing",
-    "subtitulo": "Baterías con groove desde cero: compás, MIDI, rejilla, velocidad, polirritmos, swing, Groove Pool y ADSR, hasta grooves de techno y tech house.",
+    "subtitulo": "Baterías con groove desde cero: compás, MIDI, rejilla, velocidad, polirritmos, swing, Groove Pool y ADSR, hasta grooves de techno y tech house. Incluye el módulo de estilos y técnicas.",
     "nivel": "Principiante",
     "precio": 59,
     "color": "#FFA529",
@@ -174,142 +174,200 @@
       {
         "titulo": "Qué es un compás",
         "video": "0297207f-32bb-410d-b622-36adbd40b511",
-        "gratis": true
+        "gratis": true,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Qué es el MIDI",
         "video": "26c71b76-bb9b-448b-ab3c-94b20f2ca991",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Crear un clip MIDI y atajos",
         "video": "50bda0e6-4c47-4490-9118-2ade886cb240",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "La rejilla",
         "video": "91108f11-fa6a-4178-adeb-e5c4810b03ed",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Tiempos fuertes y débiles",
         "video": "d168d7d8-aaf1-45e9-be3e-c5c17141979e",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "El Drum Rack",
         "video": "1ca5cb66-b53b-4ceb-98b4-1c5e45382669",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Tu primer groove",
         "video": "729e76bb-9d66-44ad-a948-61ea0ec555a5",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Mezcla tu primer groove",
         "video": "4ae40b69-6289-43a7-be2a-0b46764cd06d",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "La velocidad",
         "video": "6d01bae1-b854-4276-bf8e-6a1f77635a25",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Patrones de velocidad",
         "video": "aa48dae1-caba-4098-9d41-8347997ec09d",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Polirritmos",
         "video": "10503303-2170-41a2-a0bf-07a1e26ffb43",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Ejemplos de polirritmos",
         "video": "5eda05f8-2c37-4845-bf6d-9ba2655376a6",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "El loop de shaker",
         "video": "b957527e-9b6f-4819-adce-1cebfb0a8cc9",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Entender el swing",
         "video": "675034a9-bfb2-4142-b6d2-8d87965265de",
-        "gratis": true
+        "gratis": true,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Groove de tech house",
         "video": "6024792a-07de-4db4-8799-f92155caef40",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "El Groove Pool",
         "video": "89166aa7-1ce2-49d3-bccb-43953d115f17",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Los ajustes del Groove Pool",
         "video": "b0cbb3a1-b3f8-4a48-8770-4d0148319af6",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "La envolvente ADSR",
         "video": "a2845b7c-7cf8-4cb7-8a5f-54189d2ace17",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Dar forma a las baterías con ADSR",
         "video": "66fdf243-2efb-48b0-8c35-3c79e16ccdf0",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Groove de techno: Acero",
         "video": "3af04d93-7160-4866-b9cc-bb5fb47107c8",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Loops de audio y groove",
         "video": "41b2509d-6c11-436f-bdca-52a74e56b892",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Loops de instrumentos y groove",
         "video": "40e70024-6c35-4df3-89b8-60f162e46287",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Groove para Atardecer",
         "video": "d37f1ccf-cb82-4517-8ff9-7801dec84b05",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Groove para Tecno Oscuro (1)",
         "video": "7859e101-4817-4342-8ecf-6af2c0125ef4",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Groove para Tecno Oscuro (2)",
         "video": "b8e83eee-fa49-435b-a8bb-599e3fd06ebe",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Groove para Tecno Oscuro (3)",
         "video": "e38f88d3-4f30-4a08-8482-30d73346437f",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Groove para Duna (1)",
         "video": "c924c2b5-e689-44da-9916-ac6fa2b6ecde",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
       },
       {
         "titulo": "Groove para Duna (2)",
         "video": "94a202b6-7c72-49e2-8a4a-696bf43c56a9",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Groove y swing"
+      },
+      {
+        "titulo": "Estilos: reguetón",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 2 · Estilos y técnicas"
+      },
+      {
+        "titulo": "Estilos: boom bap",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 2 · Estilos y técnicas"
+      },
+      {
+        "titulo": "Técnicas: J Dilla y los ritmos borrachos",
+        "video": "934d8c93-b035-47f2-ad7a-ca0a7e319c94",
+        "gratis": false,
+        "modulo": "Módulo 2 · Estilos y técnicas"
+      },
+      {
+        "titulo": "Técnicas: notas fantasma",
+        "video": "4ddcd11c-0a1b-41c9-817a-6618f9927dcd",
+        "gratis": false,
+        "modulo": "Módulo 2 · Estilos y técnicas"
+      },
+      {
+        "titulo": "Técnicas: trocear un break",
+        "video": "5d3adb2e-2d24-4fb9-a180-2daef38abf41",
+        "gratis": false,
+        "modulo": "Módulo 2 · Estilos y técnicas"
       }
     ]
   },
@@ -357,8 +415,363 @@
     "precio": 59,
     "color": "#B9A4FF",
     "portada": "",
-    "proximamente": true,
+    "proximamente": false,
     "provisional": true,
-    "lecciones": []
+    "lecciones": [
+      {
+        "titulo": "¿Qué es el sonido?",
+        "video": "05aa509c-513d-4fd8-a53b-487491bfa91a",
+        "gratis": true,
+        "modulo": "Módulo 0 · Desde cero: sonido, oído y percepción"
+      },
+      {
+        "titulo": "¿Qué es la psicoacústica?",
+        "video": "851570e1-dbbd-4676-81d9-de81b06b338c",
+        "gratis": false,
+        "modulo": "Módulo 0 · Desde cero: sonido, oído y percepción"
+      },
+      {
+        "titulo": "Cómo funciona el oído",
+        "video": "ecd6c5f5-616c-4de3-99d0-75967defcf41",
+        "gratis": false,
+        "modulo": "Módulo 0 · Desde cero: sonido, oído y percepción"
+      },
+      {
+        "titulo": "El decibelio",
+        "video": "f75f6861-f6c2-4d0b-ac50-0d18c3174e7f",
+        "gratis": false,
+        "modulo": "Módulo 0 · Desde cero: sonido, oído y percepción"
+      },
+      {
+        "titulo": "La curva isofónica",
+        "video": "43598d65-3de7-4d77-9267-f4a18a12913a",
+        "gratis": false,
+        "modulo": "Módulo 0 · Desde cero: sonido, oído y percepción"
+      },
+      {
+        "titulo": "A volumen alto las curvas se aplanan",
+        "video": "20dc3060-1230-4a88-adf6-857c085fd8ab",
+        "gratis": false,
+        "modulo": "Módulo 0 · Desde cero: sonido, oído y percepción"
+      },
+      {
+        "titulo": "Nos gusta lo alto",
+        "video": "00ad3015-06dd-43a7-8263-a513ff87c6e0",
+        "gratis": false,
+        "modulo": "Módulo 0 · Desde cero: sonido, oído y percepción"
+      },
+      {
+        "titulo": "El oído promedia",
+        "video": "367cbcfc-da0d-4eb6-885c-0182a2ebc530",
+        "gratis": false,
+        "modulo": "Módulo 0 · Desde cero: sonido, oído y percepción"
+      },
+      {
+        "titulo": "Pico y RMS",
+        "video": "112e0f0d-0037-4633-911b-d8788c979e96",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "dBFS, dBu y el vúmetro",
+        "video": "f8c3996f-4abf-4834-a237-bd5721212bac",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "Etapa de ganancia: la idea",
+        "video": "6d1ee52a-a19f-4450-bc70-743774b42007",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "Etapa de ganancia: el ruido",
+        "video": "e817b78c-9b61-4026-aa18-9cfb1022f388",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "Armónicos y procesos no lineales",
+        "video": "a93ea86a-11ed-4a72-b15f-6dc8421908c2",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "El cero no es universal",
+        "video": "6a75dc59-1f9c-4700-bbbd-ad54b2baf533",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "Calibrar plugins",
+        "video": "4721a595-c02b-4d32-835c-46d8aa899e4b",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "Compresores y 0 VU",
+        "video": "9e436135-3aa5-49a3-bcd9-9ffe2629cd69",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "Ganancia al grabar",
+        "video": "2200579a-7f93-41f8-aedb-d25bc709f8d4",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "Etapa de ganancia en Live",
+        "video": "5fffd1eb-b45d-473a-81b5-f5ff1fa361e1",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "Nivelar por tramos",
+        "video": "a5ed8174-17a7-496b-a60b-f5a2130e0215",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "Compensar al procesar",
+        "video": "7c8a400f-69ea-4848-9b03-2e0556f52b93",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "Herramientas de medición",
+        "video": "e77719d8-027a-4a01-ade5-f91c033f2bb1",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "El vúmetro por dentro",
+        "video": "6845344c-3c14-4232-a113-55c7ea0f5094",
+        "gratis": false,
+        "modulo": "Módulo 1 · Medir y etapa de ganancia"
+      },
+      {
+        "titulo": "Por qué siempre el mismo volumen",
+        "video": "c391a5fe-902a-4f2b-aebd-9b78ed2b2bfd",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "Sistema K: el medidor",
+        "video": "c7d83884-2c69-4a81-a328-ef9c4ad5e3e9",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "Sistema K: el volumen de escucha",
+        "video": "3240d0ad-45b9-4fa5-859d-9deade93ee6d",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "Calibrar los monitores",
+        "video": "5fb9ef8a-3ee0-43f8-9f90-3be55cd54921",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "Monitores y sala",
+        "video": "10b9a350-da32-417c-bbdb-50082f71869c",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "El vicio del oído",
+        "video": "41d852b9-72a0-4291-85ea-fe648f2bbc70",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "El oído a volumen alto",
+        "video": "442bd8c2-1c63-4d71-be14-d6f2e7925fb7",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "Memoria auditiva",
+        "video": "cffc9896-1da7-4a98-99ee-508973f9ac3d",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "El umbral de concentración",
+        "video": "c8447c5f-cc5a-475f-8e5c-3e5691a9ef36",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "Fatiga, descansos y salud",
+        "video": "97c51759-edb4-46e0-b051-5866bfb883d1",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "Cómo escuchar",
+        "video": "9a096316-128a-475a-8622-83d0ddc833d7",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "Comparar con una referencia",
+        "video": "5cf35b39-81f1-4e57-9dca-c4d9c3df1e82",
+        "gratis": false,
+        "modulo": "Módulo 2 · Calibrar y escuchar bien"
+      },
+      {
+        "titulo": "RMS frente a LUFS",
+        "video": "b5055da6-573a-4607-a7a8-ee4c745fde07",
+        "gratis": false,
+        "modulo": "Módulo 3 · Sonoridad"
+      },
+      {
+        "titulo": "Los tres LUFS",
+        "video": "9bed56cd-b57b-44c6-9958-656e82a0fbab",
+        "gratis": false,
+        "modulo": "Módulo 3 · Sonoridad"
+      },
+      {
+        "titulo": "Plataformas y normalización",
+        "video": "a0002b1e-2a9a-4c16-b036-6d82e9971794",
+        "gratis": false,
+        "modulo": "Módulo 3 · Sonoridad"
+      },
+      {
+        "titulo": "La guerra del volumen",
+        "video": "989bcf34-742a-4f3e-a22e-890edd523090",
+        "gratis": false,
+        "modulo": "Módulo 3 · Sonoridad"
+      },
+      {
+        "titulo": "Dos maneras de sonar alto",
+        "video": "9d9a76b2-c685-43d0-aaaa-23e090412df3",
+        "gratis": false,
+        "modulo": "Módulo 3 · Sonoridad"
+      },
+      {
+        "titulo": "Mismos LUFS, distinta sonoridad",
+        "video": "a0d1b17e-0097-4390-a3dd-5ee7abb6814b",
+        "gratis": false,
+        "modulo": "Módulo 3 · Sonoridad"
+      },
+      {
+        "titulo": "Trucos de sonoridad",
+        "video": "edfed3ad-697c-4542-b7af-bcaa50e34b7c",
+        "gratis": false,
+        "modulo": "Módulo 3 · Sonoridad"
+      },
+      {
+        "titulo": "True peak",
+        "video": "2a16c8db-4125-40dd-afa6-d2c058dc158a",
+        "gratis": false,
+        "modulo": "Módulo 3 · Sonoridad"
+      },
+      {
+        "titulo": "Enmascaramiento e ilusiones",
+        "video": "6f8020fe-2653-4835-b8ec-fe808e75e61f",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "La banda crítica",
+        "video": "7b7fe979-cf13-47a7-9e14-161283b2c5bd",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "Los graves tapan a los agudos",
+        "video": "12e86df4-8547-4725-9ecf-7f147fb00d67",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "El enmascaramiento en el tiempo",
+        "video": "fa56796d-ef98-4107-a366-c0251431bdd0",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "Lo tapado suena más flojo",
+        "video": "b54abb0b-323b-4e55-ad8d-f59089b2e7ea",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "Sonidos que se parecen",
+        "video": "27ec0e7f-faff-42f2-845d-49b66a6e151f",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "Los tres frentes",
+        "video": "128e9276-0dac-4567-82d6-79f8927e8433",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "El balance",
+        "video": "8a920b7d-d912-4a1b-afb6-9126935a19cb",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "Panear",
+        "video": "b51b6e0f-7076-4032-8db8-3b96e46ac31d",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "Mono y estéreo",
+        "video": "280e28da-6b51-43b9-ae50-8d0eecb2ccf2",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "Ensanchar la imagen",
+        "video": "bbb503a8-97ef-45b3-ab52-42780a3ef383",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "La voz: hazle hueco en la base",
+        "video": "c235ba13-61a4-46b4-ac2b-5c644ac8a704",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "Resonancias",
+        "video": "36f5b3b9-3347-4c32-9041-14506f205c49",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "La reverb que tapa",
+        "video": "56910ace-6874-4ea1-bbf2-1f94812a6743",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "Sidechain y EQ dinámica",
+        "video": "55f91c44-c3bc-4ed9-b2fa-3a5ea5b04c61",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "Bombo y bajo en la misma nota",
+        "video": "42d90c2a-d1ba-4671-8a32-0f41d69370d1",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      },
+      {
+        "titulo": "Saturación por etapas",
+        "video": "3e990091-8eea-4151-b4bb-27bf1c77a069",
+        "gratis": false,
+        "modulo": "Módulo 4 · Enmascaramiento y mezcla"
+      }
+    ]
   }
 }
