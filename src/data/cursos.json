@@ -286,12 +286,6 @@
         "modulo": "Módulo 1 · Groove y swing"
       },
       {
-        "titulo": "Groove de techno: Acero",
-        "video": "3af04d93-7160-4866-b9cc-bb5fb47107c8",
-        "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
-      },
-      {
         "titulo": "Loops de audio y groove",
         "video": "41b2509d-6c11-436f-bdca-52a74e56b892",
         "gratis": false,
@@ -304,70 +298,76 @@
         "modulo": "Módulo 1 · Groove y swing"
       },
       {
+        "titulo": "Groove de techno: Acero",
+        "video": "3af04d93-7160-4866-b9cc-bb5fb47107c8",
+        "gratis": false,
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
+      },
+      {
         "titulo": "Groove para Atardecer",
         "video": "d37f1ccf-cb82-4517-8ff9-7801dec84b05",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Groove para Tecno Oscuro (1)",
         "video": "7859e101-4817-4342-8ecf-6af2c0125ef4",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Groove para Tecno Oscuro (2)",
         "video": "b8e83eee-fa49-435b-a8bb-599e3fd06ebe",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Groove para Tecno Oscuro (3)",
         "video": "e38f88d3-4f30-4a08-8482-30d73346437f",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Groove para Duna (1)",
         "video": "c924c2b5-e689-44da-9916-ac6fa2b6ecde",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Groove para Duna (2)",
         "video": "94a202b6-7c72-49e2-8a4a-696bf43c56a9",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Estilos: reguetón",
         "video": "",
         "gratis": false,
-        "modulo": "Módulo 2 · Estilos y técnicas"
+        "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
         "titulo": "Estilos: boom bap",
         "video": "",
         "gratis": false,
-        "modulo": "Módulo 2 · Estilos y técnicas"
+        "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
         "titulo": "Técnicas: J Dilla y los ritmos borrachos",
         "video": "934d8c93-b035-47f2-ad7a-ca0a7e319c94",
         "gratis": false,
-        "modulo": "Módulo 2 · Estilos y técnicas"
+        "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
         "titulo": "Técnicas: notas fantasma",
         "video": "4ddcd11c-0a1b-41c9-817a-6618f9927dcd",
         "gratis": false,
-        "modulo": "Módulo 2 · Estilos y técnicas"
+        "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
         "titulo": "Técnicas: trocear un break",
         "video": "5d3adb2e-2d24-4fb9-a180-2daef38abf41",
         "gratis": false,
-        "modulo": "Módulo 2 · Estilos y técnicas"
+        "modulo": "Módulo 3 · Estilos y técnicas"
       }
     ]
   },
