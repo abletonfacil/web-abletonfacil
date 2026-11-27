@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import CursoCard from "../../components/CursoCard.astro";
-import { listaCursos, listaPacks, cursos, euros, precioSuelto } from "../../data/cursos"; import { CURSOS_ACTIVOS } from "../../data/visibilidad"; if (!CURSOS_ACTIVOS) return Astro.redirect("/");
+import { listaCursos, listaPacks, cursos, euros, precioSuelto, leccionesHechas } from "../../data/cursos"; import { CURSOS_ACTIVOS } from "../../data/visibilidad"; if (!CURSOS_ACTIVOS) return Astro.redirect("/");
 ---
 <Base sinKofi title="Cursos · abletonfácil" description="Cursos de Ableton Live de abletonfacil: producción electrónica, groove y swing, estilos y técnicas. Con lecciones de muestra gratis."
   garabatos={[{ d: "r808", nota: "40 años sonando.", top: 40, r: 3 }]}
@@ -15,7 +15,7 @@ import { listaCursos, listaPacks, cursos, euros, precioSuelto } from "../../data
     <section class="block" style="border-top:0">
       <div class="wrap">
         <div class="cursos-grid">
-          {listaCursos.map((c) => <CursoCard {...c} nLecciones={c.lecciones.length} />)}
+          {listaCursos.map((c) => <CursoCard {...c} nLecciones={leccionesHechas(c.lecciones)} />)}
         </div>
       </div>
     </section>

@@ -2,7 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import Temario from "../../components/Temario.astro";
 import Reproductor from "../../components/Reproductor.astro";
-import { listaCursos, listaPacks, euros } from "../../data/cursos"; import { CURSOS_ACTIVOS } from "../../data/visibilidad";
+import { listaCursos, listaPacks, euros, leccionesHechas } from "../../data/cursos"; import { CURSOS_ACTIVOS } from "../../data/visibilidad";
 
 export function getStaticPaths() {
   return CURSOS_ACTIVOS ? listaCursos.map((c) => ({ params: { slug: c.slug }, props: { c } })) : [];
@@ -10,6 +10,7 @@ export function getStaticPaths() {
 const { c } = Astro.props;
 const gratis = c.lecciones.map((l, i) => ({ ...l, i })).filter((l) => l.gratis);
 const primera = gratis[0];
+const nHechas = leccionesHechas(c.lecciones);
 const packsConEste = listaPacks.filter((p) => p.cursos.includes(c.slug));
 ---
 <Base title={`${c.titulo} · Cursos · abletonfácil`} description={c.subtitulo} sinKofi>
@@ -20,7 +21,7 @@ const packsConEste = listaPacks.filter((p) => p.cursos.includes(c.slug));
       <p class="lede">{c.subtitulo}</p>
       <div class="cc-pills">
         <span class="pill">{c.nivel}</span>
-        {c.lecciones.length > 0 && <span class="pill">{c.lecciones.length} lecciones</span>}
+        {nHechas > 0 && <span class="pill">{nHechas} lecciones</span>}
         {gratis.length > 0 && <span class="pill vid">{gratis.length === 1 ? "1 lección gratis" : `${gratis.length} lecciones gratis`}</span>}
       </div>
     </div>
@@ -45,7 +46,7 @@ const packsConEste = listaPacks.filter((p) => p.cursos.includes(c.slug));
           />
           <div class="visor-lista">
             <div class="visor-scroll">
-              <p class="visor-cab">Temario <span>{c.lecciones.length} lecciones</span></p>
+              <p class="visor-cab">Temario <span>{nHechas} lecciones</span></p>
               <Temario lecciones={c.lecciones} proximamente={c.modulosProximamente} />
             </div>
           </div>
@@ -59,7 +60,8 @@ const packsConEste = listaPacks.filter((p) => p.cursos.includes(c.slug));
               <span class="metodos">Tarjeta, Apple Pay, Google Pay o a plazos. ¿Tienes un cupón? Lo pones al pagar.</span>
             </div>
             <ul class="incluye">
-              <li>{c.lecciones.length} lecciones en vídeo</li>
+              <li>{nHechas} lecciones en vídeo</li>
+              {nHechas < c.lecciones.length && <li>{c.lecciones.length - nHechas} lecciones más en camino, incluidas en el precio</li>}
               <li>Acceso para siempre, a tu ritmo</li>
               <li>Entras con tu correo, sin contraseñas</li>
               {c.provisional && <li class="ejemplo">Precio y temario provisionales</li>}
