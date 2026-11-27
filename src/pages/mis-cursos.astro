@@ -52,10 +52,10 @@ const conectado = Boolean(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env
 <script>
   import { supabase, aviso, activarTemario, verLeccion } from "../scripts/cursos";
   import cursos from "../data/cursos.json";
-  import { cabeceraModulo } from "../data/cursos";
+  import { cabeceraModulo, cabeceraProximamente } from "../data/cursos";
   import packs from "../data/packs.json";
 
-  type C = { titulo: string; color: string; lecciones: { titulo: string; video: string; gratis: boolean; modulo?: string }[] };
+  type C = { titulo: string; color: string; modulosProximamente?: string[]; lecciones: { titulo: string; video: string; gratis: boolean; modulo?: string }[] };
   const $ = <T extends HTMLElement = HTMLElement>(s: string) => document.querySelector<T>(s)!;
   const mostrar = (paso: string) =>
     document.querySelectorAll<HTMLElement>("[data-paso]").forEach((el) => el.classList.toggle("oculto", el.dataset.paso !== paso));
@@ -125,7 +125,7 @@ const conectado = Boolean(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env
       .map((l, i) => cabeceraModulo(c.lecciones, i) + `<li><button type="button" class="lec" data-leccion="${i}" data-gratis="${l.gratis}" data-titulo="${i + 1}. ${esc(l.titulo)}">
         <span class="num">${String(i + 1).padStart(2, "0")}</span><span class="tit">${esc(l.titulo)}</span>
         <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span></button></li>`)
-      .join("");
+      .join("") + (c.modulosProximamente ?? []).map(cabeceraProximamente).join("");
     $("[data-num-lecciones]").textContent = `${c.lecciones.length} lecciones`;
     activarTemario(slug, () => true);
     mostrar("curso");

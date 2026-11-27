@@ -46,7 +46,7 @@ const packsConEste = listaPacks.filter((p) => p.cursos.includes(c.slug));
           <div class="visor-lista">
             <div class="visor-scroll">
               <p class="visor-cab">Temario <span>{c.lecciones.length} lecciones</span></p>
-              <Temario lecciones={c.lecciones} />
+              <Temario lecciones={c.lecciones} proximamente={c.modulosProximamente} />
             </div>
           </div>
         </div>

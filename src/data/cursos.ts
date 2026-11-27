@@ -23,6 +23,8 @@ export type Curso = {
   portada: string;
   proximamente: boolean;
   provisional: boolean;
+  /** Módulos anunciados que aún no tienen lecciones: salen al final del temario con «Próximamente». */
+  modulosProximamente?: string[];
   lecciones: Leccion[];
 };
 export type Pack = {
@@ -66,4 +68,13 @@ export function cabeceraModulo(lecciones: Leccion[], i: number): string {
     `<span class="modulo-num">${esc(num || "Módulo")}</span>` +
     `<span class="modulo-tit">${esc(titulo)}</span><span class="modulo-n">${n} ${n === 1 ? "lección" : "lecciones"}</span>` +
     `<span class="modulo-flecha" aria-hidden="true"></span></button></li>`;
+}
+
+/** Cabecera de un módulo que aún no tiene lecciones («Próximamente»). */
+export function cabeceraProximamente(m: string): string {
+  const { num, titulo } = partirModulo(m);
+  const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  return `<li class="modulo-cab proximamente"><div class="modulo-btn">` +
+    `<span class="modulo-num">${esc(num || "Módulo")}</span>` +
+    `<span class="modulo-tit">${esc(titulo)}</span><span class="modulo-pronto">Próximamente</span></div></li>`;
 }

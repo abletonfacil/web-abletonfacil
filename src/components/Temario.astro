@@ -1,11 +1,13 @@
 ---
-import { cabeceraModulo, type Leccion } from "../data/cursos";
+import { cabeceraModulo, cabeceraProximamente, type Leccion } from "../data/cursos";
 interface Props {
   lecciones: Leccion[];
+  /** Módulos anunciados sin lecciones todavía */
+  proximamente?: string[];
   /** true en «Mis cursos»: todo desbloqueado */
   abierto?: boolean;
 }
-const { lecciones, abierto = false } = Astro.props;
+const { lecciones, abierto = false, proximamente = [] } = Astro.props;
 ---
 <ol class="temario">
   {lecciones.map((l, i) => {
@@ -31,4 +33,5 @@ const { lecciones, abierto = false } = Astro.props;
       </>
     );
   })}
+  {proximamente.map((m) => <Fragment set:html={cabeceraProximamente(m)} />)}
 </ol>

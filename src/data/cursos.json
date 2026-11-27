@@ -8,156 +8,191 @@
     "portada": "",
     "proximamente": false,
     "provisional": true,
+    "modulosProximamente": [
+      "Módulo 3 · Breakbeat",
+      "Módulo 4 · UK Garage",
+      "Módulo 5 · House"
+    ],
     "lecciones": [
       {
         "titulo": "Introducción",
         "video": "8e82fafa-d35b-477a-a94a-a5c3e8f5a83b",
-        "gratis": true
+        "gratis": true,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Primeros pasos",
         "video": "d037add5-2736-4f72-b50f-1b69cb15f463",
-        "gratis": true
+        "gratis": true,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Creando el bombo",
         "video": "daf5ebe6-b9d3-4b7f-bdf1-854c0b91f8c2",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "La caja",
         "video": "b2e946d3-6130-4303-8d8c-bd1d1dd50cf7",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Hi-hats",
         "video": "77c3bc37-06bc-4b31-873e-215270db8a23",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Creando el shuffle",
         "video": "60cc33a7-ab90-4960-a4e9-b75a1c3d6272",
-        "gratis": true
+        "gratis": true,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Expresión Shuffle y ajuste del Break al tempo",
         "video": "acfdb4f2-f1bf-4acc-b737-e68f51d40aeb",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Separación de elementos",
         "video": "c24521c6-97fd-404a-86b6-f80bb29a01dd",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Expresión del hi-hat",
         "video": "9d191ce6-67c9-4f21-9ea9-0fb44f5fed0a",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Expresión del shuffle",
         "video": "d3c217cf-68ae-4c87-aa45-d21a2ac0a4ff",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Breaks",
         "video": "b6e2c340-14c0-445c-89da-4f97e855660d",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Trabajando los breaks",
         "video": "22758b28-dd9c-4cea-8201-295ffcba0d3c",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "El bajo",
         "video": "26abe68d-bd24-4b2a-9961-95ea41a872c7",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Notas de bajo",
         "video": "19280f42-d902-4f83-a030-715be63684f0",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Primer sonido de bajo",
         "video": "efacec6f-6650-4784-989c-071d6135c898",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Terminología y sonidos de bajo",
         "video": "d8480365-71d0-4f1a-aa64-2576d53449ca",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 1 · Construcción: batería, breaks y bajo"
       },
       {
         "titulo": "Estructura de la intro",
         "video": "963bc019-1625-4867-bbac-947116139e67",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Intro A",
         "video": "ef9e18f0-deb8-49de-b20e-f17c6ae7e5e1",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Intro B",
         "video": "a41be29f-ebda-4930-9308-42c058b58c75",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Build up",
         "video": "647bb9a2-5702-42d8-a99a-0a87ed6d6052",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Transiciones y snare roll",
         "video": "69fff407-7391-4a16-b997-1ec38065a0c3",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Más transiciones",
         "video": "38dc419d-6571-4669-88de-fe172022581b",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Efecto filtro",
         "video": "4921b260-acec-4198-bf92-952a58d7a92c",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Últimos retoques: caja con reverb",
         "video": "2e70304e-21d5-45e9-b9f4-5c5762c92299",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Drop",
         "video": "7102cec0-2737-4edd-a80f-005e8f6b0e97",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Drop extend",
         "video": "ae67acd3-8ee1-442d-81cf-45a32666a69d",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Post drop, verse y build up 2",
         "video": "a12eaced-aef7-489f-824b-a6f6d49d7a08",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Snare del build up y afinación",
         "video": "56ee2d8a-326d-4d5e-9e97-1b13e48f5bfb",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Drop 2",
         "video": "beac9267-04e7-48cf-bbc9-6a5e842d5ff5",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       },
       {
         "titulo": "Outro",
         "video": "474c2381-2ed6-4edf-8f0b-979c89da1da1",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 2 · Estructura: intro, build up, drops, break y outro"
       }
     ]
   },
@@ -286,12 +321,6 @@
         "modulo": "Módulo 1 · Groove y swing"
       },
       {
-        "titulo": "Groove de techno: Acero",
-        "video": "3af04d93-7160-4866-b9cc-bb5fb47107c8",
-        "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
-      },
-      {
         "titulo": "Loops de audio y groove",
         "video": "41b2509d-6c11-436f-bdca-52a74e56b892",
         "gratis": false,
@@ -304,70 +333,76 @@
         "modulo": "Módulo 1 · Groove y swing"
       },
       {
+        "titulo": "Groove de techno: Acero",
+        "video": "3af04d93-7160-4866-b9cc-bb5fb47107c8",
+        "gratis": false,
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
+      },
+      {
         "titulo": "Groove para Atardecer",
         "video": "d37f1ccf-cb82-4517-8ff9-7801dec84b05",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Groove para Tecno Oscuro (1)",
         "video": "7859e101-4817-4342-8ecf-6af2c0125ef4",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Groove para Tecno Oscuro (2)",
         "video": "b8e83eee-fa49-435b-a8bb-599e3fd06ebe",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Groove para Tecno Oscuro (3)",
         "video": "e38f88d3-4f30-4a08-8482-30d73346437f",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Groove para Duna (1)",
         "video": "c924c2b5-e689-44da-9916-ac6fa2b6ecde",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Groove para Duna (2)",
         "video": "94a202b6-7c72-49e2-8a4a-696bf43c56a9",
         "gratis": false,
-        "modulo": "Módulo 1 · Groove y swing"
+        "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
         "titulo": "Estilos: reguetón",
         "video": "",
         "gratis": false,
-        "modulo": "Módulo 2 · Estilos y técnicas"
+        "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
         "titulo": "Estilos: boom bap",
         "video": "",
         "gratis": false,
-        "modulo": "Módulo 2 · Estilos y técnicas"
+        "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
         "titulo": "Técnicas: J Dilla y los ritmos borrachos",
         "video": "934d8c93-b035-47f2-ad7a-ca0a7e319c94",
         "gratis": false,
-        "modulo": "Módulo 2 · Estilos y técnicas"
+        "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
         "titulo": "Técnicas: notas fantasma",
         "video": "4ddcd11c-0a1b-41c9-817a-6618f9927dcd",
         "gratis": false,
-        "modulo": "Módulo 2 · Estilos y técnicas"
+        "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
         "titulo": "Técnicas: trocear un break",
         "video": "5d3adb2e-2d24-4fb9-a180-2daef38abf41",
         "gratis": false,
-        "modulo": "Módulo 2 · Estilos y técnicas"
+        "modulo": "Módulo 3 · Estilos y técnicas"
       }
     ]
   },
@@ -409,7 +444,7 @@
     ]
   },
   "psicoacustica": {
-    "titulo": "Psicoacústica",
+    "titulo": "Psicoacústica aplicada a la producción musical",
     "subtitulo": "Cómo oímos de verdad y qué significa eso para mezclar mejor.",
     "nivel": "Intermedio",
     "precio": 59,
@@ -417,6 +452,9 @@
     "portada": "",
     "proximamente": false,
     "provisional": true,
+    "modulosProximamente": [
+      "Módulo 5 · Psicoacústica en la práctica"
+    ],
     "lecciones": [
       {
         "titulo": "¿Qué es el sonido?",
@@ -625,7 +663,7 @@
       {
         "titulo": "RMS frente a LUFS",
         "video": "b5055da6-573a-4607-a7a8-ee4c745fde07",
-        "gratis": false,
+        "gratis": true,
         "modulo": "Módulo 3 · Sonoridad"
       },
       {
