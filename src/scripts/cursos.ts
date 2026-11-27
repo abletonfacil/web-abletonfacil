@@ -103,7 +103,7 @@ function plegarModulo(cab: HTMLElement | null, plegar: boolean) {
 
 /** Al entrar, solo queda abierto el primer módulo. Tocar la cabecera pliega o despliega. */
 function activarModulos() {
-  const cabs = [...document.querySelectorAll<HTMLElement>(".temario .modulo-cab")];
+  const cabs = [...document.querySelectorAll<HTMLElement>(".temario .modulo-cab:not(.proximamente)")];
   cabs.forEach((cab, i) => {
     plegarModulo(cab, i > 0);
     cab.querySelector(".modulo-btn")?.addEventListener("click", () =>
