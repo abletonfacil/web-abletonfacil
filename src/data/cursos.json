@@ -421,13 +421,13 @@
       {
         "titulo": "¿Qué es el sonido?",
         "video": "05aa509c-513d-4fd8-a53b-487491bfa91a",
-        "gratis": true,
+        "gratis": false,
         "modulo": "Módulo 0 · Desde cero: sonido, oído y percepción"
       },
       {
         "titulo": "¿Qué es la psicoacústica?",
         "video": "851570e1-dbbd-4676-81d9-de81b06b338c",
-        "gratis": false,
+        "gratis": true,
         "modulo": "Módulo 0 · Desde cero: sonido, oído y percepción"
       },
       {
@@ -523,7 +523,7 @@
       {
         "titulo": "Etapa de ganancia en Live",
         "video": "5fffd1eb-b45d-473a-81b5-f5ff1fa361e1",
-        "gratis": false,
+        "gratis": true,
         "modulo": "Módulo 1 · Medir y etapa de ganancia"
       },
       {
