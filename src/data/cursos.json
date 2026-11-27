@@ -8,6 +8,11 @@
     "portada": "",
     "proximamente": false,
     "provisional": true,
+    "modulosProximamente": [
+      "Módulo 3 · Breakbeat",
+      "Módulo 4 · UK Garage",
+      "Módulo 5 · House"
+    ],
     "lecciones": [
       {
         "titulo": "Introducción",
