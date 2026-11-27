@@ -11,18 +11,20 @@ const { lecciones, abierto = false, proximamente = [] } = Astro.props;
 ---
 <ol class="temario">
   {lecciones.map((l, i) => {
-    const libre = abierto || l.gratis;
+    const pendiente = !l.video;
+    const libre = !pendiente && (abierto || l.gratis);
     const cab = cabeceraModulo(lecciones, i);
     return (
       <>
       {cab && <Fragment set:html={cab} />}
       <li>
-        <button type="button" class:list={["lec", { bloqueada: !libre }]} data-leccion={i} data-gratis={String(l.gratis)} data-titulo={`${i + 1}. ${l.titulo}`}>
+        <button type="button" class:list={["lec", { bloqueada: !libre && !pendiente, pendiente }]} disabled={pendiente} data-leccion={i} data-gratis={String(l.gratis)} data-titulo={`${i + 1}. ${l.titulo}`}>
           <span class="num">{String(i + 1).padStart(2, "0")}</span>
           <span class="tit">{l.titulo}</span>
-          {!abierto && l.gratis && <span class="pill vid">Gratis</span>}
+          {!abierto && l.gratis && !pendiente && <span class="pill vid">Gratis</span>}
+          {pendiente && <span class="lec-pronto">Próximamente</span>}
           <span class="ico" aria-hidden="true">
-            {libre ? (
+            {pendiente ? null : libre ? (
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg>
             ) : (
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
