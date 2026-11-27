@@ -53,6 +53,9 @@ export async function verLeccion(curso: string, n: number, titulo: string, mover
   document.querySelectorAll("[data-leccion]").forEach((el) =>
     el.toggleAttribute("aria-current", Number((el as HTMLElement).dataset.leccion) === n)
   );
+  // Si la lección está dentro de un módulo plegado, se despliega.
+  const actual = document.querySelector<HTMLElement>("[data-leccion][aria-current]");
+  if (actual) plegarModulo(moduloDe(actual), false);
   // En el móvil la lista va debajo del vídeo: al elegir una lección, sube al vídeo.
   if (moverPagina && window.matchMedia("(max-width: 900px)").matches) {
     pantalla.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -79,7 +82,38 @@ export async function verLeccion(curso: string, n: number, titulo: string, mover
 }
 
 /** Clic en una lección del temario. */
+/* ---------- Módulos plegables ----------
+   Cada módulo es un <li class="modulo-cab"> seguido de sus lecciones, hasta el siguiente módulo. */
+function moduloDe(leccion: HTMLElement): HTMLElement | null {
+  let li = leccion.closest("li")?.previousElementSibling as HTMLElement | null;
+  while (li && !li.classList.contains("modulo-cab")) li = li.previousElementSibling as HTMLElement | null;
+  return li;
+}
+
+function plegarModulo(cab: HTMLElement | null, plegar: boolean) {
+  if (!cab) return;
+  cab.querySelector(".modulo-btn")?.setAttribute("aria-expanded", String(!plegar));
+  cab.classList.toggle("plegado", plegar);
+  let li = cab.nextElementSibling as HTMLElement | null;
+  while (li && !li.classList.contains("modulo-cab")) {
+    li.hidden = plegar;
+    li = li.nextElementSibling as HTMLElement | null;
+  }
+}
+
+/** Al entrar, solo queda abierto el primer módulo. Tocar la cabecera pliega o despliega. */
+function activarModulos() {
+  const cabs = [...document.querySelectorAll<HTMLElement>(".temario .modulo-cab")];
+  cabs.forEach((cab, i) => {
+    plegarModulo(cab, i > 0);
+    cab.querySelector(".modulo-btn")?.addEventListener("click", () =>
+      plegarModulo(cab, !cab.classList.contains("plegado"))
+    );
+  });
+}
+
 export function activarTemario(curso: string, puedeVer: (gratis: boolean) => boolean) {
+  activarModulos();
   document.querySelectorAll<HTMLElement>("[data-leccion]").forEach((el) => {
     el.addEventListener("click", () => {
       const n = Number(el.dataset.leccion);
