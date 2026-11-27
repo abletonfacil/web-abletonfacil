@@ -409,7 +409,7 @@
     ]
   },
   "psicoacustica": {
-    "titulo": "Psicoacústica",
+    "titulo": "Psicoacústica aplicada a la producción musical",
     "subtitulo": "Cómo oímos de verdad y qué significa eso para mezclar mejor.",
     "nivel": "Intermedio",
     "precio": 59,
@@ -417,6 +417,9 @@
     "portada": "",
     "proximamente": false,
     "provisional": true,
+    "modulosProximamente": [
+      "Módulo 5 · Psicoacústica en la práctica"
+    ],
     "lecciones": [
       {
         "titulo": "¿Qué es el sonido?",
@@ -625,7 +628,7 @@
       {
         "titulo": "RMS frente a LUFS",
         "video": "b5055da6-573a-4607-a7a8-ee4c745fde07",
-        "gratis": false,
+        "gratis": true,
         "modulo": "Módulo 3 · Sonoridad"
       },
       {
