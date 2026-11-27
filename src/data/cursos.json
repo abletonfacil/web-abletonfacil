@@ -376,31 +376,31 @@
         "modulo": "Módulo 2 · Grooves para las canciones del curso"
       },
       {
-        "titulo": "Estilos: reguetón",
+        "titulo": "Reguetón: el dembow de Daddy Yankee",
         "video": "",
         "gratis": false,
         "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
-        "titulo": "Estilos: boom bap",
+        "titulo": "Boom bap a lo DJ Premier",
         "video": "",
         "gratis": false,
         "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
-        "titulo": "Técnicas: J Dilla y los ritmos borrachos",
+        "titulo": "J Dilla y los ritmos borrachos",
         "video": "934d8c93-b035-47f2-ad7a-ca0a7e319c94",
         "gratis": false,
         "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
-        "titulo": "Técnicas: notas fantasma",
+        "titulo": "Notas fantasma: el «Funky Drummer» de Clyde Stubblefield",
         "video": "4ddcd11c-0a1b-41c9-817a-6618f9927dcd",
         "gratis": false,
         "modulo": "Módulo 3 · Estilos y técnicas"
       },
       {
-        "titulo": "Técnicas: trocear un break",
+        "titulo": "Trocear un break: el Amen de The Winstons",
         "video": "5d3adb2e-2d24-4fb9-a180-2daef38abf41",
         "gratis": false,
         "modulo": "Módulo 3 · Estilos y técnicas"
@@ -418,29 +418,346 @@
     "provisional": false,
     "lecciones": [
       {
-        "titulo": "Estilos: reguetón",
+        "titulo": "El porcentaje de swing de Roger Linn",
         "video": "",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 0 · Swing raro y feel borracho"
       },
       {
-        "titulo": "Estilos: boom bap",
+        "titulo": "Más allá del tresillo: los grooves de Questlove",
         "video": "",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 0 · Swing raro y feel borracho"
       },
       {
-        "titulo": "Técnicas: J Dilla y los ritmos borrachos",
+        "titulo": "Swing de quintillo en Live: el feel de Erykah Badu",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 0 · Swing raro y feel borracho"
+      },
+      {
+        "titulo": "Swing de septillo en Live, al estilo de Slum Village",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 0 · Swing raro y feel borracho"
+      },
+      {
+        "titulo": "J Dilla y los ritmos borrachos",
         "video": "934d8c93-b035-47f2-ad7a-ca0a7e319c94",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 0 · Swing raro y feel borracho"
       },
       {
-        "titulo": "Técnicas: notas fantasma",
+        "titulo": "Un ritmo borracho en Live, como D'Angelo",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 0 · Swing raro y feel borracho"
+      },
+      {
+        "titulo": "Boom bap borracho a lo Madlib",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 0 · Swing raro y feel borracho"
+      },
+      {
+        "titulo": "Medio tiempo y doble tiempo: de Skrillex al drum and bass",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 1 · Técnicas: tiempo y métrica"
+      },
+      {
+        "titulo": "Tresillos y tuplets: el flow de Migos",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 1 · Técnicas: tiempo y métrica"
+      },
+      {
+        "titulo": "Compases que no son 4/4: Radiohead y el 5/4 de «15 Step»",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 1 · Técnicas: tiempo y métrica"
+      },
+      {
+        "titulo": "Métrica aditiva: el 3+3+2 de «Gasolina»",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 1 · Técnicas: tiempo y métrica"
+      },
+      {
+        "titulo": "Polimetría: capas que se desfasan, como Steve Reich",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 1 · Técnicas: tiempo y métrica"
+      },
+      {
+        "titulo": "Por pasos o en directo: de Kraftwerk a AraabMUZIK",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 2 · Técnicas: programación y feel"
+      },
+      {
+        "titulo": "Notas fantasma: el «Funky Drummer» de Clyde Stubblefield",
         "video": "4ddcd11c-0a1b-41c9-817a-6618f9927dcd",
-        "gratis": true
+        "gratis": true,
+        "modulo": "Módulo 2 · Técnicas: programación y feel"
       },
       {
-        "titulo": "Técnicas: trocear un break",
+        "titulo": "Microtiming: la caja tarde de Questlove",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 2 · Técnicas: programación y feel"
+      },
+      {
+        "titulo": "Humanizar sin estropear: que suene a Bernard Purdie",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 2 · Técnicas: programación y feel"
+      },
+      {
+        "titulo": "Groove sacado de un loop: el «Apache» de la Incredible Bongo Band",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 2 · Técnicas: programación y feel"
+      },
+      {
+        "titulo": "Las herramientas MIDI de Live 12 para baterías",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 2 · Técnicas: programación y feel"
+      },
+      {
+        "titulo": "Hi-hats a fondo: los rollos de Metro Boomin",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 3 · Técnicas: sonido"
+      },
+      {
+        "titulo": "El Drum Rack por dentro",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 3 · Técnicas: sonido"
+      },
+      {
+        "titulo": "Afinar la batería: el 808 de Kanye West en «808s & Heartbreak»",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 3 · Técnicas: sonido"
+      },
+      {
+        "titulo": "Capas y fase",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 3 · Técnicas: sonido"
+      },
+      {
+        "titulo": "Batería sintetizada: la TR-808 de «Sexual Healing» (Marvin Gaye)",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 3 · Técnicas: sonido"
+      },
+      {
+        "titulo": "Trocear un break: el Amen de The Winstons",
         "video": "5d3adb2e-2d24-4fb9-a180-2daef38abf41",
-        "gratis": false
+        "gratis": false,
+        "modulo": "Módulo 3 · Técnicas: sonido"
+      },
+      {
+        "titulo": "Bombo y bajo",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 4 · Técnicas: mezcla"
+      },
+      {
+        "titulo": "Compresión y transitorios: el bombeo de Daft Punk",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 4 · Técnicas: mezcla"
+      },
+      {
+        "titulo": "El bus de batería",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 4 · Técnicas: mezcla"
+      },
+      {
+        "titulo": "Color y espacio: el polvo de vinilo de Burial",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 4 · Técnicas: mezcla"
+      },
+      {
+        "titulo": "Platos",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 5 · Técnicas: arreglo"
+      },
+      {
+        "titulo": "Percusión secundaria: el cencerro de «Honky Tonk Women»",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 5 · Técnicas: arreglo"
+      },
+      {
+        "titulo": "Fills y transiciones: el fill de «In the Air Tonight» (Phil Collins)",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 5 · Técnicas: arreglo"
+      },
+      {
+        "titulo": "La batería a lo largo de un tema: «Levels» de Avicii",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo 5 · Técnicas: arreglo"
+      },
+      {
+        "titulo": "Trap a lo Metro Boomin",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo A · Estilos: urbano"
+      },
+      {
+        "titulo": "Drill a lo Pop Smoke",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo A · Estilos: urbano"
+      },
+      {
+        "titulo": "Boom bap a lo DJ Premier",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo A · Estilos: urbano"
+      },
+      {
+        "titulo": "Reguetón: el dembow de Daddy Yankee",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo A · Estilos: urbano"
+      },
+      {
+        "titulo": "Lo-fi y chill-hop a lo Nujabes",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo A · Estilos: urbano"
+      },
+      {
+        "titulo": "Afrobeats a lo Burna Boy",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo A · Estilos: urbano"
+      },
+      {
+        "titulo": "Jersey club: los cinco bombos de DJ Tameil",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo A · Estilos: urbano"
+      },
+      {
+        "titulo": "Funk brasileño: el tamborzão de DJ Marlboro",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo A · Estilos: urbano"
+      },
+      {
+        "titulo": "Pop y rock: la batería de Dave Grohl",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo B · Estilos: batería de banda"
+      },
+      {
+        "titulo": "Funk: el groove de James Brown",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo B · Estilos: batería de banda"
+      },
+      {
+        "titulo": "Neo soul: la batería de Chris Dave",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo B · Estilos: batería de banda"
+      },
+      {
+        "titulo": "Disco y nu-disco: de Chic a Daft Punk",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo B · Estilos: batería de banda"
+      },
+      {
+        "titulo": "Reggae: el one drop de Carlton Barrett (Bob Marley)",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo B · Estilos: batería de banda"
+      },
+      {
+        "titulo": "Swing de jazz y shuffle: el ride de Art Blakey",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo B · Estilos: batería de banda"
+      },
+      {
+        "titulo": "UK garage y 2-step: de MJ Cole a Burial",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo C · Estilos: electrónica fuera del 4x4"
+      },
+      {
+        "titulo": "Breaks y jungle a lo Goldie",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo C · Estilos: electrónica fuera del 4x4"
+      },
+      {
+        "titulo": "Drum and bass a lo Andy C",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo C · Estilos: electrónica fuera del 4x4"
+      },
+      {
+        "titulo": "Dubstep y halftime a lo Skream",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo C · Estilos: electrónica fuera del 4x4"
+      },
+      {
+        "titulo": "Electro y Miami bass: «Planet Rock» de Afrika Bambaataa",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo C · Estilos: electrónica fuera del 4x4"
+      },
+      {
+        "titulo": "Trip hop a lo Massive Attack",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo C · Estilos: electrónica fuera del 4x4"
+      },
+      {
+        "titulo": "Hyperpop a lo SOPHIE",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo C · Estilos: electrónica fuera del 4x4"
+      },
+      {
+        "titulo": "Clave y percusión latina: Tito Puente",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo D · Estilos: raíces"
+      },
+      {
+        "titulo": "Afro house a lo Black Coffee",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo D · Estilos: raíces"
+      },
+      {
+        "titulo": "Amapiano: el log drum de Kabza De Small",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo D · Estilos: raíces"
+      },
+      {
+        "titulo": "Flamenco electrónico a lo Rosalía",
+        "video": "",
+        "gratis": false,
+        "modulo": "Módulo D · Estilos: raíces"
       }
     ]
   },
