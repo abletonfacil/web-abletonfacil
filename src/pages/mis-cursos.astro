@@ -52,7 +52,7 @@ const conectado = Boolean(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env
 <script>
   import { supabase, aviso, activarTemario, verLeccion } from "../scripts/cursos";
   import cursos from "../data/cursos.json";
-  import { cabeceraModulo, cabeceraProximamente } from "../data/cursos";
+  import { cabeceraModulo, cabeceraProximamente, leccionesHechas } from "../data/cursos";
   import packs from "../data/packs.json";
 
   type C = { titulo: string; color: string; modulosProximamente?: string[]; lecciones: { titulo: string; video: string; gratis: boolean; modulo?: string }[] };
@@ -109,7 +109,7 @@ const conectado = Boolean(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env
         const c = (cursos as Record<string, C>)[s];
         return `<a class="curso-card" href="/mis-cursos?curso=${s}" style="--c:${c.color}">
           <div class="cc-portada">${c.portada ? `<img src="${c.portada}" alt="">` : `<span class="cc-nombre">${esc(c.titulo)}</span>`}</div>
-          <div class="cc-body"><h3>${esc(c.titulo)}</h3><p>${c.lecciones.length} lecciones</p>
+          <div class="cc-body"><h3>${esc(c.titulo)}</h3><p>${leccionesHechas(c.lecciones)} lecciones</p>
           <div class="cc-pie"><span></span><span class="btn yellow">Entrar</span></div></div></a>`;
       })
       .join("");
@@ -122,14 +122,19 @@ const conectado = Boolean(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env
     $("[data-curso-titulo]").textContent = c.titulo;
     $<HTMLElement>('[data-paso="curso"]').style.setProperty("--c", c.color);
     $("[data-temario]").innerHTML = c.lecciones
-      .map((l, i) => cabeceraModulo(c.lecciones, i) + `<li><button type="button" class="lec" data-leccion="${i}" data-gratis="${l.gratis}" data-titulo="${i + 1}. ${esc(l.titulo)}">
+      .map((l, i) => cabeceraModulo(c.lecciones, i) + (l.video
+        ? `<li><button type="button" class="lec" data-leccion="${i}" data-gratis="${l.gratis}" data-titulo="${i + 1}. ${esc(l.titulo)}">
         <span class="num">${String(i + 1).padStart(2, "0")}</span><span class="tit">${esc(l.titulo)}</span>
-        <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span></button></li>`)
+        <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span></button></li>`
+        : `<li><button type="button" class="lec pendiente" disabled data-leccion="${i}" data-gratis="false" data-titulo="${i + 1}. ${esc(l.titulo)}">
+        <span class="num">${String(i + 1).padStart(2, "0")}</span><span class="tit">${esc(l.titulo)}</span>
+        <span class="lec-pronto">Próximamente</span></button></li>`))
       .join("") + (c.modulosProximamente ?? []).map(cabeceraProximamente).join("");
-    $("[data-num-lecciones]").textContent = `${c.lecciones.length} lecciones`;
+    $("[data-num-lecciones]").textContent = `${leccionesHechas(c.lecciones)} lecciones`;
     activarTemario(slug, () => true);
     mostrar("curso");
-    if (c.lecciones.length) verLeccion(slug, 0, `1. ${c.lecciones[0].titulo}`);
+    const primera = c.lecciones.findIndex((l) => l.video);
+    if (primera >= 0) verLeccion(slug, primera, `${primera + 1}. ${c.lecciones[primera].titulo}`);
   }
 
   iniciar();

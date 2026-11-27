@@ -60,13 +60,13 @@ export function partirModulo(m: string): { num: string; titulo: string } {
 export function cabeceraModulo(lecciones: Leccion[], i: number): string {
   const m = lecciones[i].modulo;
   if (!m || m === lecciones[i - 1]?.modulo) return "";
-  let n = 0;
-  for (let j = i; j < lecciones.length && lecciones[j].modulo === m; j++) n++;
+  let n = 0, pend = 0;
+  for (let j = i; j < lecciones.length && lecciones[j].modulo === m; j++) lecciones[j].video ? n++ : pend++;
   const { num, titulo } = partirModulo(m);
   const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
   return `<li class="modulo-cab"><button type="button" class="modulo-btn" aria-expanded="true">` +
     `<span class="modulo-num">${esc(num || "Módulo")}</span>` +
-    `<span class="modulo-tit">${esc(titulo)}</span><span class="modulo-n">${n} ${n === 1 ? "lección" : "lecciones"}</span>` +
+    `<span class="modulo-tit">${esc(titulo)}</span><span class="modulo-n">${n ? `${n} ${n === 1 ? "lección" : "lecciones"}` : ""}${n && pend ? " · " : ""}${pend ? `${pend} próximamente` : ""}</span>` +
     `<span class="modulo-flecha" aria-hidden="true"></span></button></li>`;
 }
 
@@ -77,4 +77,9 @@ export function cabeceraProximamente(m: string): string {
   return `<li class="modulo-cab proximamente"><div class="modulo-btn">` +
     `<span class="modulo-num">${esc(num || "Módulo")}</span>` +
     `<span class="modulo-tit">${esc(titulo)}</span><span class="modulo-pronto">Próximamente</span></div></li>`;
+}
+
+/** Lecciones que ya tienen vídeo (las demás salen como «Próximamente» y no cuentan). */
+export function leccionesHechas(lecciones: Leccion[]): number {
+  return lecciones.filter((l) => l.video).length;
 }
